@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="https://keepthethink.github.io">
   <title>一维数据结构学习笔记 | Heliumの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现： //用类来定义链表中的每个元素。 class Node { public:     int v = 0;     Node * next">
+  <meta name="description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现：">
 <meta name="keywords" content="数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一维数据结构学习笔记">
 <meta property="og:url" content="https://keepthethink.github.io/2019/03/15/一维数据结构学习笔记/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现： //用类来定义链表中的每个元素。 class Node { public:     int v = 0;     Node * next">
+<meta property="og:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-17T08:41:37.620Z">
+<meta property="og:updated_time" content="2019-04-24T04:59:57.982Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一维数据结构学习笔记">
-<meta name="twitter:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现： //用类来定义链表中的每个元素。 class Node { public:     int v = 0;     Node * next">
+<meta name="twitter:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现：">
   
     <link rel="alternative" href="/atom.xml" title="Heliumの博客" type="application/atom+xml">
   
@@ -186,7 +186,7 @@
 <p>链表分为单向与双向两种：</p>
 <p>1.单向链表:每个元素只记录了下一个元素的位置。</p>
 <p>2.双向链表:每个元素记录了上一个及下一个元素的位置。</p>
-<p>代码实现：</p>
+<p>代码实现：<a id="more"></a></p>
 <pre><code class="cpp">//用类来定义链表中的每个元素。
 class Node {
 public:

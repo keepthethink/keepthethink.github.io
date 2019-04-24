@@ -181,85 +181,9 @@
         <h1 id="DNS是什么"><a href="#DNS是什么" class="headerlink" title="DNS是什么"></a>DNS是什么</h1><p>DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。</p>
 <h2 id="简明易懂的DNS"><a href="#简明易懂的DNS" class="headerlink" title="简明易懂的DNS"></a>简明易懂的DNS</h2><p>举个例子，从前有个叫小明的人（目测此人已累死），他开了一家商店。顾客要去购物时就直接去商店里买就可以了。</p>
 <p>但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。</p>
-<p>很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。</p>
-<p>实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。</p>
-<h2 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h2><p>看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。</p>
-<p>以我的博客地址<code>keepthethink.github.io</code>为例，当你输入地址后：</p>
-<p>你的电脑首先会去询问DNS服务器；</p>
-<p>DNS服务器询问所谓“根服务器”；</p>
-<p>根服务器询问.io域名的权威服务器；</p>
-<p>.io域名的权威服务器询问.github.io域名的权威服务器;</p>
-<p>.github.io域名的权威服务器将IP告知.io域名的权威服务器；</p>
-<p>.io域名的权威服务器将IP告知根服务器；</p>
-<p>根服务器将IP告知DNS服务器；</p>
-<p>DNS服务器将IP告知你的电脑；</p>
-<p>OK</p>
-<p>（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）</p>
-<h2 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h2><p>这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。</p>
-<p>既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。</p>
-<h2 id="DNS劫持与HTTP劫持"><a href="#DNS劫持与HTTP劫持" class="headerlink" title="DNS劫持与HTTP劫持"></a>DNS劫持与HTTP劫持</h2><h3 id="DNS劫持"><a href="#DNS劫持" class="headerlink" title="DNS劫持"></a>DNS劫持</h3><p>打个比方：</p>
-<p>从前有个叫小刚的，他也开了家杂货店；</p>
-<p>小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。</p>
-<p>这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。</p>
-<p><strong>但是</strong>，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：</p>
-<p>假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的<strong>电话服务商</strong>将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。</p>
-<h3 id="HTTP劫持"><a href="#HTTP劫持" class="headerlink" title="HTTP劫持"></a>HTTP劫持</h3><p>假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，盗取了你的隐私；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。</p>
-<p>这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。</p>
-<h1 id="DoH的具体原理"><a href="#DoH的具体原理" class="headerlink" title="DoH的具体原理"></a>DoH的具体原理</h1><p>DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了</p>
-<blockquote>
-<p>你的电脑 -&gt; DoH服务器 -&gt; DNS服务器 -&gt; DoH服务器 -&gt; 你的电脑</p>
-</blockquote>
-<p>以上流程中的一个箭头代表一个HTTPS加密链接，使得该过程中的所有流量皆受到强加密，这样一来，除非拖出量子计算机或智子，否则绝无可能被破解。</p>
-<h2 id="在Firefox浏览器中体验DoH"><a href="#在Firefox浏览器中体验DoH" class="headerlink" title="在Firefox浏览器中体验DoH"></a>在Firefox浏览器中体验DoH</h2><p>首先，把你的Firefox Quantum更新到最新版。（废话）</p>
-<p>点击右侧的“菜单”，就是那个三条横线的图标；</p>
-<p>在菜单里点击“首选项”；</p>
-<p>进入“常规”选项；</p>
-<p><img src="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg" alt></p>
-<p>滚动页面到最下方，选择“网络设置”；</p>
-<p><img src="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg" alt></p>
-<p>在弹出窗口的最下方选择“启用基于HTTPS的DNS”，点击“使用默认值”即可。</p>
-<h2 id="在macOS中体验DoH"><a href="#在macOS中体验DoH" class="headerlink" title="在macOS中体验DoH"></a>在macOS中体验DoH</h2><p>首先，为了安装必要的组件，我们首先要安装Homebrew软件包管理器。在终端中输入：</p>
-<pre><code class="shell">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
-</code></pre>
-<p>安装完成后，输入以下命令安装cloudflared：</p>
-<pre><code>brew install cloudflare/cloudflare/cloudflared
-</code></pre><p>等待安装，这段时间内你可以去换（chuan）件（shang）衣（nv）服（zhuang）。</p>
-<p>然后，我们要修改一下配置文件，新建一个文件<code>/usr/local/etc/cloudflared/config.yaml</code>，输入如下内容：</p>
-<pre><code>proxy-dns: true
-proxy-dns-upstream:
-  - https://1.1.1.1/dns-query
-  - https://1.0.0.1/dns-query
-</code></pre><p>配置结束，启动服务：</p>
-<pre><code>sudo cloudflared service install
-</code></pre><p>QED！现在你的电脑已经成了一台DoH服务器，高兴的话你也可以把它当作DNS服务器来用。打开 系统首选项 -&gt; 网络 -&gt; 高级 -&gt; DNS，在列表的最顶端添加 127.0.0.1 即可。</p>
-<h2 id="DoH的使用测试"><a href="#DoH的使用测试" class="headerlink" title="DoH的使用测试"></a>DoH的使用测试</h2><p>用dig命令测试一下，发现DOH的使用体验还是相当不错的。对域名<a href="http://www.google.com的查询结果如下：" target="_blank" rel="noopener">www.google.com的查询结果如下：</a></p>
-<pre><code>$ dig @127.0.0.1 www.google.com
-
-; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @127.0.0.1 www.google.com
-; (1 server found)
-;; global options: +cmd
-;; Got answer:
-;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48175
-;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
-
-;; OPT PSEUDOSECTION:
-; EDNS: version: 0, flags:; udp: 1452
-; PAD: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 (&quot;.................................................................&quot;)
-;; QUESTION SECTION:
-;www.google.com.            IN    A
-
-;; ANSWER SECTION:
-www.google.com.        66    IN    A    216.58.194.196
-
-;; Query time: 165 msec
-;; SERVER: 127.0.0.1#53(127.0.0.1)
-;; WHEN: Tue Apr 16 16:33:38 CST 2019
-;; MSG SIZE  rcvd: 142
-</code></pre><p>注意最下方几行：165毫秒的查询时间不可谓不快。</p>
-<p>事实上，如果你饱受各种小广告弹窗之苦，DoH是个不错的应对措施；</p>
-<p>如果你的运营商直接进行DNS劫持，建议投诉或诉诸法律；</p>
-<p>如果你的运营商进行HTTP劫持，推荐DoH。（不然我写这玩意干嘛。）</p>
-
+        
+          <a class="article-more-a" href="/2019/04/15/DNS-over-HTTPS(DoH)简析/#more">more >></a>
+        
       
 
       
@@ -348,32 +272,9 @@ www.google.com.        66    IN    A    216.58.194.196
 </blockquote>
 <p>这个周末，维基百科终于整体离我们而去。它的404，意味着13亿人再次被隔离于一个“普世产品”之外。</p>
 <p>Pingwest创始人托马斯·骆在山寨发布会群里分享了他勤奋更新的微信公众号文章，<a href="http://mp.weixin.qq.com/s?__biz=MzAxMzc1NTkwNQ==&amp;mid=400989696&amp;idx=1&amp;sn=d36df590742255b0cb95d054376149d2&amp;scene=25&amp;srcid=1206Z80ZDGf1hSTlJarvNJ9i#wechat_redirect" target="_blank" rel="noopener">《自由和美好的事物总是戛然而止：比如约翰 列侬和维基百科》</a>（点击链接可以访问过去，做好他的公众号无所不谈的准备，虽然都挺有趣的）。</p>
-<p>知乎讨论这个问题的500多个回答在昨天上午戛然而止，消失无踪。托马斯的这篇文字也不知道能生存到何时。互联网这片沃土在别的地方长出了很多参天大树，在中国却总像城市人行道水泥砖之间的野草，顽强地露头，被碾压而过；又螳臂挡车地冒头，再被碾压。周而复始。</p>
-<p>在这些野草之中，我翻出了2010年时采访第一个中文维基百科词条创建者、“维基”这个译名的提出者的随笔。当他以及最早期的维基中文十三人确定这个译名并胼手砥足地一条一条建立起中文维基时，未必能看到这灰暗的未来。但他接受采访时的淡然和话语间隐隐透露出的理想主义，却正是这些年来激励人们前赴后继地传播光明的原动力。</p>
-<p>这篇东西同样不知道能存活多久，所以本文开头我就放弃了关于本文的一切权利，希望尽量多的自媒体、网站和无处不在的SEO页能收录它、转发它，让人知道中文互联网世界一直燃烧不灭的微弱火种。即使不转发，也可以把它发到邮箱里，存到梯子通达的墙外，在隐秘的一个个圈子里流传。在历史无法书写之处，我们口口相传。仿佛华氏451那个时代，消防员以焚书为业；但热爱文字的人们仍然找到办法，他们分工合作，背下了每一本人类历史的名著；他们</p>
-<blockquote>
-<p>跟普通人没什么两样，像是跑完了一段长路，经过漫长的寻觅，见过美好的事物被焚毁，如今已垂垂老矣，聚在一起等待曲终人散，灯干油尽。他们并不肯定自己脑中所记载的一切，能使未来每一个日出发出更纯净的光辉，他们对此并无把握。但他们确知，那些书储存在他们平静的眼眸之后，完好无缺地等待着将来某一天，那些手指干净或肮脏的读者再来翻动。</p>
-</blockquote>
-<p>以下为原文。斜体字为今日所加。</p>
-<p><strong>那些改变中国互联网的小人物之一：维基百科命名者苑明理</strong></p>
-<p>2002年10月24日，苑明理（维基用户名 mountain）撰写了第一个具有中文内容的维基百科主页。</p>
-<p>此前，或许有其他用户也曾想尝试，但当时的维基主页不支持中文输入。借由工具软件，mountain巧妙地绕过了这个障碍。维基媒体基金会发现了这个微小但意义深远的变化，三天后，中文维基百科有了自己的服务器、域名，同时，后台程序也升级为支持中文输入的版本。世界上最大的百科全书与使用人口最多的语言成功握手。作为中文维基百科的第一位参与用户，苑明理启动了这一进程。</p>
-<p>在完成了第一篇中文条目“计算机科学”后，苑明理又提出了中文命名的提案。尽管已经有了中文内容，但这个百科全书的命名仍然用英文名字Wikipedia。 当时正在北大读应用数学研究生的苑明理引经据典，提出以“维基百科”作为Wikipedia的中文名称。苑明理向淼叔解释了当时的思路：“维”的本意是系物的大绳，由“纲举目张”转引到“网”的含义。而在此前，“万维网”作为WWW流传最广中文译名，已经认可了“维”与互联网的对应；“维基百科”，基于互联网的百科全书，这个译名成为Web2.0概念中音义俱佳的翻译，其流行程度仅次于“博客”（但后者并未得到普遍认同，现在仍有大量业者坚持称为“网志”）。一年之后的2003年10月，中文维基的13个管理员用户投票决定正式中文名，其中有9人选择了“维基百科”。在今天看来，这次投票的意义堪比埃尔隆德会议。</p>
-<p>发布首个维基百科中文条目，以及命名维基百科，这两项里程碑式工作，完成任何一项都可以在IT史甚至学术史上留名；但苑明理并不认为这些有多么重要。 “我不做，总有人会做。当时国内已经有一些人在英文维基上学习了。至于命名，其实当时参与投票的其他译名也有很不错的”。很难说这是一种故作姿态的谦虚， 因为相比浩淼如海的维基百科，无论是参与者，还是使用者，都会为海量的知识目眩神迷。</p>
-<p>Wikipedia 自2001年在美国建立以来，迄今已经拥有1200万个以上的条目，最大的英文维基拥有316万个条目（大英百科全书不到七万条）；中文维基自建立以来， 也已经拥有将近30万个条目。截至2007年10月，维基百科已经经历了四亿次编辑。相对地，维基的注册用户达1500万之众——要知道，维基百科的查阅甚至修改都无需注册。</p>
-<p>在这些数据背后，是仍然不断汇聚而来的知识，更多的编辑者，更多的条目，更多次搜索。苑明理参与维基社区时，中文用户寥寥，条目也以编译英文条目为主。“维基”之译名，自提案而至表决，长达一年。倒并非是争论激烈，而是一开始人数太少，不好遽然而定。“中文维基属于所有中文用户，人数太少时定下名字，对其他人不是很不公平。”</p>
-<p>苑明理坦承，维基所倡导的民主与自由，对其自身影响很大。维基的原则是每一个人均可参与编辑，人人平等；由于每一个人均可以编辑条目、增删内容，因此所有用户在维基面前平等。即使作为开创者和管理员，苑明理也并未享有太多的特权。管理员所作的，更多是维持编辑秩序，锁定或清理恶意编辑者。而对条目的修改，管理员与普通用户权限并无不同，都需要反复讨论、辨析，表明观点。这使维基的管理员远远不像一些论坛版主那样跋扈，所有参与者的讨论反映到条目上，也显得冷静而客观。</p>
-<p>早期参与编辑维基的用户，素质都较为卓越。“我从他们身上学到了很多。”苑明理很怀念一位新加坡籍管理员，后者致力于中文维基社区规则的建立与完善。维基开放给所有用户编写，汇聚知识领域的微力量，带来的副作用可能是信息杂化，和编辑者之间的争吵。既然管理员不能以权威压人，此时便需要依规则调解。另有管理员引入“共识”的标准，成为解决条目争议的重要规则。</p>
-<p>“早期中文维基的管理者贡献良多。”苑明理回忆。他们贡献的不止是中文条目，更在于及时将中文维基解决争端、协调众声的机制和规则建立起来。作为一个参与者几乎无限的项目，维基能够在高速增长的同时，仍维持条目令人惊奇的准确与中立，规则之完善与争端调解机制的建立，功不可没。</p>
-<p>在飞速发展的同时，维基百科也并非没有遇到障碍。尽管拥有世界上最高超的调和艺术和顶尖人才，但维基仍然常常爆发“编辑战”，即各位编辑者就词条的表达与取舍进行的激烈论战。较为典型的是，伊朗现任总统内贾德的词条，从他还是一个默默无闻的候选人时就出现在百科页面上，随着他仕途的通达和不断发表的争议性言论，维基内部也一次次爆发论战。他的哪些言行需要载入页面，哪些判断适合进入百科，“每一个字上都展开了殊死搏斗”。</p>
-<p>内贾德代表了世界上所有尖锐的冲突：东方主义下的东西方冲突，文明冲突论下的伊斯兰文明与基督教文明冲突，政治学意义下的学者与政客的冲突。反映到维基百科上，就是长达三年的争吵，三个调解员因此去职，单一个积极用户就作了近400次修改；最后完成的词条力争记录了内贾德的言论，却仍然被指责为“过长，但没有信息量”。筋疲力尽的维基人们告诉后来者：“可以重新开始讨论……可是我们已经没有精力再参与”（本段内容参考了南方都市报的相关报道）。</p>
-<p>中文维基百科面临相似的困扰，据mountain回忆，有时他甚至声称要因此退出维基项目。与大部分争吵的原因不同，对内容的讨论主要围绕中立原则，只不 过各方对“中立”的理解不同。维基的词条就是在这样严格得近乎苛刻的审查中诞生，每一个词条看上去都冷淡，平静，客观，不带任何感情色彩和倾向。维基的编写是天下大同的缩写，呈现出来的结果却是万籁俱寂的白描。“维基最大的特点，就是在规则之下的众声喧哗，直到共识。”苑明理总结。</p>
-<p>除了内容上的争论，中文维基还面临许多“特色国情”的挑战。作为百科全书，基本目的就是无所不包，除了“根据当地的法律法规不予显示”的内容。但是，当法律法规并未明确规定内容的界限时，无所不包就成为一种冒险的行为。中文维基百科自2005年后，访问上始终存在一些滞涩。有时一些页面会载入后无法显示，有 些时候则干脆整站无法访问。在这段时间，百度百科、互动百科等国产百科开始占领市场。</p>
-<p>在注意力就是资源的互联网，苑明理对这种蚕食并不是太在意。“维基百科不会死，其他山寨版不尊重版权，随意拷贝媒体内容，没有真正创作和学习的乐趣，对维基百科不会形成真正威胁。”似乎是为了证明这一点，科普作家方舟子在博客上发文，痛斥国内某搜索引擎的在线百科不尊重版权，随意剽窃他文章的内容，还设置了繁琐的投诉程序。</p>
-<p>“海纳百川，有容乃大”是中文维基百科的副标题，苑明理似乎从这句话中获得了更多从容的力量。“英文维基不会死，维基用户数量就有了保障。竞争再激烈，时间总会说明一切。坚持中立、包容和分享知识的乐趣，维基精神就不灭。”在关于维基你或许不知道的十件事这个条目下，最后一条就是“维基是一个百年大计”。既然能长寿到所有敌人都死去，那还有什么值得焦躁和忧愁呢？</p>
-<p>“维基汇聚了所有普通人的力量，分享着所有用户的知识，并以此为基础记录人类文明的成果。”苑明理终于谈到了自己的理想：“这就是我想要的，世界公民。”</p>
-<p>补记：苑明理已经于三年前离开了他服务多年的国际IT巨头。现在他在知春路的一家创业公司中埋头做一款叫做“彩云天气”的产品。除此之外，生活没有任何变化。</p>
-
+        
+          <a class="article-more-a" href="/2019/04/15/「文章转载」他译作“维基”的那个网站消失在竹幕后/#more">more >></a>
+        
       
 
       
@@ -457,41 +358,11 @@ www.google.com.        66    IN    A    216.58.194.196
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>看标签</p>
-<h1 id="枚举，模拟，暴力。"><a href="#枚举，模拟，暴力。" class="headerlink" title="枚举，模拟，暴力。"></a>枚举，模拟，暴力。</h1><p>很容易想到开一个大小N * N 的二维数组，然而数据范围是0 ≤ N ≤10,000</p>
-<p>数组大小：10000 * 10000 = 100000000 Byte = 100000 KB = 100MB</p>
-<p>刚好跨过了RE与MLE的红线。</p>
-<p>另外一种方法是用四个数组来记录长方形的四个参数，再扫一遍检查最上面的地毯。</p>
-<p>亲测，完美AC。</p>
-<p>没有反作弊代码，因为我相信你们都有良心。代码公开计划都被我打开了。</p>
-<pre><code class="cpp">#include&lt;stdio.h&gt;
-
-const int MAXN = 10000 + 5;//程序里出现幻数可不是好习惯哦~
-
-int a[MAXN], b[MAXN], g[MAXN], k[MAXN];
-
-int main() {
-    int n, x, y;
-
-    scanf(&quot;%d&quot;, &amp;n);
-    for(int i = 0; i &lt; n; i++) {
-        scanf(&quot;%d%d%d%d&quot;, &amp;a[i], &amp;b[i], &amp;g[i], &amp;k[i]);//输入
-    }
-    scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
-
-    int ans = -1;
-    for(int i = 0; i &lt; n; i++) {
-        if(x &gt;= a[i] &amp;&amp; y &gt;= b[i] &amp;&amp; x &lt;= a[i] + g[i] &amp;&amp; y &lt;= b[i] + k[i]) {
-            ans = i + 1;//ans的最终值恰好是最上面的那张地毯编号
-        }
-    }
-
-    printf(&quot;%d\n&quot;, ans);//输出结果
-
-    return 0;
-}
-</code></pre>
-
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到$n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。</p>
+<p>地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。</p>
+        
+          <a class="article-more-a" href="/2019/04/13/洛谷题解-P1003-【铺地毯】/#more">more >></a>
+        
       
 
       
@@ -580,10 +451,9 @@ int main() {
     <div class="article-entry" itemprop="articleBody">
       
         <p>2019年4月10日9：00，人类首张对黑洞进行直接拍摄的照片发布。</p>
-<p><img src="https://i.loli.net/2019/04/12/5cb090dea8dcc.jpg" alt></p>
-<p>这张照片可能并不符合许多人想象中常见的“漩涡”形象，但这是最符合目前学术界公认理论的形象。爱因斯坦，史瓦西，克尔，霍金等历代科学家的理论终于在这一天得到了论证，只不过他们都没有活到看到他们预言之物终于被光学设备记录到的那一天。</p>
-<p>“黑洞”这个概念在20世纪就早已名扬四海，但这个概念一直只是存在于物理学家的计算中，这多少让人想起海王星，但海王星被计算出后几乎是立刻就被天文望远镜所发现，而黑洞从被计算出（1915年12月德国天文学家卡尔·史瓦西计算出爱因斯坦方程的黑洞解。）到2019年黑洞终于被人类的天文望远镜拍摄到，时隔整整103年。</p>
-
+        
+          <a class="article-more-a" href="/2019/04/13/人类首张黑洞照片/#more">more >></a>
+        
       
 
       
@@ -671,52 +541,12 @@ int main() {
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>看到题目二话不说用了搜索，直到在提交前看了一下算法标签，又看了一下数据范围。。。</p>
-<p>状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。</p>
-<p>上代码，这道题算是一道DP入门题吧。</p>
-<pre><code class="cpp">#include&lt;stdio.h&gt;
-
-const int MAXN = 20 + 5;
-const int attack[9][2] = {{0, 0}, {1, 2}, {2, 1}, {-1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}};
-long long dist[MAXN][MAXN];
-int map[MAXN][MAXN];
-int n, m, x, y;
-
-void init(void) {
-    for(int i = 0; i &lt; 9; i++) {
-        if(x + attack[i][0] &lt;= n &amp;&amp; x + attack[i][0] &gt;= 0) {
-            if(y + attack[i][1] &lt;= m &amp;&amp; y + attack[i][1] &gt;= 0) {
-                map[x + attack[i][0]][y + attack[i][1]] = true;
-            }
-        }
-    }
-}
-
-int main() {
-    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;x, &amp;y);
-
-    init();
-
-    int k = 1;
-    for(int i = 0; i &lt;= n; i++) {
-        dist[i][0] = map[i][0] ? k = 0 : k;
-    }
-    k = 1;
-    for(int i = 0; i &lt;= m; i++) {
-        dist[0][i] = map[0][i] ? k = 0 : k;
-    }
-    for(int i = 1; i &lt;= n; i++) {
-        for(int j = 1; j &lt;= m; j++) {
-            dist[i][j] = map[i][j] ? 0 : dist[i - 1][j] + dist[i][j - 1];
-        }
-    }
-
-    printf(&quot;%lld\n&quot;, dist[n][m]);
-
-    return 0;
-}
-</code></pre>
-
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
+<p>棋盘用坐标表示，AA点(0, 0)(0,0)、BB点(n, m)(n,m)(nn, mm为不超过2020的整数)，同样马的位置坐标是需要给出的。</p>
+<p>现在要求你计算出卒从AA点能够到达BB点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
+        
+          <a class="article-more-a" href="/2019/04/12/洛谷题解-P1002-【过河卒】/#more">more >></a>
+        
       
 
       
@@ -805,120 +635,14 @@ int main() {
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="写在前面"><a href="#写在前面" class="headerlink" title="写在前面"></a>写在前面</h1><p>几个月过去了，关于CCF的一切事件基本上都已经风平浪静。</p>
-<p>从事实角度来讲，CCF的<strong>大部分</strong>行为是无可厚非的，CCF垄断国内OI界并不停抬价，由于OI不属于商业范畴，似乎不违反现有任何法律；抬价，似乎也没有抬到诸位承担不起的地步。当然，这些报名费里面有多少用于比赛举办，可能还得打个问号，但这里要注意两点：</p>
-<ol>
-<li>CCF不是政府机构，也就是说他们并不是广大OIer们的公仆，不像我们交的税，全部都用于国家发展与建设。</li>
-<li>CCF这么个庞然大物一般的组织若要运转，需要很大一笔资金。</li>
-</ol>
-<p>其实NOIP2018时CCF就已经将评测机换成了i7-8700K 32GB RAM，但其耗费的资金必然只占我们的报名费中的一小部分。[1]简单估计一下，这台电脑撑死也就……5万？10万？但考虑到这之前的两点，这也不是什么奇怪的事。我们每年交了几百万上千万了，已经相当于一个中型企业的年收入。一言以蔽之，“把CCF的财务部门与CCF的竞赛组织部门的人对调，CCF的所有问题都会得到解决。”</p>
-<p>既然CCF激起如此民愤，说他们什么亏心事都没做未免说不过去。只是要告诉屏幕前的各位，在对CCF进行道德判断时，应该以一种更为中肯的角度去看待。</p>
-<h1 id="关于省队名额"><a href="#关于省队名额" class="headerlink" title="关于省队名额"></a>关于省队名额</h1><p>先谈省队。省队是什么？</p>
-<p>省队是各省参加全国赛的代表队，各个省队的名额有复杂的计算公式，一般和之前的成绩和参赛人数有关。[2]</p>
-<p>省队相当于什么难度？以下几个知识点取自“洛谷试炼场”：</p>
-<ul>
-<li>网络流</li>
-<li>单调队列</li>
-<li>概率期望</li>
-<li>二分图</li>
-<li>点分治</li>
-<li>后缀数组</li>
-<li>主席树</li>
-<li>数位DP</li>
-<li>AC自动机</li>
-<li>平衡树</li>
-<li>树链剖分</li>
-<li>动态树</li>
-<li>树套树</li>
-<li>可持久化Trie树</li>
-<li>莫队</li>
-<li>分块</li>
-<li>莫比乌斯反演</li>
-</ul>
-<p>要让以上知识点全部过关，刷题什么的暂且不提，文化课必定已经彻底停了。（不排除有同时AK文化课的大佬的存在，但这毕竟是个案。）在这种情况下，这位OIer必然是已经将自己的全部前途作为筹码押在了OI这条路上，要么是极其的热爱信息学，要么是坚信自己必然能夺魁榜首。几年来在各大OJ上留下的AC记录，几年来的无数个不眠之夜，几年来留下的汗水，却全都因为一句简单的“有复杂的计算公式，一般和之前的成绩和参赛人数有关”就被一笔勾销！在我们眼里这是个悲剧，在CCF眼里这想必就是一个统计数字！（魔改自斯大林某句被后人强行断章取义的话）</p>
-<p>自法国大革命以后，世界的的主流价值观便是人文主义。人文主义的核心是什么？人是世界的中心！当我们判断一个OIer能否参加省选时，我们应该判断TA作为<strong>一个人</strong>的真才实学，而不是什么复杂的计算公式得到的数目！今天██省因为[数据删除]被减了名额，明天██省又因为[数据删除]被减了名额，其中到底有多少是我们广大OIer的过错呢？CCF吸金什么的倒不是主要问题，但他们到底要不要把OIer的前途放在眼里？</p>
-<p><a href="http://www.noi.cn/newsview.html?id=625&amp;hash=B319A4&amp;type=1" target="_blank" rel="noopener">CCF关于NOIP2017复赛违规省份的处罚公告</a></p>
-<p>呵呵，通报批评一下就了事了，真当我们是傻子？而且这不是重点，提高分数线是怎么回事？</p>
-<p><a href="http://www.noi.cn/newsview.html?id=568&amp;hash=8139FE&amp;type=1" target="_blank" rel="noopener">CCF 关于NOIP2016违规事件的处罚公告</a></p>
-<p>处罚作弊者是理所当然的，但整个学校禁赛一年？喵喵喵？这是退回的封建时代了，诛九族？</p>
-<p>若一个省发生了作弊等乱象，犯错的是什么？在CCF眼里，犯错的主体是这个省，所以惩罚就降临到了这个省的头上：扣省队名额。请问在此项举措中，受害最大的是谁？好吧，从现实角度来讲，CCF这么大一个组织，即便是杜子徳也不是想改就能改的。但请问在CCF眼里，我们OIer到底是什么？</p>
-<h1 id="NOIP2018初赛的那些事儿"><a href="#NOIP2018初赛的那些事儿" class="headerlink" title="NOIP2018初赛的那些事儿"></a>NOIP2018初赛的那些事儿</h1><p>首先放链接：<br><a href="http://www.noi.cn/newsview.html?id=760&amp;hash=02E485&amp;type=1" target="_blank" rel="noopener">CCF关于公布NOIP2018初赛违规事件的处罚公告</a></p>
-<p>毫无疑问，这事引起的争议相当的大，俞x颜也瞬间名扬天下，放眼望去遍地都是各种“俞x颜是我同学”之类的回复。扯远了，让我们先把视线聚焦在第一个事件上：</p>
-<h2 id="山东赛区违规情况及处罚通报"><a href="#山东赛区违规情况及处罚通报" class="headerlink" title="山东赛区违规情况及处罚通报"></a>山东赛区违规情况及处罚通报</h2><p>相比民主烈士俞x颜的事迹，这起事件反而不那么引人注目。但要注意的是，这起事件波及的是整个省的名额，而浙江的事件只波及到了一个人。</p>
-<p>CCF在处理这起事件的时候，逻辑似乎是这样的：</p>
-<ol>
-<li>山东赛区青州考点（青州二中）负责人潍坊青州市电化教育中心田志杰擅自提前比赛时间</li>
-<li>山东省计算机学会对竞赛相关责任人培训不足，应对此事负责任</li>
-<li>对山东省进行处罚，故对山东省名额进行扣除</li>
-</ol>
-<p>还是那句话：在对一个省的处罚中，利益真正受到损害的是谁？CCF就算没有专心致志办比赛的诚意，起码也应该注意到谁是无辜的！如果因为选手作弊而引起“灭族”至少还可以用CCF的逻辑硬解析过去，这种因为<strong>负责人</strong>行为不当而引起的问题还要扣名额，emmmm</p>
-<h2 id="浙江赛区违规情况调查及处罚通报"><a href="#浙江赛区违规情况调查及处罚通报" class="headerlink" title="浙江赛区违规情况调查及处罚通报"></a>浙江赛区违规情况调查及处罚通报</h2><blockquote>
-<p>10月16日， CCF接到实名举报，指出浙江赛区出现影响比赛秩序的行为，经调查核实，情况属实。</p>
-</blockquote>
-<p>“出现影响比赛秩序的行为”？请问具体怎么样才算出现影响比赛秩序？有相关规定么？情况属实？这不等于开门还没见山，就先给人家俞x颜扣帽子吗？</p>
-<blockquote>
-<p>在竞赛前一天，10月12日15:29，余姚中学选手俞x颜（女）在网上发布名为“NOIP2018提高组初赛解析”的博客，13日下午初赛结束后，俞x颜从网上获取NOIP2018提高组初赛答案PDF版本后上传至“NOIP2018提高组初赛提高组解析”博客内。经验证，该博客网站不会显示更新的时间，而只显示该条博客内容首次发布的时间。因此，俞x颜的这一行为造成了NOIP2018提高组初赛答案泄露的假象。</p>
-</blockquote>
-<p>所以说，这是假象？真是让人白高兴一场。</p>
-<p>请问CCF，哪条条例规定了不能制造假象？当然了，这是我们可以援引万能的<strong>第八条条例</strong>：</p>
-<blockquote>
-<p>选手违规行为是指：</p>
-<p>1)      将不允许夹带的物品带入考场并经指出后仍不予改正；</p>
-<p>2)      在考场通过不正当途径获得与竞赛有关的信息或为其他选手提供与竞赛有关的信息；</p>
-<p>3)      用不正当途径和介质将答案带入考场；</p>
-<p>4)      以不正当方式提前得到竞赛题目；</p>
-<p>5)      让他人替代参加竞赛或以他人或其他单位的名义参加竞赛；</p>
-<p>6)      抄袭或拷贝他人的答案或程序，有意提供给他人答案或程序；</p>
-<p>7)      不遵守竞赛规则和赛场规定；</p>
-<p>8)      其他可能影响公平竞赛的其他行为。</p>
-</blockquote>
-<p>其他可能影响公平竞赛的其他行为。</p>
-<p>Sorry，负责制定规则真的可以为所欲为。</p>
-<blockquote>
-<p>“NOIP2018提高组初赛解析”博客一事系选手“俞x颜”（女）为吸引网上点击量而做出的行为，<strong>俞x颜本人也予以承认</strong>。她的这一行为在选手中造成一定的恐慌和混乱，干扰了正常的竞赛秩序，有损竞赛的声誉，也给组织方带来不必要的负担和干扰。</p>
-</blockquote>
-<p>本人予以承认？俞同学啊，你既然有在CCF眼皮底子下玩火的觉悟，就应该有不被屈打成招的觉悟吧。你要是斩钉截铁地说就是先占坑等会来填，CCF也不至于把你弄成这样。</p>
-<blockquote>
-<p>NOIP是CCF主办的NOI系列赛事之一。公平公正是竞赛的生命，任何违规行为对竞赛都是极大的伤害。CCF NOI各相关机构会带头遵守规则，严格保密，同时也承担维护竞赛公平公正良好秩序的重任，对任何违规或作弊的行为均按竞赛条例给予严肃处理。NOI各组织单位、学校、教师均要严格按照规定和流程开展工作，诚实守信，保证赛事的公正进行。</p>
-</blockquote>
-<p>刚泼完脏水又来扣帽子？人家俞同学哪里破坏公平公正了？</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>这里引用一位大佬的话：</p>
-<blockquote>
-<p>用伤害无辜者来掩盖自己的错误是心虚的体现，也永远掩盖不了。 ——Hannah_AI [3]</p>
-</blockquote>
-<p>综上所述，俞同学的所作所为只不过是发博客的事件提前了一点而已，只要点进去就可以知道发生了什么。（当然，初赛完成之后可能有一点点误会，但俞同学肯定在自己的博客里注明了。）恐慌？历史上有过OIer恐慌的事吗？</p>
-<p>CCF，你到底是想干嘛？把一个活生生的人当作垫脚石吗？</p>
-<h1 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h1><p>关于CCF的事，应该以一种理性的方式去看待。</p>
-<p><img src="https://pic2.zhimg.com/80/v2-9a49f4e1981a4653446d9b165c43a7c5_hd.jpg" alt></p>
-<p>以上就是个完美的反面教材</p>
-<p>像 China Chasing-money Foundation 这种为黑而黑，真的能为广大OIer的权利起到什么帮助吗？并没有。</p>
-<p>那么，我们到底可以为此做些什么？什么也做不了。</p>
-<h1 id="随笔"><a href="#随笔" class="headerlink" title="随笔"></a>随笔</h1><h2 id="所谓“吃人”"><a href="#所谓“吃人”" class="headerlink" title="所谓“吃人”"></a>所谓“吃人”</h2><p>吃人是什么？先想自己的利，再想别人的命，便是吃人。</p>
-<h2 id="所谓“连坐”"><a href="#所谓“连坐”" class="headerlink" title="所谓“连坐”"></a>所谓“连坐”</h2><p>连坐是野蛮人的象征，譬如诛九族与扣省队名额。</p>
-<p>方孝孺至少还有个成王败寇的说法，他的弟子，门生们做错了什么？</p>
-<h2 id="《第八条条例》"><a href="#《第八条条例》" class="headerlink" title="《第八条条例》"></a>《第八条条例》</h2><blockquote>
-<p>选手违规行为是指：</p>
-<p>1)      将不允许夹带的物品带入考场并经指出后仍不予改正；</p>
-<p>2)      在考场通过不正当途径获得与竞赛有关的信息或为其他选手提供与竞赛有关的信息；</p>
-<p>3)      用不正当途径和介质将答案带入考场；</p>
-<p>4)      以不正当方式提前得到竞赛题目；</p>
-<p>5)      让他人替代参加竞赛或以他人或其他单位的名义参加竞赛；</p>
-<p>6)      抄袭或拷贝他人的答案或程序，有意提供给他人答案或程序；</p>
-<p>7)      不遵守竞赛规则和赛场规定；</p>
-<p>8)      其他可能影响公平竞赛的其他行为。</p>
-</blockquote>
-<p>嘿我有个写小说的点子，《第八条条例》，我想它一定比《第二十二条军规》更好。</p>
-<h2 id="将心比心"><a href="#将心比心" class="headerlink" title="将心比心"></a>将心比心</h2><p>中国的OIers若何CCFers对调一下位置，OI界所有问题都会得到解决。</p>
-<p>（大家别光顾着指责CCF，试想若他们跑路了，我们吃什么？）</p>
-<p>（国人别光顾着指责清政府，试想他们跑路了，国人吃什么？）</p>
-<p>（德国人别光顾着指责纳粹，试想如果在工业发展期间他们跑路了，你们吃什么？）</p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="https://news.mydrivers.com/1/593/593774.htm" target="_blank" rel="noopener">Intel盒装处理器大涨价：i7-8700K涨至2999元 - 快科技 - 驱动之家</a></p>
-<p>[2] <a href="https://oi-wiki.org/intro/mode/" target="_blank" rel="noopener">OI赛事和赛制</a></p>
-<p>[3] <a href="http://scp-wiki-cn.wikidot.com/scp-cn-601" target="_blank" rel="noopener">SCP-CN-601</a></p>
-
+<p>从事实角度来讲，CCF的<strong>大部分</strong>行为是无可厚非的，CCF垄断国内OI界并不停抬价，由于OI不属于商业范畴，似乎不违反现有任何法律；抬价，似乎也没有抬到诸位承担不起的地步。当然，这些报名费里面有多少用于比赛举办，可能还得打个问号，但这里要注意两点：<br>
+        
+          <a class="article-more-a" href="/2019/04/06/理性看待CCF/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -999,116 +723,14 @@ int main() {
     <div class="article-entry" itemprop="articleBody">
       
         <p>对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。</p>
-<h1 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义</h1><pre><code class="cpp">class Point {
-public:
-    double x, y;
-
-    Point(double x = 0, double y = 0):x(x), y(y) {}
-
-    Point(Point a, Point b) {
-        //构造从a到b的向量
-        x = b.x - a.x;
-        y = b.y - a.y;
-    }
-
-    double dist(const Point&amp; p) const {
-        //计算从自身到点P的距离
-        return sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
-    }
-
-    double operator * (const Point&amp; p) const {
-        //计算向量叉积
-        return x * p.y - p.x * y;
-    }
-
-    bool operator &lt; (const Point&amp; p) const {
-        //按照X轴排序
-        return (x == p.x) ? (y &lt; p.y) : (x &lt; p.x);
-    }
-
-    friend istream&amp; operator &gt;&gt; (istream&amp; in, Point&amp; p) {
-        //重载 &gt;&gt; 运算符使得cin可以输入
-        in &gt;&gt; p.x &gt;&gt; p.y;
-
-        return in;
-    }
-};
-
-const int MAXN = 10000 + 5;
-
-Point p[MAXN];
-int st[MAXN], top = -1; //点栈
-int n;
-</code></pre>
-<h1 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h1><pre><code class="cpp">void input() { //输入所有点
-    cin &gt;&gt; n;
-    for(int i = 0; i &lt; n; i++) {
-        cin &gt;&gt; p[i];
-    }
-}
-
-int main() {
-    input();
-    sort(p, p + n); //对点进行直角坐标排序􏰣􏰳􏰣􏰳􏰮􏰂
-    double ans = 0;
-
-    st[++top] = 0; //将第一个点入栈
-    st[++top] = 1; //将第二个点入栈
-
-    for(int i = 2; i &lt; n; i++) {
-        Point u(p[st[top - 1]], p[st[top]]); //计算栈顶两个点构成的向量
-        Point v(p[st[top]], p[i]); //计算当前点与栈顶构成的向量
-
-        while(u * v &lt; 0) { //若叉积小于0
-            if(top == 0) { //当栈中只有一个元素时，退出循环
-                break;
-            }
-            top--; //弹出栈顶
-            u = Point(p[st[top - 1]], p[st[top]]); //更新
-            v = Point(p[st[top]], p[i]); //更新
-        }
-        st[++top] = i; //将第i个点压入栈中
-    }
-
-    for(int i = 0; i &lt;= top - 1; i++) {
-        ans += p[st[i]].dist(p[st[i + 1]]); //累加下半个凸包的长度
-    }
-    top = -1; //清空栈
-
-    //求出上半个凸包，与前半部分大同小异
-    st[++top] = 0;
-    st[++top] = 1;
-
-    for(int i = 2; i &lt; n; i++) {
-        Point u(p[st[top - 1]], p[st[top]]);
-        Point v(p[st[top]], p[i]);
-
-        while(u * v &gt; 0) {
-            if(top == 0) {
-                break;
-            }
-            top--;
-            u = Point(p[st[top - 1]], p[st[top]]);
-            v = Point(p[st[top]], p[i]);
-        }
-        st[++top] = i;
-    }
-
-    for(int i = 0; i &lt;= top - 1; i++) {
-        ans += p[st[i]].dist(p[st[i + 1]]);
-    }
-    top = -1;
-
-    cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; ans &lt;&lt; endl; //控制精度
-
-    return 0;
-}
-</code></pre>
-
+<h1 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义
+        
+          <a class="article-more-a" href="/2019/04/05/计算几何：凸包/#more">more >></a>
+        
       
 
       
-    </div>
+    </h1></div>
     <div class="article-info article-info-index">
       
       
@@ -1190,196 +812,10 @@ int main() {
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>伸展树（英语：Splay Tree）是一种能够<strong>自我平衡</strong>的二叉查找树，它能在均摊O(log n)的时间内完成基于伸展（Splay）操作的插入、查找、修改和删除操作。</p>
 <p>众所周知，普通BST在进行各种操作时很容易因为左子树与右子树高度差的问题导致时间复杂度退化为O(n)，Splay为了避免这个问题，使用了一种叫做“伸展”的操作来使左右子树平衡，在后面会介绍。</p>
-<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1><h2 id="节点"><a href="#节点" class="headerlink" title="节点"></a>节点</h2><p><code>node.v</code>：节点node的值</p>
-<p><code>node.father</code>：节点node的父节点</p>
-<p><code>node.ch[0]</code>与<code>node.ch[1]</code>：节点node的左子节点与右子节点</p>
-<p><code>node.size</code>：以节点node为根节点的子树的节点总数</p>
-<p><code>node.cnt</code>：数值与节点node相同的节点的数量（都储存在节点node中）</p>
-<p>代码：</p>
-<pre><code class="cpp">class Node {
-public:
-    int v, father, ch[2], size, cnt;
-
-    Node(int v = 0, int father = 0, int size = 0, int cnt = 0):v(v), father(father), size(size), cnt(cnt) {
-        ch[0] = ch[1] = 0;
-    }
-};
-</code></pre>
-<h2 id="树"><a href="#树" class="headerlink" title="树"></a>树</h2><p><code>root</code>：根节点</p>
-<p><code>cnt</code>：总结点数</p>
-<pre><code class="cpp">Node node[MAXN];
-int root = 0, cnt = 0;
-</code></pre>
-<h1 id="操作"><a href="#操作" class="headerlink" title="操作"></a>操作</h1><h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="pushup"><a href="#pushup" class="headerlink" title="pushup"></a>pushup</h3><p><code>pushup()</code>函数：<strong>更新</strong>节点p的<code>size</code>值</p>
-<pre><code class="cpp">void pushup(int p) {
-    node[p].size = node[node[p].ch[0]].size + node[p].cnt + node[node[p].ch[1]].size; //节点数 = 左子树节点数 + 本身的节点数 + 右子树节点数
-}
-</code></pre>
-<hr>
-<h3 id="check"><a href="#check" class="headerlink" title="check"></a>check</h3><p><code>check()</code>函数：询问节点p是其父节点的左子节点还是右子节点</p>
-<pre><code class="cpp">int check(int p) {
-    return node[node[p].father].ch[0] == p ? 0 : 1; //0代表左子节点，1代表右子节点
-}
-</code></pre>
-<hr>
-<h3 id="connect"><a href="#connect" class="headerlink" title="connect"></a>connect</h3><p><code>connect()</code>函数：将节点x连接为节点f的子节点，方向为d (d = 0, 1，同上)</p>
-<pre><code class="cpp">void connect(int x, int f, int d) {
-    node[f].ch[d] = x; //将节点f的子节点设置为x
-    node[x].father = f; //将节点x的父节点设置为f
-}
-</code></pre>
-<h2 id="旋转"><a href="#旋转" class="headerlink" title="旋转"></a>旋转</h2><h3 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h3><p>旋转是平衡树最主要的操作，其本质在于，每次进行旋转时，左右子树当中之一高度 -1，另外一棵高度 +1，以达到平衡的目的。</p>
-<p>左旋：</p>
-<p>第一次连边，节点x的子节点成为x的父节点的右子节点</p>
-<p>第二次连边，节点x成为节点x的父节点的父节点的子节点，方向与x的父节点相同</p>
-<p>第三次连边，节点x的父节点成为节点x的左子节点</p>
-<p><img src="https://keepthethink.github.io/images/left_rotate.jpg" alt></p>
-<p>右旋：</p>
-<p>第一次连边，节点x的子节点成为x的父节点的左子节点</p>
-<p>第二次连边，节点x成为节点x的父节点的父节点的子节点，方向与x的父节点相同</p>
-<p>第三次连边，节点x的父节点成为节点x的右子节点</p>
-<p><img src="https://keepthethink.github.io/images/right_rotate.jpg" alt></p>
-<p>旋转操作只与标为红，蓝，绿的三个部分有关。</p>
-<pre><code class="cpp">void rotate(int x) {
-    int y = node[x].father, z = node[y].father, d = check(x), w = node[x].ch[d ^ 1]; //w判断应该左旋还是右旋
-    connect(w, y, d); //第一次连边，节点x的子节点连接到x的父节点，方向与节点x相同
-    connect(x, z, check(y)); //第二次连边，节点x连接到节点x的父节点的父节点，方向与x的父节点相同
-    connect(y, x, d ^ 1); //第三次连边，节点x的父节点连接到节点x，方向与节点x原先的方向相反
-    pushup(y); //更新子树
-    pushup(x); //更新子树
-}
-</code></pre>
-<h2 id="伸展"><a href="#伸展" class="headerlink" title="伸展"></a>伸展</h2><h3 id="splay"><a href="#splay" class="headerlink" title="splay"></a>splay</h3><p>Splay操作：将节点x旋转到节点dist的子节点。通常是将该节点旋转到根节点，在这种情况下，应当将<code>root</code>置为x</p>
-<p>最朴素的想法：只要父节点不是dist就一直旋转该节点，但这样很容易被某些机（wu）智（liang）出题人卡。</p>
-<pre><code class="cpp">void splay(int x, int dist = 0) {
-    while(node[x].father != dist) {
-        rotate(x);
-    }
-    if(dist == 0) {
-        root = x;
-    }
-}
-</code></pre>
-<p>所以，在实际操作中，通常会预判节点x的父节点的方向，若方向一致则旋转其父节点，减少被卡的可能性。</p>
-<pre><code class="cpp">void splay(int x, int dist = 0) {
-    for(int f = node[x].father; f = node[x].father, f != dist; rotate(x)) {
-        if(node[f].father != dist) {
-            if(check(x) == check(f)) {
-                rotate(f); //方向一致则旋转x的父节点
-            } else {
-                rotate(x); //方向不一致则旋转x
-            }
-        }
-    }
-    if(dist == 0) {
-        root = x;
-    }
-}
-</code></pre>
-<h2 id="查找"><a href="#查找" class="headerlink" title="查找"></a>查找</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p>查找值为x的节点，找到后将其置为<code>root</code>以便操作。</p>
-<p><code>find</code>操作的意义在于将值为x的节点伸展（splay）到根，在不存在值为x的节点的情况下，应将小于x的节点中最大的节点伸展（splay）到根。</p>
-<pre><code class="cpp">void find(int x) {
-    int cur = root;
-    while(node[cur].ch[x &gt; node[cur].v] != 0 &amp;&amp; x != node[cur].v) {
-        cur = node[cur].ch[x &gt; node[cur].v]; //查找值为x的节点
-    }
-    splay(cur);
-}
-</code></pre>
-<h2 id="公共操作"><a href="#公共操作" class="headerlink" title="公共操作"></a>公共操作</h2><p>如果将本文讲的Splay打包成一个<code>class</code>，则前文所述的操作应包含在<code>private</code>中，本节所述的操作应包含在<code>public</code>中。</p>
-<h3 id="insert"><a href="#insert" class="headerlink" title="insert"></a>insert</h3><p>Splay中的<code>insert</code>其实与朴素BST中的<code>insert</code>没有什么区别，但若直接插入可能导致树退化为链，所以要在末尾处调用一次splay()函数，使Splay树保持平衡。</p>
-<pre><code class="cpp">void insert(int x) {
-    int cur = root, p = 0;
-    while(cur != 0 &amp;&amp; node[cur].v != x) {
-        p = cur;
-        cur = node[cur].ch[x &lt; node[cur].v ? 0 : 1];
-    }
-    if(cur != 0) {
-        node[cur].cnt++;
-    } else {
-        cur = ++cnt;
-        if(p != 0) {
-            node[p].ch[x &lt;= node[p].v ? 0 : 1] = cur;
-        }
-        node[cur] = Node(x, p, 1, 1);
-    }
-    splay(cur);
-}
-</code></pre>
-<h3 id="serial"><a href="#serial" class="headerlink" title="serial"></a>serial</h3><p><code>serial</code>操作：查询值为x的节点，在<code>find</code>操作的基础上，<code>serial</code>只需要在<code>find</code>过后输出左子树节点数量即可。</p>
-<pre><code class="cpp">int serial(int x) {
-    find(x);
-    return node[node[root].ch[0]].size
-}
-</code></pre>
-<h3 id="pre"><a href="#pre" class="headerlink" title="pre"></a>pre</h3><p>找出值为x的节点的前驱，将节点splay到root后在左子树查找最大值即可。</p>
-<pre><code class="cpp">int pre(int x) {
-    find(x);
-    if(node[root].v &lt; x) {
-        return root;
-    }
-    int cur = node[root].ch[0];
-    while(node[cur].ch[1] != 0) {
-        cur = node[cur].ch[1];
-    }
-    return cur;
-}
-</code></pre>
-<h3 id="suc"><a href="#suc" class="headerlink" title="suc"></a>suc</h3><p>找出值为x的点的后继，与前驱同理。</p>
-<pre><code class="cpp">int suc(int x) {
-    find(x);
-    if(node[root].v &gt; x) {
-        return root;
-    }
-    int cur = node[root].ch[1];
-    while(node[cur].ch[0] != 0) {
-        cur = node[cur].ch[0];
-    }
-    return cur;
-}
-</code></pre>
-<h3 id="remove"><a href="#remove" class="headerlink" title="remove"></a>remove</h3><p>删除一个节点。</p>
-<p>删除较为复杂，分四步来完成：</p>
-<ol>
-<li>定义<code>last</code>为节点的前驱，<code>next</code>为节点的后继。</li>
-<li>将<code>last</code>节点splay到<code>root</code>，这时<code>last</code>的左子树皆小于x</li>
-<li>将<code>next</code>节点splay到<code>last</code>的子节右点，此时<code>next</code>的右子树皆大于x</li>
-<li><code>next</code>的左节点<code>rm</code>必然满足 <code>last</code> &lt; rm &lt; <code>next</code>，删除<code>rm</code>即可</li>
-</ol>
-<pre><code class="cpp">void remove(int x) {
-    int last = pre(x), next = suc(x);
-    splay(last);
-    splay(next, last);
-    int rm = node[next].ch[0];
-    if(node[rm].cnt &gt; 1) {
-        node[rm].cnt--;
-        splay(rm);
-    } else {
-        node[next].ch[0] = 0;
-        pushup(next);
-        pushup(root);
-    }
-}
-</code></pre>
-<h3 id="rank"><a href="#rank" class="headerlink" title="rank"></a>rank</h3><p>查找排名为k的节点</p>
-<p>用一个指针cur从root开始查找，每次根据左子树大小于k的关系修改cur以及k。</p>
-<pre><code class="cpp">int rank(int k) {
-    int cur = root;
-    while(1) {
-        if(node[cur].ch[0] != 0 &amp;&amp; k &lt;= node[node[cur].ch[0]].size) {
-            cur = node[cur].ch[0];
-        } else if(k &gt; node[node[cur].ch[0]].size + node[cur].cnt) {
-            k -= node[node[cur].ch[0]].size + node[cur].cnt;
-            cur = node[cur].ch[1];
-        } else {
-            return cur;
-        }
-    }
-}
-</code></pre>
-<h1 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h1><p><a href="https://zh.wikipedia.org/zh-hans/伸展树" target="_blank" rel="noopener">伸展树- 维基百科，自由的百科全书</a></p>
-<p><a href="https://www.youtube.com/watch?v=IBY4NtxmGg8" target="_blank" rel="noopener">Splay Tree Introduction</a></p>
-
+<h1 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h1>
+        
+          <a class="article-more-a" href="/2019/03/28/Splay学习笔记/#more">more >></a>
+        
       
 
       
@@ -1472,165 +908,14 @@ int root = 0, cnt = 0;
 <p>链表分为单向与双向两种：</p>
 <p>1.单向链表:每个元素只记录了下一个元素的位置。</p>
 <p>2.双向链表:每个元素记录了上一个及下一个元素的位置。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">//用类来定义链表中的每个元素。
-class Node {
-public:
-    int v = 0;
-    Node * next = NULL, * prev = NULL;
-    /*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/
-
-    Node(int v = 0, Node * next = NULL, Node * prev = NULL):v(v), next(next), prev(prev) {}
-};
-</code></pre>
-<h3 id="链表常用操作-构造链表"><a href="#链表常用操作-构造链表" class="headerlink" title="链表常用操作:构造链表"></a>链表常用操作:构造链表</h3><p>通过实例化链表类，创建链表的每个元素并建立元素之间的关系。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">//构造一个只有头尾两个元素的链表。
-Node* head = new Node(); 
-Node* tail = new Node(); 
-
-head -&gt; next = tail;
-tile -&gt; prev = head;
-</code></pre>
-<h3 id="链表常用操作-遍历链表"><a href="#链表常用操作-遍历链表" class="headerlink" title="链表常用操作:遍历链表"></a>链表常用操作:遍历链表</h3><p>将链表头赋值给临时变量，然后不断寻找下一个元素直到空。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">Node* i = head;
-while (i -&gt; next != NULL) {
-    i = i -&gt; next;
-    //需要对链表元素进行的操作
-}
-</code></pre>
-<h3 id="链表常用操作-插入元素"><a href="#链表常用操作-插入元素" class="headerlink" title="链表常用操作:插入元素"></a>链表常用操作:插入元素</h3><p>找到要插入元素的位置，一般是记录前一个元素。<br>重新设置插入位置两边的元素和插入元素的关系。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">//在元素p后面插入元素i
-i -&gt; next = p -&gt; next;
-i -&gt; prev = p;
-if (p -&gt; next != NULL) {
-    p -&gt; next -&gt; prev = i;
-}
-p -&gt; next = i;
-</code></pre>
-<p>注意:</p>
-<blockquote>
-<p>1.修改关系的顺序.</p>
-<p>2.特判插入链表头的情况。</p>
-</blockquote>
-<h3 id="链表常用操作-删除元素"><a href="#链表常用操作-删除元素" class="headerlink" title="链表常用操作:删除元素"></a>链表常用操作:删除元素</h3><p>首先，找到要删除的元素。</p>
-<p>重新设置该元素的前后元素之间的关系，并根据需要释放元素。<br>代码实现：</p>
-<pre><code class="cpp">if (i -&gt; next != NULL) {
-    i -&gt; next -&gt; prev = i -&gt; prev;
-}
-if (i -&gt; prev != NULL) {
-    i -&gt; prev -&gt; next = i -&gt; next;
-}
-delete i;
-</code></pre>
-<p>注意:</p>
-<blockquote>
-<p>如果有变量用来记录链表头，头被删除时要记得更新。</p>
-<p>链表尾同理。</p>
-</blockquote>
-<h3 id="链表-Q-amp-A"><a href="#链表-Q-amp-A" class="headerlink" title="链表 Q&amp;A"></a>链表 Q&amp;A</h3><p><strong>Q：</strong>单向链表可以进行删除元素操作吗?</p>
-<p><strong>A：</strong>可以。通过预判下一个元素的方式，找到要删除元素的上一个元素，再更新下一个元素。</p>
-<pre><code class="cpp">if (pr -&gt; next != NULL) {
-    pr -&gt; next = pr -&gt; next -&gt; next;
-}
-</code></pre>
-<p>当然，还是要特判删除链表头的情况。</p>
-<p><strong>Q：</strong>还有别的方式可以用来实现链表吗?</p>
-<p><strong>A：</strong>通常情况下，使用数组来实现链表会更加简便。</p>
-<p>给每个元素一个编号(地址)，以代替指针的引用。</p>
-<p>为了记录每个元素的属性，可以使用结构体、二维数组或者多个数组。</p>
-<p><strong>Q：</strong>用数组实现链表有哪些缺点?</p>
-<p><strong>A：</strong>1.数组必须一次性初始化，并且长度固定。2.删除元素不会真正的释放空间。</p>
-<h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>从严格意义上来说，队列是一种特殊的链表，只支持添加队列尾元素和删除队列头元素两种操作。</p>
-<p>或者说，队列是链表的子集。</p>
-<h3 id="队列常用操作-从队列尾部添加元素"><a href="#队列常用操作-从队列尾部添加元素" class="headerlink" title="队列常用操作:从队列尾部添加元素"></a>队列常用操作:从队列尾部添加元素</h3><p>创建一个新元素，将队尾元素的下一个元素指向新元素。</p>
-<p>将队尾移动到新元素。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">Node* newTail = new Node();
-tail -&gt; next = newTail;
-tail = newTail;
-</code></pre>
-<h3 id="队列常用操作-从队列头部删除元素"><a href="#队列常用操作-从队列头部删除元素" class="headerlink" title="队列常用操作:从队列头部删除元素"></a>队列常用操作:从队列头部删除元素</h3><p>记录队头元素。</p>
-<p>将队头元素移动到它的下一个元素。根据需要释放旧的队头元素。</p>
-<p>代码实现：</p>
-<pre><code class="cpp">Node* oldHead = head;
-head = head -&gt; next;
-oldHead -&gt; next = NULL;
-</code></pre>
-<p>注意：</p>
-<blockquote>
-<p>还要特判队列为空的情况。</p>
-</blockquote>
-<h3 id="数组-一种特殊的队列"><a href="#数组-一种特殊的队列" class="headerlink" title="数组:一种特殊的队列"></a>数组:一种特殊的队列</h3><p>用两个整数表示数组的下标，作为队头和队尾的指针。</p>
-<p>删除元素则将队头指针+1，添加元素则将队尾指针+1。</p>
-<p>队头指针超过的队尾指针表示队列为空。</p>
-<h3 id="循环队列-循环重复利用被删除空间的数组队列"><a href="#循环队列-循环重复利用被删除空间的数组队列" class="headerlink" title="循环队列:循环重复利用被删除空间的数组队列"></a>循环队列:循环重复利用被删除空间的数组队列</h3><p>移动指针后如果超出了数组长度，则重置为0。</p>
-<p>当尾指针追赶上头指针时，表示队列溢出。</p>
-<p>定义：</p>
-<pre><code class="cpp">const int LENGTH = 100;
-Node* queue[LENGTH];
-int head = 0, tile = 0;
-</code></pre>
-<p>添加元素：</p>
-<pre><code class="cpp">bool push(Node* t) {
-    if(head != (tail + 2)) { // 判断满。 
-        tail = (tail + 1) % LENGTH; 
-        queue[tail] = t;
-        return true;
-    } else {
-        return false;
-    }
-}
-</code></pre>
-<p>删除元素：</p>
-<pre><code class="cpp">Node* pop() {
-    if (head != (tail + 1)) { // 判断空。 
-        Node* h = queue[head];
-        head = (head + 1) % LENGTH;
-        return h;
-    } else {
-        return NULL;
-    }
-}
-</code></pre>
-<h3 id="队列-Q-amp-A"><a href="#队列-Q-amp-A" class="headerlink" title="队列 Q&amp;A"></a>队列 Q&amp;A</h3><p><strong>Q：</strong>队列是单向链表还是双向链表?</p>
-<p><strong>A：</strong>使用单向链表足以支持队列的操作。</p>
-<p><strong>Q：</strong>如果是双向队列，需要额外增加哪些操作?</p>
-<p><strong>A：</strong>添加时要设置新元素的前一个元素，删除时要清空新队头的前一个元素。</p>
-<p><strong>Q：</strong>数组队列有哪些优点与缺点?</p>
-<p><strong>A：</strong>优点：队列不需要删除中间元素，数组完全满足队列的操作要求。</p>
-<p>缺点：删除掉的空间无法被重复利用。</p>
-<p><strong>Q：</strong>如何区分循环队列是满还是空?</p>
-<p><strong>A：</strong>有两种方案：</p>
-<blockquote>
-<p>1.用一个额外的变量记录队列的元素个数。</p>
-<p>2.将实际队列的容量变为数组长度-1，让队列空和满时的队尾指针在不同的位置。</p>
-</blockquote>
-<p>本文代码采用的是第二种方案</p>
-<h2 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h2><p>从严格意义上来说栈是一种特殊的链表，只支持添加栈尾元素和删除栈尾元素两种操作。</p>
-<p>或者说，栈是链表的子集。</p>
-<h3 id="栈常用操作-从栈尾部添加元素"><a href="#栈常用操作-从栈尾部添加元素" class="headerlink" title="栈常用操作:从栈尾部添加元素"></a>栈常用操作:从栈尾部添加元素</h3><p>1.创建一个新元素。<br>2.将新元素的上一个元素指向栈尾元素。<br>3.将栈尾移动到新元素。</p>
-<pre><code class="cpp">Node* newTail = new Node();
-newTail -&gt; prev = tail;
-tail = newTail;
-</code></pre>
-<p>注意：还要特判栈为空的情况。</p>
-<h3 id="栈常用操作-从栈尾部删除元素"><a href="#栈常用操作-从栈尾部删除元素" class="headerlink" title="栈常用操作:从栈尾部删除元素"></a>栈常用操作:从栈尾部删除元素</h3><p>1.记录栈尾元素。<br>2.将栈尾元素移动到它的上一个元素。<br>3.将旧栈尾元素的上一个元素置空。根据需要释放旧的栈尾元素。</p>
-<pre><code class="cpp">Node* oldTail = tail;
-tail = tail -&gt; prev;
-oldTail -&gt; prev = NULL;
-</code></pre>
-<p>注意：还要特判栈为空的情况。</p>
-<h3 id="数组-一种特殊的栈"><a href="#数组-一种特殊的栈" class="headerlink" title="数组:一种特殊的栈"></a>数组:一种特殊的栈</h3><p>用一个整数表示数组的下标，作为栈尾的指针。</p>
-<p>添加元素则将栈尾指针+1，删除元素则将栈尾指针-1。</p>
-<p>栈尾指针小于栈头元素的下标则表示栈为空。</p>
-
+<p>代码实现：
+        
+          <a class="article-more-a" href="/2019/03/15/一维数据结构学习笔记/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -1710,100 +995,10 @@ oldTail -&gt; prev = NULL;
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>本题基本上是Floyd的模版题，适合初学Floyd的OIer练习。</p>
-<p>本题的重点在于并非在每一个时刻，每一个节点都可以到达，所以应枚举目前所有可以到达的节点k，并以k为中转点进行更新。</p>
-<p>同时，因为出题人已经给数据排好了顺序，发现未建成时直接中断即可。</p>
-<p>闲话少说，主要看代码注释。</p>
-<pre><code class="cpp">#include&lt;cstdio&gt; 
-#include&lt;algorithm&gt;
-using namespace std;
-
-const int MAXN = 200 + 5;
-const int INF = 1e9;
-
-int edge[MAXN][MAXN], times[MAXN];
-int n, m, q;
-
-/*
-init()函数：
-Floyd初始化
-*/
-void init() {
-    for(int i = 0; i &lt; n; i++) {
-        for(int j = 0; j &lt; n; j++) {
-            edge[i][j] = (i == j ? 0 : INF);//节点到自身的距离为0
-        }
-    }
-}
-
-/*
-addEdge()函数：
-在邻接矩阵中添加一条（双向）边
-*/
-void addEdge(int i, int j, int v) {
-    edge[i][j] = edge[j][i] = v;//双向边处理
-}
-
-/*
-input()函数：
-输入数据
-*/
-void input() {
-    scanf(&quot;%d%d&quot;, &amp;n, &amp;m);
-    init(); //读入n, m后进行初始化
-    for(int i = 0; i &lt; n; i++) {
-        scanf(&quot;%d&quot;, &amp;times[i]);
-    }
-    for(int i = 0; i &lt; m; i++) {
-        int x, y, v;
-
-        scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;v);
-        addEdge(x, y, v);
-    }
-}
-
-/*
-update()函数：
-以k为中转点更新最短路
-*/
-void update(int k) {
-    for(int i = 0; i &lt; n; i++) {
-        for(int j = 0; j &lt; n; j++) {
-            edge[i][j] = min(edge[i][j], edge[i][k] + edge[k][j]);
-        }
-    }
-}
-
-void work() {
-    int cur = 0;
-
-    scanf(&quot;%d&quot;, &amp;q);
-    for(int i = 0; i &lt; q; i++) {
-        int x, y, t;
-
-        scanf(&quot;%d%d%d&quot;, &amp;x, &amp;y, &amp;t);
-
-        //这里是重点
-        while(times[cur] &lt;= t &amp;&amp; cur &lt; n) {
-            update(cur);//若当前可以经过村庄cur，以cur为中转点更新最短路径
-                        cur++;
-        }
-        if(times[x] &gt; t || times[y] &gt; t || edge[x][y] == INF) {
-            printf(&quot;-1\n&quot;);//村庄x尚未建成,村庄x尚未建成或村庄x与村庄y在t时并不连通
-        } else {
-            printf(&quot;%d\n&quot;, edge[x][y]);
-        }
-    }
-}
-
-int main() { //简洁的main()函数
-    input();
-    work();
-
-    return 0;
-}
-</code></pre>
-
+        <h1 id="题目背景"><a href="#题目背景" class="headerlink" title="题目背景"></a>题目背景</h1><p>$B$地区在地震过后，所有村庄都造成了一定的损毁，而这场地震却没对公路造成什么影响。但是在村庄重建好之前，所有与未重建完成的村庄的公路均无法通车。换句话说，只有连接着两个重建完成的村庄的公路才能通车，只能到达重建完成的村庄。</p>
+        
+          <a class="article-more-a" href="/2019/03/09/洛谷题解P1119【灾后重建】/#more">more >></a>
+        
       
 
       

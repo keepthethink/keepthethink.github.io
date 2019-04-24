@@ -18,7 +18,7 @@
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg">
 <meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg">
-<meta property="og:updated_time" content="2019-04-17T09:26:30.315Z">
+<meta property="og:updated_time" content="2019-04-24T04:41:14.084Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS-over-HTTPS(DoH)简析与配置">
 <meta name="twitter:description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），他开了一家商店。顾客要去购物时就直接去商店里买就可以了。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是">
@@ -187,6 +187,7 @@
         <h1 id="DNS是什么"><a href="#DNS是什么" class="headerlink" title="DNS是什么"></a>DNS是什么</h1><p>DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。</p>
 <h2 id="简明易懂的DNS"><a href="#简明易懂的DNS" class="headerlink" title="简明易懂的DNS"></a>简明易懂的DNS</h2><p>举个例子，从前有个叫小明的人（目测此人已累死），他开了一家商店。顾客要去购物时就直接去商店里买就可以了。</p>
 <p>但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。</p>
+<a id="more"></a>
 <p>很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。</p>
 <p>实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。</p>
 <h2 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h2><p>看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。</p>

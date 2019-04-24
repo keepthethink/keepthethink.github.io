@@ -183,113 +183,14 @@
 <p>不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。</p>
 <p>(2)</p>
 <p>进考场前竟然下起了倾盆大雨，从地铁站出来后，举着伞转了一个小时才找到考场，期间不停的被地图坑。</p>
-<p>（我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）</p>
-<p>进了考场发现有惊喜。。。机房竟然有网！有网！<del>结果在考试前网断了。。。</del>然后开始调整编辑器，<del>以至于没注意到别人都开始打代码了。。。</del></p>
-<h1 id="第一题，水题，鉴定完毕。"><a href="#第一题，水题，鉴定完毕。" class="headerlink" title="第一题，水题，鉴定完毕。"></a>第一题，<del>水题，鉴定完毕。</del></h1><p>分析：可能连模拟都算不上，直接从头到尾扫描一遍即可。</p>
-<p>但虽说是水题，也有一些坑点：</p>
-<ol>
-<li><p>读入要用 string + cin + getline()!</p>
-<p> 读入要用 string + cin + getline()!</p>
-<p> 读入要用 string + cin + getline()!</p>
-<p> 重要的事情说三遍！</p>
-<p> @垃圾一个 就是在这一点上炸了。</p>
-</li>
-<li><p>判断时要自编函数或alnum，不能用ctype.h中的isprint()函数，要用isalnum()函数。</p>
-<p> 如果你问”isprint()函数是什么”或”isalnum()函数是什么”,请自行忽略这段话并自觉编写判断函数。</p>
-<p> 别问我为什么，Luogu自测只有20分。</p>
-</li>
-</ol>
-<p>代码：</p>
-<pre><code class="cpp">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-bool check(char c) {
-    if(&#39;0&#39; &lt;= c &amp;&amp; c &lt;= &#39;9&#39;) {
-        return true;
-    }
-    if(&#39;a&#39; &lt;= c &amp;&amp; c &lt;= &#39;z&#39;) {
-        return true;
-    }
-    if(&#39;A&#39; &lt;= c &amp;&amp; c &lt;= &#39;Z&#39;) {
-        return true;
-    }
-    return false;
-}
-
-int main() {
-    string s;
-    getline(cin, s);
-
-    int len = s.length();
-
-    int ans = 0;
-    for(int i = 0; i &lt; len; i++) {
-        if(check(s[i])) {
-            ans++;
-        }
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-
-    return 0;
-}
-</code></pre>
-<h1 id="第二题，暴力枚举，鉴定完毕。"><a href="#第二题，暴力枚举，鉴定完毕。" class="headerlink" title="第二题，暴力枚举，鉴定完毕。"></a>第二题，<del>暴力枚举，鉴定完毕。</del></h1><p>分析：</p>
-<ol>
-<li><p>先计算好每一个军营的气势，同时累加双方的气势总和（输入后处理）</p>
-</li>
-<li><p>枚举每一个军营，检查若将工兵放在此位置是否可减少双方差距，并更新最小值与位置。</p>
-</li>
-<li><p><del>输出位置</del></p>
-</li>
-</ol>
-<p>写第一遍时大概思路就酱。</p>
-<p>运行结果：</p>
-<p>样例#1:Pass</p>
-<p>样例#1:Pass</p>
-<p>样例#3:<br><strong>Beng!</strong></p>
-<p>又看了一下数据范围，对于 100% 的数据，n ≤ 10 ^ 5,ci,s1,s2≤10^9。</p>
-<p>10^9?</p>
-<p>“十年OI一场空，没开long long 见祖宗”，这话果然没错。</p>
-<p>除int main()外的所有int皆换成long long，OK。</p>
-<p>PS:如</p>
-<pre><code class="cpp">#define int long long
-signed main() {
-    //some code
-    return 0;
-}
-</code></pre>
-<p>之类的旁门左道，为了安全起见，大家不要滥用哦QwQ。<del>有本事你写个typedef int long long看报不报错</del></p>
-<h1 id="第三题。。。"><a href="#第三题。。。" class="headerlink" title="第三题。。。"></a>第三题。。。</h1><p>我这种小蒟蒻怎么可能作对前三题呢QwQ,又怎么可能想到DP正解QwQ</p>
-<p>所以我挥手打了贪心。。。<del>当我发现第三个样例没过时已经来不及了</del></p>
-<p>先说说贪心具体思路：</p>
-<ol>
-<li>将学生按照到达时间从小到大排个序</li>
-<li>用一个光标变量记录目前接到了第几个学生，如果还有人没被接到，就继续循环知道所有人都被接到为止。</li>
-<li>每次循环时检查当前这个人是否值得带，若值得则将光标后移。</li>
-<li>每次循环后将时间加上开车所需要的时间。</li>
-<li>最后累加总等待时间并输出。</li>
-</ol>
-<p>答案正确率：玄学</p>
-<p>到各大网站上测之，30分有之，80分有之，一切随缘。</p>
-<h1 id="第四题本蒟蒻骗了分，没脸来这胡说了。。。"><a href="#第四题本蒟蒻骗了分，没脸来这胡说了。。。" class="headerlink" title="第四题本蒟蒻骗了分，没脸来这胡说了。。。"></a>第四题本蒟蒻骗了分，没脸来这胡说了。。。</h1><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>咳咳咳。。。</p>
-<h2 id="1-考试策略的应用"><a href="#1-考试策略的应用" class="headerlink" title="(1)考试策略的应用"></a>(1)考试策略的应用</h2><p>亏得我这只小蒟蒻还在进考场前看了1h AK NOI 的各位dalao 呕心沥血写的各种考场策略，结果一进考场简直就像接受了A级记忆删除，什么都忘得一干二净：</p>
-<ol>
-<li>一，二题打完过了样例就去打第三题。（double-plus-scared）</li>
-<li>第三题贪心死活过不了第三个点还执迷不悟认为就是贪心。</li>
-<li>第四题明明有子任务放着不做打随机数。</li>
-</ol>
-<h2 id="2-考场心态的调整"><a href="#2-考场心态的调整" class="headerlink" title="(2)考场心态的调整"></a>(2)考场心态的调整</h2><p>众所周知，在NOIP考场这种地方要想保持心态稳定是不可能的。然而如果吓得完全写不出代码就凉凉了。总结就是一定要冷静冷静冷静再冷静，一定不要像某人一样，贪心错了都想不到半个动规。</p>
-<p>最后，祝大家：</p>
-<pre><code class="cpp">while(NOIP2019.rp &lt; NOIP2019.rp + 1) {
-    NOIP2019.rp++;
-}
-</code></pre>
-
+<p>（我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）<br>
+        
+          <a class="article-more-a" href="/2019/03/08/NOIP2018游记/#more">more >></a>
+        
       
 
       
-    </div>
+    </p></div>
     <div class="article-info article-info-index">
       
       
@@ -371,8 +272,9 @@ signed main() {
       
         <p>折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。</p>
 <p>从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。</p>
-<p>扯了这么多，博客的本质还是发布文章，就看自己能否坚持写下去了。</p>
-
+        
+          <a class="article-more-a" href="/2019/03/04/New-Start/#more">more >></a>
+        
       
 
       
