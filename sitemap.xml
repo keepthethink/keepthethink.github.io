@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keepthethink.github.io/2019/04/15/DNS-over-HTTPS(DoH)%E7%AE%80%E6%9E%90/</loc>
+    
+    <lastmod>2019-04-24T06:24:13.879Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keepthethink.github.io/2019/04/13/%E6%B4%9B%E8%B0%B7%E9%A2%98%E8%A7%A3-P1003-%E3%80%90%E9%93%BA%E5%9C%B0%E6%AF%AF%E3%80%91/</loc>
     
     <lastmod>2019-04-24T05:03:53.261Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>https://keepthethink.github.io/2019/03/08/NOIP2018%E6%B8%B8%E8%AE%B0/</loc>
     
     <lastmod>2019-04-24T04:59:43.359Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://keepthethink.github.io/2019/04/15/DNS-over-HTTPS(DoH)%E7%AE%80%E6%9E%90/</loc>
-    
-    <lastmod>2019-04-24T04:41:14.084Z</lastmod>
     
   </url>
   
