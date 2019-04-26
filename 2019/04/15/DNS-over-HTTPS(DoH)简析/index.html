@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="https://keepthethink.github.io">
+  <link rel="dns-prefetch" href="https://keepthethink.gitlab.io">
   <title>DNS-over-HTTPS(DoH)简析与配置 | Heliumの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就">
 <meta name="keywords" content="网络安全">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DNS-over-HTTPS(DoH)简析与配置">
-<meta property="og:url" content="https://keepthethink.github.io/2019/04/15/DNS-over-HTTPS(DoH)简析/index.html">
+<meta property="og:url" content="https://keepthethink.gitlab.io/2019/04/15/DNS-over-HTTPS(DoH)简析/index.html">
 <meta property="og:site_name" content="Heliumの博客">
 <meta property="og:description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就">
 <meta property="og:locale" content="zh-CN">
@@ -281,7 +281,7 @@ www.google.com.        66    IN    A    216.58.194.196
           
           <br>
           <strong>本文链接：</strong>
-          https://keepthethink.github.io/2019/04/15/DNS-over-HTTPS(DoH)简析/
+          https://keepthethink.gitlab.io/2019/04/15/DNS-over-HTTPS(DoH)简析/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -371,7 +371,7 @@ www.google.com.        66    IN    A    216.58.194.196
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtElEQVR42u3aS64bMQwEQN//0i/bAMnY3aQUGEHNyvBHM6WFSJN8veLr57frz/ef3vmJr6d7/bna68aFh4eHt3j090s/PVC+Be8x7XeSzcLDw8O7x3t63CQAJKEi2bjNNj2+j4eHh/dlvFkYyB8XDw8P7//gvU+C89XyQgYeHh7ed/KSxDc5stuS7iYwHK614OHh4cW8vIv0Pa+v9Pfw8PDw1l31/BDPD/p2XGD1tHh4eHgXeG062za92gZYgq+fEw8PD+8or1163+CfNdKG7TQ8PDy8C7z3CfGNcdW8KJzcPQoYeHh4eEd5efG0LRPkv83XqcsceHh4eNd4s9Z72+xvSxhtsCkaYHh4eHhrXh4Y2hVmBY5jiT4eHh7eNd7Z4YBkC9o2WJ7W4+Hh4d3m5SXUPBHPtyYvzs6GsfDw8PBu8NpbtmWCNpy0SfmHogYeHh7eNV670Cy9ng1vbT7Fw8PDu8Gb/WffbEELa0NIUhzBw8PD2/D2hYMZeNP0er/m40wZHh4e3gXeJlHOj/W2rZWPZ/3l7nh4eHgXeHkCvU9zZ683bTM8PDy8G7yzYSBv8LfJ8ezZ8PDw8G7wNuXU5PZF5bgcLMibYXh4eHhneXmLa9aaalP21+j6EBLw8PDwjvKSpLZthp0dQZiNODyWcfHw8PCu8dqwMRssyIPBJlDh4eHh3ePlR38SMNoUfDbEEAUqPDw8vH/Oa4/yTSp8sRiBh4eHd7SMm1/5bdqixuZXqyoLHh4eXslrD99ZK2tW4Nj/Fg8PD+8ebz8wmpQS2pGCPN3/AMbDw8O7xssP5SSFbdPxWVEj2RQ8PDy8b+O1Df682HEqYODh4eF9Jy8pxeYjWe36wwiDh4eHt+a1zae2rdUm4m1p+ENgwMPDwzvKa//wJ2XZ/DvteX6sp4eHh4c34f0C31M1yj69BZwAAAAASUVORK5CYII=" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvklEQVR42u3aQW7jQAwEwPz/01lgL3tILHSTM06wKJ0EW5BYY0Ckyfn4iI/Pv8fz51/Pvx75nTdX1gceHh7eKPTngJJwn6mvnphck8fzzRLg4eHhXeMlL/0k0Oc7J9c/Y/KY8fDw8H4Dry1w85d7EgkeHh7e/8TLi+zZNUk8eHh4eO/nJS/xzev7OZE8NxryNjEeHh7ee3jt8Ok3nF+c7+Hh4eEtpuoHhk9xSyJv/hbR4uHh4V3g5SVsXv7mQ692EfMsUEzV8PDw8ErepoGbNws2qSI//+ZbPDw8vMu8djS1af62SWLWbcDDw8O7x9uEvu8iJ3du74+Hh4f3Hl7+yOTF3TYmNm2Rl5Hg4eHhvYWXt2XzjVabwj3Bv1wCPDw8vAu8fE5UT9XiUVmbPK6MwfDw8PDiePLX9OzV35bC+RauYUrAw8PDO8RrG6kte7YNa1MVF11qPDw8vEN/xNtx1Gx8lTdt2/IaDw8P7x4vL3lnQ7JkIfKUU5f4eHh4eBd4s0eeajfkaWbWCMbDw8O7wUs2TiVpoB1c5ffJNxMUeQ8PDw9vwcvHYO2DbyzQcGyGh4eHd4F3NvR8Y0G7kSuP6uVviIeHh7fmnQ2oXtEy6Hw8hoeHh/ezvLatMEsb+YatIk48PDy8C7yEvQkr34DVpqVjvyoeHh5eeYd21JSfn9oEkKexb+6Dh4eHd5mX/9XPv22vTNJJ8gcADw8P7x4v30AwC3T2eZ4q6gYEHh4e3pr3WR5tqmgbE3lJHS0HHh4e3gXeLG20JW9eELftjHwR8fDw8M7y8mRwavCfp4TZloKisMbDw8Nb8Nqh16zNuhm2DRsreHh4eD/KywdUyXLMCvG20MfDw8P7PbxjJe+iMVH0qvHw8PAu8GbNiH0xndw5X+KXJTUeHh7eUd5+AJac77d/5Z8f3jqAh4eH9+/4Ay+FK/AgHUsNAAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -443,8 +443,8 @@ www.google.com.        66    IN    A    216.58.194.196
 
 if(true){
 	var gitalk = new Gitalk({
-  	clientID: 'bd1e051de9280f534ee2',
-  	clientSecret: '9808570e78702896170cf0e36b32f40209a03af6',
+  	clientID: '0d6b291cf628523489c5',
+  	clientSecret: '05c32a89b4857434d1acec346fa7a7ffc3b15d55',
   	repo: 'keepthethink.github.io',
   	owner: 'keepthethink',
   	admin: ['keepthethink'],
@@ -591,6 +591,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">天文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -604,10 +608,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">天文</a>
               </li>
              
               <li class="article-tag-list-item">

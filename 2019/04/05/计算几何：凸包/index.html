@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="dns-prefetch" href="https://keepthethink.github.io">
+  <link rel="dns-prefetch" href="https://keepthethink.gitlab.io">
   <title>计算几何：凸包 | Heliumの博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。 数据定义">
 <meta name="keywords" content="计算几何">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算几何：凸包">
-<meta property="og:url" content="https://keepthethink.github.io/2019/04/05/计算几何：凸包/index.html">
+<meta property="og:url" content="https://keepthethink.gitlab.io/2019/04/05/计算几何：凸包/index.html">
 <meta property="og:site_name" content="Heliumの博客">
 <meta property="og:description" content="对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。 数据定义">
 <meta property="og:locale" content="zh-CN">
@@ -299,7 +299,7 @@ int main() {
           
           <br>
           <strong>本文链接：</strong>
-          https://keepthethink.github.io/2019/04/05/计算几何：凸包/
+          https://keepthethink.gitlab.io/2019/04/05/计算几何：凸包/
           <br>
           <strong>版权声明：</strong>
           本作品采用
@@ -389,7 +389,7 @@ int main() {
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQXLjMAwEQP//08kDNvQOAEL2oXVypWSSLVeJyBCvV3z9vL1O9yffTUZ+P9eFCw8PD29h6acJkin/Hef9CKf780eGh4eH9wxvvqzJO/l0f76e49/x8PDwvoBXLYirS+xtMHh4eHjfzKviq4ubj4CHh4f3DG8ydB5bTCLa9awFDw8Pr1brNsvZT31eOd/Dw8PDG5+q56/yvMBNto1rq8XDw8Nb4E2OsvKSOn9YScCRrxMPDw9vj9cLUqvxbjl+LSKj4hsPDw9vzKti5kf+Sak9uUa/FR4eHl6Rl5en1ZAiDxp6JfjxJ8HDw8Nb5vXK5V5rVK/hoLw54eHh4S3wktK5F78mD64a3eZzRSk1Hh4e3piXv6bzTaK6nVRjkWiTw8PDw7vKy1/ivVaqXjNB7+gLDw8P77O8/JC+F+z2Ds/KDQ14eHh4j/Cqi04Ot6qj5eX7fx4iHh4e3jKvVyLfaizI4+NCExgeHh7eAq/aMJq3sfYi2nybyYMSPDw8vD1e7yirGjpUMXm4HI2Jh4eHd4k3n2AeLvTavKL2BTw8PLyrvDyM6DUW3Ioe8i0HDw8P7xne5MiqV/iOAtn83wA8PDy8B3nVA6ekBWrSCpAEzX98Fw8PD2+BV20UyAPfHJY8lFHhjoeHh7fG6zVd9Y7zbxXlhXYrPDw8vAd5eYtAvuikmaD63SMYDw8Pb42XDJe8lJMR8rmqo+Hh4eFt836KV/Wwv9r/lW8z0WaGh4eHt8CbHM/fasO6+7nZgoCHh4dX5OWbQVJM91oBbm0MeHh4eE/ykoA1Dw4mBe48FsHDw8P7Tl61dSAvyquzRyk1Hh4e3kd5eUtWL/DNZ4+2EDw8PLw1Xn5kVY0eqsFEr3w//lR4eHh4C7xJi1VSRle3gXz7ed268PDw8FLeL4z02k8k6l6WAAAAAElFTkSuQmCC" alt="微信分享二维码">
+      <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACo0lEQVR42u3ay24jMQwEwPz/TyfXBZLY3aTkGIuak2HMQzUHSdPkx0d8fP5z/PbP9/O/n9keybMOHHh4eHiLoScPeHxOQk3Gk/x+PB48PDy827x2WPslITm/fU14eHh478lrJ+7NIoGHh4f3f/By5KmNMh4eHt578va3Th68iWivZy14eHh4MW+znf2r31fqe3h4eHjrqvpmKk+Wh+T/1Wjx8PDwLvDacn5CzdsOkjvPtt14eHh4t3nJB3/eQLBvOMjHU5fW8PDw8Na82eS7CTLaQHa4jd6sLXh4eHij2lDSNpovG2140W7B66gXDw8Pb8HbN04lL6Il5bHvgaodHh4eXsnLB9E+eL+0bALiIqXGw8PDO8RrA9x8ebj3HYCHh4f3Gl47iW824pvteFL6wsPDw3s9Lw9e2y1ynSKPFpUfrsLDw8O7wJtN3LPifX63ZPkpXiIeHh7eUV4yrDzezV/KPgiOKlx4eHh4F3jJRN8Oa9ZENXvdUUsBHh4e3jVeXsraTOUtJnmVT87Hw8PDu8CbRbRtS1YbNOwjEjw8PLwbvFmoumHMFpV2JHh4eHi3eXksuyrhj8KFNlCOvhXw8PDwDvHyeLToSogXj80S8uu1eHh4eBd4SfTZhgL7SCIPQaKNOx4eHt41Xr7B3W+UZ+0Iw5Hg4eHhvYR3Km7ImwPaJWfYdIWHh4d3lJffNJ/uN+x86n8ycjw8PLyjvM/yaIv9mxJa2zX2pDMCDw8P7xBvU56fbbtv/x62IODh4eGVvHbQm2XgVEtB/hLx8PDw7vGSgDU/Z7PBba+KFgY8PDy8N+DlMW6+HZ89PUqp8fDw8N6el2PaTXxdrsPDw8O7xtuUrNrodl++yoMSPDw8vBu89oP/8S32y0ASSQwZeHh4eFveF8EdSt9lplb7AAAAAElFTkSuQmCC" alt="微信分享二维码">
     </div>
 </div>
 
@@ -470,8 +470,8 @@ int main() {
 
 if(true){
 	var gitalk = new Gitalk({
-  	clientID: 'bd1e051de9280f534ee2',
-  	clientSecret: '9808570e78702896170cf0e36b32f40209a03af6',
+  	clientID: '0d6b291cf628523489c5',
+  	clientSecret: '05c32a89b4857434d1acec346fa7a7ffc3b15d55',
   	repo: 'keepthethink.github.io',
   	owner: 'keepthethink',
   	admin: ['keepthethink'],
@@ -618,6 +618,10 @@ MathJax.Hub.Queue(function() {
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">天文</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">数据结构</a>
               </li>
              
@@ -631,10 +635,6 @@ MathJax.Hub.Queue(function() {
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">题解</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">天文</a>
               </li>
              
               <li class="article-tag-list-item">
