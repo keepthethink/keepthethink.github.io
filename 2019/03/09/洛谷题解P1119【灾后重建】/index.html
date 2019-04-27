@@ -498,6 +498,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/03/09/洛谷题解P1119【灾后重建】/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/03/09/洛谷题解P1119【灾后重建】/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -762,9 +773,12 @@ int main() { //简洁的main()函数
           
 
   
-    <div id="gitalk-container">
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
     </div>
-    
+
   
 
 
@@ -1188,9 +1202,30 @@ int main() { //简洁的main()函数
 
   
 
-
+  
+    <script id="dsq-count-scr" src="https://heliumblog-1.disqus.com/count.js" async></script>
+  
 
   
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://keepthethink.gitlab.io/2019/03/09/洛谷题解P1119【灾后重建】/";
+        this.page.identifier = "2019/03/09/洛谷题解P1119【灾后重建】/";
+        this.page.title = '洛谷题解P1119【灾后重建】';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://heliumblog-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
 
 
 

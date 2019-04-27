@@ -498,6 +498,17 @@
 
           
             
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2019/04/15/「文章转载」他译作“维基”的那个网站消失在竹幕后/#comments" itemprop="discussionUrl">
+                
+                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/「文章转载」他译作“维基”的那个网站消失在竹幕后/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
           
 
           
@@ -682,9 +693,12 @@
           
 
   
-    <div id="gitalk-container">
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
     </div>
-    
+
   
 
 
@@ -1082,9 +1096,30 @@
 
   
 
-
+  
+    <script id="dsq-count-scr" src="https://heliumblog-1.disqus.com/count.js" async></script>
+  
 
   
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://keepthethink.gitlab.io/2019/04/15/「文章转载」他译作“维基”的那个网站消失在竹幕后/";
+        this.page.identifier = "2019/04/15/「文章转载」他译作“维基”的那个网站消失在竹幕后/";
+        this.page.title = '「文章转载」他译作“维基”的那个网站消失在竹幕后';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://heliumblog-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        loadComments();
+      
+    </script>
+  
+
+
 
 
 
