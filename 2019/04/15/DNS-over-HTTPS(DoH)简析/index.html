@@ -502,17 +502,6 @@
 
           
             
-              <span class="post-comments-count">
-                <span class="post-meta-divider">|</span>
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-comment-o"></i>
-                </span>
-                <a href="/2019/04/15/DNS-over-HTTPS(DoH)简析/#comments" itemprop="discussionUrl">
-                
-                  <span class="post-comments-count disqus-comment-count" data-disqus-identifier="2019/04/15/DNS-over-HTTPS(DoH)简析/" itemprop="commentCount"></span>
-                </a>
-              </span>
-            
           
 
           
@@ -1184,8 +1173,6 @@ www.google.com.        66    IN    A    216.58.194.196
   
 
   
-    <script id="dsq-count-scr" src="https://heliumblog-1.disqus.com/count.js" async></script>
-  
 
   
     <script>
@@ -1201,7 +1188,25 @@ www.google.com.        66    IN    A    216.58.194.196
         (d.head || d.body).appendChild(s);
       }
       
-        loadComments();
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              // offsetTop may changes because of manually resizing browser window or lazy loading images.
+              var offsetTop = $('#comments').offset().top - $(window).height();
+              var scrollTop = $(window).scrollTop();
+
+              // pre-load comments a bit? (margin or anything else)
+              if (offsetTop - scrollTop < 60) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
       
     </script>
   
@@ -1216,34 +1221,6 @@ www.google.com.        66    IN    A    216.58.194.196
 
 
 
-
-
-  
-  
-  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
-
-  
-  
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
-
-  
-  
-    
-  
-  <script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.min.js"></script>
-
-   <script>
-        var gitalk = new Gitalk({
-          clientID: '0d6b291cf628523489c5',
-          clientSecret: '05c32a89b4857434d1acec346fa7a7ffc3b15d55',
-          repo: 'keepthethink.github.io',
-          owner: 'keepthethink',
-          admin: ['keepthethink'],
-          id: md5(location.pathname),
-          distractionFreeMode: 'true'
-        })
-        gitalk.render('gitalk-container')
-       </script>
 
 
   
