@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keepthethink.gitlab.io/true/index.html</loc>
+    
+    <lastmod>2019-04-27T09:07:43.543Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keepthethink.gitlab.io/2019/04/15/DNS-over-HTTPS(DoH)%E7%AE%80%E6%9E%90/</loc>
     
     <lastmod>2019-04-26T09:46:03.070Z</lastmod>
