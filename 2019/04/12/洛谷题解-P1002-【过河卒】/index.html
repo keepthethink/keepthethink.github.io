@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点(0, 0)(0,0)、BB点(n, m)(n,m)(nn, mm为不超过2020的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从AA点能够到达BB点的路径的条">
+  <meta name="description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 <meta name="keywords" content="洛谷,题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷题解 P1002 【过河卒】">
 <meta property="og:url" content="https://keepthethink.github.io/2019/04/12/洛谷题解-P1002-【过河卒】/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点(0, 0)(0,0)、BB点(n, m)(n,m)(nn, mm为不超过2020的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从AA点能够到达BB点的路径的条">
+<meta property="og:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-28T08:18:02.099Z">
+<meta property="og:updated_time" content="2019-04-30T07:35:33.373Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷题解 P1002 【过河卒】">
-<meta name="twitter:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点(0, 0)(0,0)、BB点(n, m)(n,m)(nn, mm为不超过2020的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从AA点能够到达BB点的路径的条">
+<meta name="twitter:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 
 
 
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-28 16:18:02" itemprop="dateModified" datetime="2019-04-28T16:18:02+08:00">2019-04-28</time>
+                <time title="修改时间：2019-04-30 15:35:33" itemprop="dateModified" datetime="2019-04-30T15:35:33+08:00">2019-04-30</time>
               
             
           </span>
@@ -558,10 +558,9 @@
 
       
         <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
-<p>棋盘用坐标表示，AA点(0, 0)(0,0)、BB点(n, m)(n,m)(nn, mm为不超过2020的整数)，同样马的位置坐标是需要给出的。</p>
-<p>现在要求你计算出卒从AA点能够到达BB点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
-<a id="more"></a>
-<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>一行四个数据，分别表示BB点坐标和马的坐标。</p>
+<p>棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。</p>
+<p>现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>一行四个数据，分别表示$B$点坐标和马的坐标。</p>
 <h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>一个数据，表示所有的路径条数。</p>
 <h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h2><p>6 6 3 3</p>
 <h2 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h2><p>6</p>
