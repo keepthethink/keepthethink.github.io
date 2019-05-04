@@ -105,25 +105,29 @@
 
 
 
-  <meta name="description" content="出师（1） 起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。 不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。 (2) 进考场前竟然下起了倾盆大雨，从地铁站出来后，举着伞转了一个小时才找到考场，期间不停的被地图坑。 （我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）">
-<meta name="keywords" content="NOIP">
+  <meta name="description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就">
+<meta name="keywords" content="网络安全">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NOIP2018游记">
-<meta property="og:url" content="https://keepthethink.github.io/noip2018.html">
+<meta property="og:title" content="DNS-over-HTTPS(DoH)简析与配置">
+<meta property="og:url" content="https://keepthethink.github.io/2019/04/15/dns-over-https/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="出师（1） 起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。 不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。 (2) 进考场前竟然下起了倾盆大雨，从地铁站出来后，举着伞转了一个小时才找到考场，期间不停的被地图坑。 （我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）">
+<meta property="og:description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T03:24:10.220Z">
+<meta property="og:image" content="https://i.loli.net/2019/04/26/5cc2c1cf0d688.jpg">
+<meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg">
+<meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg">
+<meta property="og:updated_time" content="2019-05-04T03:23:30.143Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NOIP2018游记">
-<meta name="twitter:description" content="出师（1） 起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。 不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。 (2) 进考场前竟然下起了倾盆大雨，从地铁站出来后，举着伞转了一个小时才找到考场，期间不停的被地图坑。 （我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）">
+<meta name="twitter:title" content="DNS-over-HTTPS(DoH)简析与配置">
+<meta name="twitter:description" content="DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就">
+<meta name="twitter:image" content="https://i.loli.net/2019/04/26/5cc2c1cf0d688.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="https://keepthethink.github.io/noip2018.html">
+  <link rel="canonical" href="https://keepthethink.github.io/2019/04/15/dns-over-https/">
 
 
 
@@ -133,7 +137,7 @@
   };
 </script>
 
-  <title>NOIP2018游记 | Heliumの博客</title>
+  <title>DNS-over-HTTPS(DoH)简析与配置 | Heliumの博客</title>
   
 
 
@@ -411,7 +415,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/noip2018.html">
+    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/2019/04/15/dns-over-https/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Helium">
@@ -428,7 +432,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">NOIP2018游记
+          <h2 class="post-title" itemprop="name headline">DNS-over-HTTPS(DoH)简析与配置
 
               
             
@@ -454,7 +458,7 @@
                 
               
 
-              <time title="创建时间：2019-03-08 22:39:00" itemprop="dateCreated datePublished" datetime="2019-03-08T22:39:00+08:00">2019-03-08</time>
+              <time title="创建时间：2019-04-15 21:45:00" itemprop="dateCreated datePublished" datetime="2019-04-15T21:45:00+08:00">2019-04-15</time>
             
 
             
@@ -471,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-04 11:24:10" itemprop="dateModified" datetime="2019-05-04T11:24:10+08:00">2019-05-04</time>
+                <time title="修改时间：2019-05-04 11:23:30" itemprop="dateModified" datetime="2019-05-04T11:23:30+08:00">2019-05-04</time>
               
             
           </span>
@@ -488,7 +492,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/游记/" itemprop="url" rel="index"><span itemprop="name">游记</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/网络/" itemprop="url" rel="index"><span itemprop="name">网络</span></a></span>
 
                 
                 
@@ -523,7 +527,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">2.2k</span>
+                <span title="本文字数">3.7k</span>
               
 
               
@@ -537,7 +541,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">2 分钟</span>
+                <span title="阅读时长">3 分钟</span>
               
             </div>
           
@@ -557,112 +561,94 @@
       
 
       
-        <h1 id="出师"><a href="#出师" class="headerlink" title="出师"></a>出师</h1><p>（1）</p>
-<p>起床看见洛谷首页上显示的“距NOIP2018还有-1天”时，差点把嘴里的一口早饭喷了出来。</p>
-<p>不过又想一下，要是一大早看见个“距NOIP2019还有365天”，估计瞬间会感觉压力山大。。。</p>
-<p>(2)</p>
-<p>进考场前竟然下起了倾盆大雨，从地铁站出来后，举着伞转了一个小时才找到考场，期间不停的被地图坑。</p>
-<p>（我才不会告诉你浪费这么多时间的真正原因是使用迭代加深搜索找考场。）<br><a id="more"></a><br>进了考场发现有惊喜。。。机房竟然有网！有网！<del>结果在考试前网断了。。。</del>然后开始调整编辑器，<del>以至于没注意到别人都开始打代码了。。。</del></p>
-<h1 id="第一题，水题，鉴定完毕。"><a href="#第一题，水题，鉴定完毕。" class="headerlink" title="第一题，水题，鉴定完毕。"></a>第一题，<del>水题，鉴定完毕。</del></h1><p>分析：可能连模拟都算不上，直接从头到尾扫描一遍即可。</p>
-<p>但虽说是水题，也有一些坑点：</p>
-<ol>
-<li><p>读入要用 string + cin + getline()!</p>
-<p> 读入要用 string + cin + getline()!</p>
-<p> 读入要用 string + cin + getline()!</p>
-<p> 重要的事情说三遍！</p>
-<p> @垃圾一个 就是在这一点上炸了。</p>
-</li>
-<li><p>判断时要自编函数或alnum，不能用ctype.h中的isprint()函数，要用isalnum()函数。</p>
-<p> 如果你问”isprint()函数是什么”或”isalnum()函数是什么”,请自行忽略这段话并自觉编写判断函数。</p>
-<p> 别问我为什么，Luogu自测只有20分。</p>
-</li>
-</ol>
-<p>代码：</p>
-<pre><code class="cpp">#include&lt;iostream&gt;
-#include&lt;string&gt;
-using namespace std;
-
-bool check(char c) {
-    if(&#39;0&#39; &lt;= c &amp;&amp; c &lt;= &#39;9&#39;) {
-        return true;
-    }
-    if(&#39;a&#39; &lt;= c &amp;&amp; c &lt;= &#39;z&#39;) {
-        return true;
-    }
-    if(&#39;A&#39; &lt;= c &amp;&amp; c &lt;= &#39;Z&#39;) {
-        return true;
-    }
-    return false;
-}
-
-int main() {
-    string s;
-    getline(cin, s);
-
-    int len = s.length();
-
-    int ans = 0;
-    for(int i = 0; i &lt; len; i++) {
-        if(check(s[i])) {
-            ans++;
-        }
-    }
-    cout &lt;&lt; ans &lt;&lt; endl;
-
-    return 0;
-}
+        <h1 id="DNS是什么"><a href="#DNS是什么" class="headerlink" title="DNS是什么"></a>DNS是什么</h1><p>DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。</p>
+<h2 id="简明易懂的DNS"><a href="#简明易懂的DNS" class="headerlink" title="简明易懂的DNS"></a>简明易懂的DNS</h2><p>举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。</p>
+<p>但由于网络环境的复杂性，让顾客直接记住地址是不太可能的。（你试试看？）于是就有人动了脑筋，推出了一样类似DNS的服务：你只需要说出地点（小明杂货店），服务商就会开车送你去目的地。</p>
+<a id="more"></a>
+<p>很多大公司实际上都推出了这份服务，例如阿里，百度，谷歌，Cloudflare等。</p>
+<p>实际网络中的DNS，则是向服务器询问域名，而服务器返回IP地址。</p>
+<p>顺便推荐几个质量好的良心DNS如下：</p>
+<h3 id="Cloudflare-DNS"><a href="#Cloudflare-DNS" class="headerlink" title="Cloudflare DNS:"></a>Cloudflare DNS:</h3><p>1.1.1.1, 1.0.0.1</p>
+<h3 id="Google-Public-DNS"><a href="#Google-Public-DNS" class="headerlink" title="Google Public DNS:"></a>Google Public DNS:</h3><p>8.8.8.8, 8.8.4.4</p>
+<h3 id="OpenDNS"><a href="#OpenDNS" class="headerlink" title="OpenDNS"></a>OpenDNS</h3><p>208.67.222.222, 208.67.220.220</p>
+<h2 id="DNS查询"><a href="#DNS查询" class="headerlink" title="DNS查询"></a>DNS查询</h2><p>看到这里你可能有疑惑了，难道每一台DNS服务器都储存了很多IP地址和域名的对应吗？不是。一这很浪费空间，二这样很难更新。</p>
+<p>以我的博客地址<code>keepthethink.github.io</code>为例，当你输入地址后：</p>
+<p>1.你的电脑首先会去询问DNS服务器；</p>
+<p>这个“DNS服务器”可能在任何地方，可能就在你家的路由器上，也有可能在万里之遥的灯塔国QwQ（如果你是非酋</p>
+<p>当然，一般来讲你的路由器上不会真的有一个DNS服务端，如果你在本地登录912.168.0.1或192.168.1.1，你就会看到在“DNS”设置那一栏会有你的ISP的DNS地址（当然，如果你想把它换成公共DNS也可以，但要为你自己的网速负责。）</p>
+<p>2.DNS服务器询问所谓“根服务器”；</p>
+<p>根服务器询问.io域名的权威服务器；</p>
+<p>.io域名的权威服务器询问.github.io域名的权威服务器;</p>
+<p>.github.io域名的权威服务器将IP告知你的电脑；</p>
+<p>OK</p>
+<p>（这套措施实在是找不到合适的比喻，看不懂就跳过吧。）</p>
+<h2 id="DNS缓存"><a href="#DNS缓存" class="headerlink" title="DNS缓存"></a>DNS缓存</h2><p>这么干，空间的确节省了很多，但效率显然就更慢了。所以，DNS服务器中一般有个“缓存”，当你重复询问同一个网址时，直接找出缓存记录并答复。当然，每个一定的时间会更新缓存。</p>
+<p>既然这套措施已经很完美了，那DoH是干嘛的？别急，马上就讲。</p>
+<h2 id="DNS劫持与HTTP劫持"><a href="#DNS劫持与HTTP劫持" class="headerlink" title="DNS劫持与HTTP劫持"></a>DNS劫持与HTTP劫持</h2><h3 id="DNS劫持：当DNS不那么老实"><a href="#DNS劫持：当DNS不那么老实" class="headerlink" title="DNS劫持：当DNS不那么老实"></a>DNS劫持：当DNS不那么老实</h3><p>打个比方：</p>
+<p>从前有个叫小刚的，他也开了家杂货店；</p>
+<p>小刚发现小明的杂货店有很多客户，分外眼红，便拿钱贿赂了DNS服务商，于是，当顾客要求DNS服务商将其带到“小明杂货店”是，DNS会不管三七二十一将其带到“小刚杂货店”。在网络中，则是DNS服务器故意给出错误的IP地址。</p>
+<p>这显然是无计可施的，一般来说，遇到这种人品烂的掉渣的服务商，最好的办法就是换一家，好在这年头网络条件不错，大多数DNS都不搞这种事。</p>
+<p><strong>但是</strong>，对于DNS劫持，刚才讲的一种情况并非最常见的，最常见的事下面这种：</p>
+<p>假设只有服务商A收了贿赂，而服务商B没有。当你向DNS服务商B打电话时，你的<strong>电话服务商</strong>将其转接到服务商A，那你就前功尽弃了。唯一的方法是使用DNS-over-HTTPS，后面会讲解。</p>
+<h3 id="HTTP劫持：当ISP不那么老实"><a href="#HTTP劫持：当ISP不那么老实" class="headerlink" title="HTTP劫持：当ISP不那么老实"></a>HTTP劫持：当ISP不那么老实</h3><p>假设你向DNS服务器打了个电话，“我要去小明杂货店。”结果你的电话服务商窃听了这句话，得知了你的行程；甚至将其修改为“我要去小刚杂货店。”，然后你就不明不白的被带到了另一个地方。</p>
+<p>在这种情况下，你的DNS服务商是老实可靠的，但你的ISP（网络服务提供商）则不那么可靠。当然，一般的ISP并没有那么猖狂，他们最多不过是往你身上塞几张奇♂怪♂的广♂告♂（想必大家都有这样的经历。）你有时候会不会发现你看到的广告就是最近曾经关注过的事物？</p>
+<p>一个极其明显的例子如下：</p>
+<p><img src="https://i.loli.net/2019/04/26/5cc2c1cf0d688.jpg" alt="yunyingshangjiechi04.jpg"></p>
+<p>这种劫持的关键在于，DNS服务器与你之间的链接为“明文传输”，而非“加密传输”。这就导致每一个环节上的人都能随意修改你的链接。幸运的是，在生产力高度发达的9102年，加密技术早已像烂柿子一样成熟了，如HTTPS。</p>
+<h1 id="DoH的具体原理"><a href="#DoH的具体原理" class="headerlink" title="DoH的具体原理"></a>DoH的具体原理</h1><p>DoH的具体原理其实就是在DNS外面套一层HTTPS。（而且更慢了）即流程变成了</p>
+<blockquote>
+<p>你的电脑 -&gt; DoH服务器 -&gt; DNS服务器 -&gt; DoH服务器 -&gt; 你的电脑</p>
+</blockquote>
+<p>以上流程中的一个箭头代表一个HTTPS加密链接，使得该过程中的所有流量皆受到强加密，这样一来，除非拖出量子计算机或智子，否则绝无可能被破解。</p>
+<h2 id="在Firefox浏览器中体验DoH"><a href="#在Firefox浏览器中体验DoH" class="headerlink" title="在Firefox浏览器中体验DoH"></a>在Firefox浏览器中体验DoH</h2><p>首先，把你的Firefox Quantum更新到最新版。（废话）</p>
+<p>点击右侧的“菜单”，就是那个三条横线的图标；</p>
+<p>在菜单里点击“首选项”；</p>
+<p>进入“常规”选项；</p>
+<p><img src="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg" alt></p>
+<p>滚动页面到最下方，选择“网络设置”；</p>
+<p><img src="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg" alt></p>
+<p>在弹出窗口的最下方选择“启用基于HTTPS的DNS”，点击“使用默认值”即可。</p>
+<h2 id="在macOS中体验DoH"><a href="#在macOS中体验DoH" class="headerlink" title="在macOS中体验DoH"></a>在macOS中体验DoH</h2><p>首先，为了安装必要的组件，我们首先要安装Homebrew软件包管理器。在终端中输入：</p>
+<pre><code class="shell">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 </code></pre>
-<h1 id="第二题，暴力枚举，鉴定完毕。"><a href="#第二题，暴力枚举，鉴定完毕。" class="headerlink" title="第二题，暴力枚举，鉴定完毕。"></a>第二题，<del>暴力枚举，鉴定完毕。</del></h1><p>分析：</p>
-<ol>
-<li><p>先计算好每一个军营的气势，同时累加双方的气势总和（输入后处理）</p>
-</li>
-<li><p>枚举每一个军营，检查若将工兵放在此位置是否可减少双方差距，并更新最小值与位置。</p>
-</li>
-<li><p><del>输出位置</del></p>
-</li>
-</ol>
-<p>写第一遍时大概思路就酱。</p>
-<p>运行结果：</p>
-<p>样例#1:Pass</p>
-<p>样例#1:Pass</p>
-<p>样例#3:<br><strong>Beng!</strong></p>
-<p>又看了一下数据范围，对于 100% 的数据，n ≤ 10 ^ 5,ci,s1,s2≤10^9。</p>
-<p>10^9?</p>
-<p>“十年OI一场空，没开long long 见祖宗”，这话果然没错。</p>
-<p>除int main()外的所有int皆换成long long，OK。</p>
-<p>PS:如</p>
-<pre><code class="cpp">#define int long long
-signed main() {
-    //some code
-    return 0;
-}
-</code></pre>
-<p>之类的旁门左道，为了安全起见，大家不要滥用哦QwQ。<del>有本事你写个typedef int long long看报不报错</del></p>
-<h1 id="第三题。。。"><a href="#第三题。。。" class="headerlink" title="第三题。。。"></a>第三题。。。</h1><p>我这种小蒟蒻怎么可能作对前三题呢QwQ,又怎么可能想到DP正解QwQ</p>
-<p>所以我挥手打了贪心。。。<del>当我发现第三个样例没过时已经来不及了</del></p>
-<p>先说说贪心具体思路：</p>
-<ol>
-<li>将学生按照到达时间从小到大排个序</li>
-<li>用一个光标变量记录目前接到了第几个学生，如果还有人没被接到，就继续循环知道所有人都被接到为止。</li>
-<li>每次循环时检查当前这个人是否值得带，若值得则将光标后移。</li>
-<li>每次循环后将时间加上开车所需要的时间。</li>
-<li>最后累加总等待时间并输出。</li>
-</ol>
-<p>答案正确率：玄学</p>
-<p>到各大网站上测之，30分有之，80分有之，一切随缘。</p>
-<h1 id="第四题本蒟蒻骗了分，没脸来这胡说了。。。"><a href="#第四题本蒟蒻骗了分，没脸来这胡说了。。。" class="headerlink" title="第四题本蒟蒻骗了分，没脸来这胡说了。。。"></a>第四题本蒟蒻骗了分，没脸来这胡说了。。。</h1><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>咳咳咳。。。</p>
-<h2 id="1-考试策略的应用"><a href="#1-考试策略的应用" class="headerlink" title="(1)考试策略的应用"></a>(1)考试策略的应用</h2><p>亏得我这只小蒟蒻还在进考场前看了1h AK NOI 的各位dalao 呕心沥血写的各种考场策略，结果一进考场简直就像接受了A级记忆删除，什么都忘得一干二净：</p>
-<ol>
-<li>一，二题打完过了样例就去打第三题。（double-plus-scared）</li>
-<li>第三题贪心死活过不了第三个点还执迷不悟认为就是贪心。</li>
-<li>第四题明明有子任务放着不做打随机数。</li>
-</ol>
-<h2 id="2-考场心态的调整"><a href="#2-考场心态的调整" class="headerlink" title="(2)考场心态的调整"></a>(2)考场心态的调整</h2><p>众所周知，在NOIP考场这种地方要想保持心态稳定是不可能的。然而如果吓得完全写不出代码就凉凉了。总结就是一定要冷静冷静冷静再冷静，一定不要像某人一样，贪心错了都想不到半个动规。</p>
-<p>最后，祝大家：</p>
-<pre><code class="cpp">while(NOIP2019.rp &lt; NOIP2019.rp + 1) {
-    NOIP2019.rp++;
-}
-</code></pre>
+<p>安装完成后，输入以下命令安装cloudflared：</p>
+<pre><code>brew install cloudflare/cloudflare/cloudflared
+</code></pre><p>等待安装，这段时间内你可以去换（chuan）件（shang）衣（nv）服（zhuang）。</p>
+<p>然后，我们要修改一下配置文件，新建一个文件<code>/usr/local/etc/cloudflared/config.yaml</code>，输入如下内容：</p>
+<pre><code>proxy-dns: true
+proxy-dns-upstream:
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+</code></pre><p>配置结束，启动服务：</p>
+<pre><code>sudo cloudflared service install
+</code></pre><p>QED！现在你的电脑已经成了一台DoH服务器，高兴的话你也可以把它当作DNS服务器来用。打开 系统首选项 -&gt; 网络 -&gt; 高级 -&gt; DNS，在列表的最顶端添加 127.0.0.1 即可。</p>
+<h2 id="DoH的使用测试"><a href="#DoH的使用测试" class="headerlink" title="DoH的使用测试"></a>DoH的使用测试</h2><p>用dig命令测试一下，发现DOH的使用体验还是相当不错的。对域名<a href="http://www.google.com的查询结果如下：" target="_blank" rel="noopener">www.google.com的查询结果如下：</a></p>
+<pre><code>$ dig @127.0.0.1 www.google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @127.0.0.1 www.google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48175
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1452
+; PAD: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 (&quot;.................................................................&quot;)
+;; QUESTION SECTION:
+;www.google.com.            IN    A
+
+;; ANSWER SECTION:
+www.google.com.        66    IN    A    216.58.194.196
+
+;; Query time: 165 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue Apr 16 16:33:38 CST 2019
+;; MSG SIZE  rcvd: 142
+</code></pre><p>注意最下方几行：165毫秒的查询时间不可谓不快。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>事实上，如果你饱受各种小广告弹窗之苦，DoH是个不错的应对措施；</p>
+<p>如果你的运营商直接进行DNS劫持，建议投诉或诉诸法律；</p>
+<p>如果你的运营商进行HTTP劫持，推荐DoH。</p>
 
       
     </div>
@@ -696,7 +682,7 @@ signed main() {
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://keepthethink.github.io/noip2018.html" title="NOIP2018游记">https://keepthethink.github.io/noip2018.html</a>
+    <a href="https://keepthethink.github.io/2019/04/15/dns-over-https/" title="DNS-over-HTTPS(DoH)简析与配置">https://keepthethink.github.io/2019/04/15/dns-over-https/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -709,7 +695,7 @@ signed main() {
       
         <div class="post-tags">
           
-            <a href="/tags/NOIP/" rel="tag"># NOIP</a>
+            <a href="/tags/网络安全/" rel="tag"># 网络安全</a>
           
         </div>
       
@@ -722,8 +708,8 @@ signed main() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/new-start.html" rel="next" title="New Start">
-                <i class="fa fa-chevron-left"></i> New Start
+              <a href="/2019/04/15/wiki-disappear/" rel="next" title="「文章转载」他译作“维基”的那个网站消失在竹幕后">
+                <i class="fa fa-chevron-left"></i> 「文章转载」他译作“维基”的那个网站消失在竹幕后
               </a>
             
           </div>
@@ -732,8 +718,8 @@ signed main() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/p1119.html" rel="prev" title="洛谷题解P1119【灾后重建】">
-                洛谷题解P1119【灾后重建】 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/26/cyberspace-independence/" rel="prev" title="「文章转载」赛博空间独立宣言">
+                「文章转载」赛博空间独立宣言 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -989,7 +975,7 @@ signed main() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#出师"><span class="nav-number">1.</span> <span class="nav-text">出师</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第一题，水题，鉴定完毕。"><span class="nav-number">2.</span> <span class="nav-text">第一题，水题，鉴定完毕。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二题，暴力枚举，鉴定完毕。"><span class="nav-number">3.</span> <span class="nav-text">第二题，暴力枚举，鉴定完毕。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三题。。。"><span class="nav-number">4.</span> <span class="nav-text">第三题。。。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第四题本蒟蒻骗了分，没脸来这胡说了。。。"><span class="nav-number">5.</span> <span class="nav-text">第四题本蒟蒻骗了分，没脸来这胡说了。。。</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-考试策略的应用"><span class="nav-number">6.1.</span> <span class="nav-text">(1)考试策略的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-考场心态的调整"><span class="nav-number">6.2.</span> <span class="nav-text">(2)考场心态的调整</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS是什么"><span class="nav-number">1.</span> <span class="nav-text">DNS是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简明易懂的DNS"><span class="nav-number">1.1.</span> <span class="nav-text">简明易懂的DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cloudflare-DNS"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cloudflare DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Public-DNS"><span class="nav-number">1.1.2.</span> <span class="nav-text">Google Public DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenDNS"><span class="nav-number">1.1.3.</span> <span class="nav-text">OpenDNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS查询"><span class="nav-number">1.2.</span> <span class="nav-text">DNS查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS缓存"><span class="nav-number">1.3.</span> <span class="nav-text">DNS缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS劫持与HTTP劫持"><span class="nav-number">1.4.</span> <span class="nav-text">DNS劫持与HTTP劫持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS劫持：当DNS不那么老实"><span class="nav-number">1.4.1.</span> <span class="nav-text">DNS劫持：当DNS不那么老实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP劫持：当ISP不那么老实"><span class="nav-number">1.4.2.</span> <span class="nav-text">HTTP劫持：当ISP不那么老实</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DoH的具体原理"><span class="nav-number">2.</span> <span class="nav-text">DoH的具体原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在Firefox浏览器中体验DoH"><span class="nav-number">2.1.</span> <span class="nav-text">在Firefox浏览器中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在macOS中体验DoH"><span class="nav-number">2.2.</span> <span class="nav-text">在macOS中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoH的使用测试"><span class="nav-number">2.3.</span> <span class="nav-text">DoH的使用测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1191,9 +1177,9 @@ signed main() {
   
     <script>
       var disqus_config = function () {
-        this.page.url = "https://keepthethink.github.io/noip2018.html";
-        this.page.identifier = "noip2018.html";
-        this.page.title = 'NOIP2018游记';
+        this.page.url = "https://keepthethink.github.io/2019/04/15/dns-over-https/";
+        this.page.identifier = "2019/04/15/dns-over-https/";
+        this.page.title = 'DNS-over-HTTPS(DoH)简析与配置';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

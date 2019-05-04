@@ -105,25 +105,25 @@
 
 
 
-  <meta name="description" content="题目描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到$n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。 地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+  <meta name="description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 <meta name="keywords" content="洛谷,题解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷题解 P1003 【铺地毯】">
-<meta property="og:url" content="https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html">
+<meta property="og:title" content="洛谷题解 P1002 【过河卒】">
+<meta property="og:url" content="https://keepthethink.github.io/2019/04/12/p1002/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="题目描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到$n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。 地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+<meta property="og:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-28T08:18:02.093Z">
+<meta property="og:updated_time" content="2019-05-04T03:21:08.350Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="洛谷题解 P1003 【铺地毯】">
-<meta name="twitter:description" content="题目描述为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到$n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。 地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。">
+<meta name="twitter:title" content="洛谷题解 P1002 【过河卒】">
+<meta name="twitter:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 
 
 
 
 
 
-  <link rel="canonical" href="https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html">
+  <link rel="canonical" href="https://keepthethink.github.io/2019/04/12/p1002/">
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>洛谷题解 P1003 【铺地毯】 | Heliumの博客</title>
+  <title>洛谷题解 P1002 【过河卒】 | Heliumの博客</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html">
+    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/2019/04/12/p1002/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Helium">
@@ -428,7 +428,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">洛谷题解 P1003 【铺地毯】
+          <h2 class="post-title" itemprop="name headline">洛谷题解 P1002 【过河卒】
 
               
             
@@ -454,7 +454,7 @@
                 
               
 
-              <time title="创建时间：2019-04-13 09:50:00" itemprop="dateCreated datePublished" datetime="2019-04-13T09:50:00+08:00">2019-04-13</time>
+              <time title="创建时间：2019-04-12 20:34:00" itemprop="dateCreated datePublished" datetime="2019-04-12T20:34:00+08:00">2019-04-12</time>
             
 
             
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-04-28 16:18:02" itemprop="dateModified" datetime="2019-04-28T16:18:02+08:00">2019-04-28</time>
+                <time title="修改时间：2019-05-04 11:21:08" itemprop="dateModified" datetime="2019-05-04T11:21:08+08:00">2019-05-04</time>
               
             
           </span>
@@ -523,7 +523,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">1.6k</span>
+                <span title="本文字数">1.5k</span>
               
 
               
@@ -557,60 +557,56 @@
       
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>为了准备一个独特的颁奖典礼，组织者在会场的一片矩形区域（可看做是平面直角坐标系的第一象限）铺上一些矩形地毯。一共有 $n$ 张地毯，编号从 $1$ 到$n$。现在将这些地毯按照编号从小到大的顺序平行于坐标轴先后铺设，后铺的地毯覆盖在前面已经铺好的地毯之上。</p>
-<p>地毯铺设完成后，组织者想知道覆盖地面某个点的最上面的那张地毯的编号。注意：在矩形地毯边界和四个顶点上的点也算被地毯覆盖。</p>
-<a id="more"></a>
-<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>输入共$n+2$行</p>
-<p>第一行，一个整数$n$，表示总共有$n$张地毯</p>
-<p>接下来的$n$行中，第 $i+1$行表示编号ii的地毯的信息，包含四个正整数$a ,b ,g ,k$ ，每两个整数之间用一个空格隔开，分别表示铺设地毯的左下角的坐标$(a,b)$以及地毯在$x$轴和$y$轴方向的长度</p>
-<p>第$n+2$行包含两个正整数$x$和$y$，表示所求的地面的点的坐标$(x,y)$</p>
-<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>输出共$1$行，一个整数，表示所求的地毯的编号；若此处没有被地毯覆盖则输出$−1$</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h2><p>3</p>
-<p>1 0 2 3</p>
-<p>0 2 3 3</p>
-<p>2 1 3 3</p>
-<p>2 2</p>
-<h2 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h2><p>3</p>
-<h2 id="输入样例-2："><a href="#输入样例-2：" class="headerlink" title="输入样例#2："></a>输入样例#2：</h2><p>3</p>
-<p>1 0 2 3</p>
-<p>0 2 3 3</p>
-<p>2 1 3 3</p>
-<p>4 5</p>
-<h2 id="输出样例-2："><a href="#输出样例-2：" class="headerlink" title="输出样例#2："></a>输出样例#2：</h2><p>-1</p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>【样例解释1】</p>
-<p>如下图，11 号地毯用实线表示，22 号地毯用虚线表示，33 号用双实线表示，覆盖点(2,2)(2,2)的最上面一张地毯是 33 号地毯。</p>
-<p>【数据范围】</p>
-<p>对于30% 的数据，有 $n ≤ 2$ ；<br>对于50% 的数据，$0 ≤a, b, g, k≤100$；<br>对于100%的数据，有 $0 ≤n ≤10,000$ ，$0≤a, b, g, k ≤100,000$。</p>
-<p>noip2011提高组day1第1题</p>
-<h1 id="说明-1"><a href="#说明-1" class="headerlink" title="说明"></a>说明</h1><p>看标签<br><strong>枚举，模拟，暴力</strong>。</p>
-<p>很容易想到开一个大小N * N 的二维数组，然而数据范围是0 ≤ N ≤10,000</p>
-<p>数组大小：10000 * 10000 = 100000000 Byte = 100000 KB = 100MB</p>
-<p>刚好跨过了RE与MLE的红线。</p>
-<p>另外一种方法是用四个数组来记录长方形的四个参数，再扫一遍检查最上面的地毯。</p>
-<p>亲测，完美AC。</p>
-<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><pre><code class="cpp">#include&lt;stdio.h&gt;
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
+<p>棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。</p>
+<p>现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>一行四个数据，分别表示$B$点坐标和马的坐标。</p>
+<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>一个数据，表示所有的路径条数。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h2><p>6 6 3 3</p>
+<h2 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h2><p>6</p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>结果可能很大！</p>
+<hr>
+<p>看到题目二话不说用了搜索，直到在提交前看了一下算法标签，又看了一下数据范围。。。</p>
+<p>状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。</p>
+<p>上代码，这道题算是一道DP入门题吧。</p>
+<pre><code class="cpp">#include&lt;stdio.h&gt;
 
-const int MAXN = 10000 + 5;//程序里出现幻数可不是好习惯哦~
+const int MAXN = 20 + 5;
+const int attack[9][2] = {{0, 0}, {1, 2}, {2, 1}, {-1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}};
+long long dist[MAXN][MAXN];
+int map[MAXN][MAXN];
+int n, m, x, y;
 
-int a[MAXN], b[MAXN], g[MAXN], k[MAXN];
+void init(void) {
+    for(int i = 0; i &lt; 9; i++) {
+        if(x + attack[i][0] &lt;= n &amp;&amp; x + attack[i][0] &gt;= 0) {
+            if(y + attack[i][1] &lt;= m &amp;&amp; y + attack[i][1] &gt;= 0) {
+                map[x + attack[i][0]][y + attack[i][1]] = true;
+            }
+        }
+    }
+}
 
 int main() {
-    int n, x, y;
+    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;x, &amp;y);
 
-    scanf(&quot;%d&quot;, &amp;n);
-    for(int i = 0; i &lt; n; i++) {
-        scanf(&quot;%d%d%d%d&quot;, &amp;a[i], &amp;b[i], &amp;g[i], &amp;k[i]);//输入
+    init();
+
+    int k = 1;
+    for(int i = 0; i &lt;= n; i++) {
+        dist[i][0] = map[i][0] ? k = 0 : k;
     }
-    scanf(&quot;%d%d&quot;, &amp;x, &amp;y);
-
-    int ans = -1;
-    for(int i = 0; i &lt; n; i++) {
-        if(x &gt;= a[i] &amp;&amp; y &gt;= b[i] &amp;&amp; x &lt;= a[i] + g[i] &amp;&amp; y &lt;= b[i] + k[i]) {
-            ans = i + 1;//ans的最终值恰好是最上面的那张地毯编号
+    k = 1;
+    for(int i = 0; i &lt;= m; i++) {
+        dist[0][i] = map[0][i] ? k = 0 : k;
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        for(int j = 1; j &lt;= m; j++) {
+            dist[i][j] = map[i][j] ? 0 : dist[i - 1][j] + dist[i][j - 1];
         }
     }
 
-    printf(&quot;%d\n&quot;, ans);//输出结果
+    printf(&quot;%lld\n&quot;, dist[n][m]);
 
     return 0;
 }
@@ -648,7 +644,7 @@ int main() {
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html" title="洛谷题解 P1003 【铺地毯】">https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html</a>
+    <a href="https://keepthethink.github.io/2019/04/12/p1002/" title="洛谷题解 P1002 【过河卒】">https://keepthethink.github.io/2019/04/12/p1002/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -676,8 +672,8 @@ int main() {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/black-hole.html" rel="next" title="人类首张黑洞照片">
-                <i class="fa fa-chevron-left"></i> 人类首张黑洞照片
+              <a href="/2019/04/06/about-ccf/" rel="next" title="理性看待CCF">
+                <i class="fa fa-chevron-left"></i> 理性看待CCF
               </a>
             
           </div>
@@ -686,8 +682,8 @@ int main() {
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/wiki-disappear.html" rel="prev" title="「文章转载」他译作“维基”的那个网站消失在竹幕后">
-                「文章转载」他译作“维基”的那个网站消失在竹幕后 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/13/black-hole/" rel="prev" title="人类首张黑洞照片">
+                人类首张黑洞照片 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -943,7 +939,7 @@ int main() {
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.</span> <span class="nav-text">输入输出格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式："><span class="nav-number">2.1.</span> <span class="nav-text">输入格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式："><span class="nav-number">2.2.</span> <span class="nav-text">输出格式：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出样例"><span class="nav-number">3.</span> <span class="nav-text">输入输出样例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入样例-1："><span class="nav-number">3.1.</span> <span class="nav-text">输入样例#1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出样例-1："><span class="nav-number">3.2.</span> <span class="nav-text">输出样例#1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输入样例-2："><span class="nav-number">3.3.</span> <span class="nav-text">输入样例#2：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出样例-2："><span class="nav-number">3.4.</span> <span class="nav-text">输出样例#2：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">4.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明-1"><span class="nav-number">5.</span> <span class="nav-text">说明</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#代码"><span class="nav-number">6.</span> <span class="nav-text">代码</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.</span> <span class="nav-text">输入输出格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式："><span class="nav-number">2.1.</span> <span class="nav-text">输入格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式："><span class="nav-number">2.2.</span> <span class="nav-text">输出格式：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出样例"><span class="nav-number">3.</span> <span class="nav-text">输入输出样例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入样例-1："><span class="nav-number">3.1.</span> <span class="nav-text">输入样例#1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出样例-1："><span class="nav-number">3.2.</span> <span class="nav-text">输出样例#1：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">4.</span> <span class="nav-text">说明</span></a></li></ol></div>
             
 
           </div>
@@ -1145,9 +1141,9 @@ int main() {
   
     <script>
       var disqus_config = function () {
-        this.page.url = "https://keepthethink.github.io/cjv8y73vf000mmv9k47itj32f.html";
-        this.page.identifier = "cjv8y73vf000mmv9k47itj32f.html";
-        this.page.title = '洛谷题解 P1003 【铺地毯】';
+        this.page.url = "https://keepthethink.github.io/2019/04/12/p1002/";
+        this.page.identifier = "2019/04/12/p1002/";
+        this.page.title = '洛谷题解 P1002 【过河卒】';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');

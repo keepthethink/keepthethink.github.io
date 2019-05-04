@@ -105,25 +105,25 @@
 
 
 
-  <meta name="description" content="折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。 从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。">
-<meta name="keywords" content="随笔">
+  <meta name="description" content="对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。 数据定义">
+<meta name="keywords" content="计算几何">
 <meta property="og:type" content="article">
-<meta property="og:title" content="New Start">
-<meta property="og:url" content="https://keepthethink.github.io/new-start.html">
+<meta property="og:title" content="计算几何：凸包">
+<meta property="og:url" content="https://keepthethink.github.io/2019/04/05/convex/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。 从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。">
+<meta property="og:description" content="对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。 数据定义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-04T03:22:39.973Z">
+<meta property="og:updated_time" content="2019-05-04T03:20:09.425Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="New Start">
-<meta name="twitter:description" content="折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。 从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。">
+<meta name="twitter:title" content="计算几何：凸包">
+<meta name="twitter:description" content="对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。 数据定义">
 
 
 
 
 
 
-  <link rel="canonical" href="https://keepthethink.github.io/new-start.html">
+  <link rel="canonical" href="https://keepthethink.github.io/2019/04/05/convex/">
 
 
 
@@ -133,7 +133,7 @@
   };
 </script>
 
-  <title>New Start | Heliumの博客</title>
+  <title>计算几何：凸包 | Heliumの博客</title>
   
 
 
@@ -411,7 +411,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/new-start.html">
+    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/2019/04/05/convex/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Helium">
@@ -428,7 +428,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">New Start
+          <h2 class="post-title" itemprop="name headline">计算几何：凸包
 
               
             
@@ -454,7 +454,7 @@
                 
               
 
-              <time title="创建时间：2019-03-04 09:51:00" itemprop="dateCreated datePublished" datetime="2019-03-04T09:51:00+08:00">2019-03-04</time>
+              <time title="创建时间：2019-04-05 15:33:00" itemprop="dateCreated datePublished" datetime="2019-04-05T15:33:00+08:00">2019-04-05</time>
             
 
             
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-04 11:22:39" itemprop="dateModified" datetime="2019-05-04T11:22:39+08:00">2019-05-04</time>
+                <time title="修改时间：2019-05-04 11:20:09" itemprop="dateModified" datetime="2019-05-04T11:20:09+08:00">2019-05-04</time>
               
             
           </span>
@@ -488,7 +488,7 @@
                 <span class="post-meta-item-text">分类于</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/学习笔记/" itemprop="url" rel="index"><span itemprop="name">学习笔记</span></a></span>
 
                 
                 
@@ -523,7 +523,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">179</span>
+                <span title="本文字数">2.4k</span>
               
 
               
@@ -537,7 +537,7 @@
                 
                   <span class="post-meta-item-text">阅读时长 &asymp;</span>
                 
-                <span title="阅读时长">1 分钟</span>
+                <span title="阅读时长">2 分钟</span>
               
             </div>
           
@@ -557,10 +557,112 @@
       
 
       
-        <p>折腾一番后终于把之前的文章迁移到GitHub Pages + Hexo的博客上了，之所以选择GitHub是因为这个平台忽然关闭的可能性很小，并且可定制性极强，虽然只能做静态网页，但搭个博客还是绰绰有余的。</p>
-<p>从另一方面来讲，GitHub的信誉也不错，在服务品质上也比国内的诸多流氓公司强得多。</p>
-<a id="more"></a>
-<p>扯了这么多，博客的本质还是发布文章，就看自己能否坚持写下去了。</p>
+        <p>对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。</p>
+<h1 id="数据定义"><a href="#数据定义" class="headerlink" title="数据定义"></a>数据定义<a id="more"></a></h1><pre><code class="cpp">class Point {
+public:
+    double x, y;
+
+    Point(double x = 0, double y = 0):x(x), y(y) {}
+
+    Point(Point a, Point b) {
+        //构造从a到b的向量
+        x = b.x - a.x;
+        y = b.y - a.y;
+    }
+
+    double dist(const Point&amp; p) const {
+        //计算从自身到点P的距离
+        return sqrt((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
+    }
+
+    double operator * (const Point&amp; p) const {
+        //计算向量叉积
+        return x * p.y - p.x * y;
+    }
+
+    bool operator &lt; (const Point&amp; p) const {
+        //按照X轴排序
+        return (x == p.x) ? (y &lt; p.y) : (x &lt; p.x);
+    }
+
+    friend istream&amp; operator &gt;&gt; (istream&amp; in, Point&amp; p) {
+        //重载 &gt;&gt; 运算符使得cin可以输入
+        in &gt;&gt; p.x &gt;&gt; p.y;
+
+        return in;
+    }
+};
+
+const int MAXN = 10000 + 5;
+
+Point p[MAXN];
+int st[MAXN], top = -1; //点栈
+int n;
+</code></pre>
+<h1 id="主程序"><a href="#主程序" class="headerlink" title="主程序"></a>主程序</h1><pre><code class="cpp">void input() { //输入所有点
+    cin &gt;&gt; n;
+    for(int i = 0; i &lt; n; i++) {
+        cin &gt;&gt; p[i];
+    }
+}
+
+int main() {
+    input();
+    sort(p, p + n); //对点进行直角坐标排序􏰣􏰳􏰣􏰳􏰮􏰂
+    double ans = 0;
+
+    st[++top] = 0; //将第一个点入栈
+    st[++top] = 1; //将第二个点入栈
+
+    for(int i = 2; i &lt; n; i++) {
+        Point u(p[st[top - 1]], p[st[top]]); //计算栈顶两个点构成的向量
+        Point v(p[st[top]], p[i]); //计算当前点与栈顶构成的向量
+
+        while(u * v &lt; 0) { //若叉积小于0
+            if(top == 0) { //当栈中只有一个元素时，退出循环
+                break;
+            }
+            top--; //弹出栈顶
+            u = Point(p[st[top - 1]], p[st[top]]); //更新
+            v = Point(p[st[top]], p[i]); //更新
+        }
+        st[++top] = i; //将第i个点压入栈中
+    }
+
+    for(int i = 0; i &lt;= top - 1; i++) {
+        ans += p[st[i]].dist(p[st[i + 1]]); //累加下半个凸包的长度
+    }
+    top = -1; //清空栈
+
+    //求出上半个凸包，与前半部分大同小异
+    st[++top] = 0;
+    st[++top] = 1;
+
+    for(int i = 2; i &lt; n; i++) {
+        Point u(p[st[top - 1]], p[st[top]]);
+        Point v(p[st[top]], p[i]);
+
+        while(u * v &gt; 0) {
+            if(top == 0) {
+                break;
+            }
+            top--;
+            u = Point(p[st[top - 1]], p[st[top]]);
+            v = Point(p[st[top]], p[i]);
+        }
+        st[++top] = i;
+    }
+
+    for(int i = 0; i &lt;= top - 1; i++) {
+        ans += p[st[i]].dist(p[st[i + 1]]);
+    }
+    top = -1;
+
+    cout &lt;&lt; setprecision(2) &lt;&lt; fixed &lt;&lt; ans &lt;&lt; endl; //控制精度
+
+    return 0;
+}
+</code></pre>
 
       
     </div>
@@ -594,7 +696,7 @@
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
     
-    <a href="https://keepthethink.github.io/new-start.html" title="New Start">https://keepthethink.github.io/new-start.html</a>
+    <a href="https://keepthethink.github.io/2019/04/05/convex/" title="计算几何：凸包">https://keepthethink.github.io/2019/04/05/convex/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
@@ -607,7 +709,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/随笔/" rel="tag"># 随笔</a>
+            <a href="/tags/计算几何/" rel="tag"># 计算几何</a>
           
         </div>
       
@@ -620,14 +722,18 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2019/03/28/splay-note/" rel="next" title="Splay学习笔记">
+                <i class="fa fa-chevron-left"></i> Splay学习笔记
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/noip2018.html" rel="prev" title="NOIP2018游记">
-                NOIP2018游记 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/04/06/about-ccf/" rel="prev" title="理性看待CCF">
+                理性看待CCF <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -680,8 +786,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -863,6 +978,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数据定义"><span class="nav-number">1.</span> <span class="nav-text">数据定义</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#主程序"><span class="nav-number">2.</span> <span class="nav-text">主程序</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1059,9 +1191,9 @@
   
     <script>
       var disqus_config = function () {
-        this.page.url = "https://keepthethink.github.io/new-start.html";
-        this.page.identifier = "new-start.html";
-        this.page.title = 'New Start';
+        this.page.url = "https://keepthethink.github.io/2019/04/05/convex/";
+        this.page.identifier = "2019/04/05/convex/";
+        this.page.title = '计算几何：凸包';
         };
       function loadComments () {
         var d = document, s = d.createElement('script');
