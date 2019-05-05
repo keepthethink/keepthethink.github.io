@@ -105,20 +105,25 @@
 
 
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Heliumの博客">
-<meta property="og:url" content="https://keepthethink.github.io/tags/NOIP/index.html">
+  <meta name="description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
+<meta name="keywords" content="洛谷,题解">
+<meta property="og:type" content="article">
+<meta property="og:title" content="洛谷题解 P1002 【过河卒】">
+<meta property="og:url" content="https://keepthethink.github.io/archives/2197869946/index.html">
 <meta property="og:site_name" content="Heliumの博客">
+<meta property="og:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-05-05T06:55:57.225Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Heliumの博客">
+<meta name="twitter:title" content="洛谷题解 P1002 【过河卒】">
+<meta name="twitter:description" content="题目描述棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。 棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。 现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，">
 
 
 
 
 
 
-  <link rel="canonical" href="https://keepthethink.github.io/tags/NOIP/">
+  <link rel="canonical" href="https://keepthethink.github.io/archives/2197869946/">
 
 
 
@@ -128,7 +133,7 @@
   };
 </script>
 
-  <title>标签: NOIP | Heliumの博客</title>
+  <title>洛谷题解 P1002 【过河卒】 | Heliumの博客</title>
   
 
 
@@ -176,7 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -256,7 +261,7 @@
         
         
           
-          <li class="menu-item menu-item-tags menu-item-active">
+          <li class="menu-item menu-item-tags">
 
     
     
@@ -294,7 +299,7 @@
         
         
           
-          <li class="menu-item menu-item-archives">
+          <li class="menu-item menu-item-archives menu-item-active">
 
     
     
@@ -386,85 +391,331 @@
           
             
 
-    
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-      
-      
-    
-    
-
-  
-
-
           
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h2>NOIP<small>标签</small>
-        </h2>
-      </div>
+  
 
-      
-        
+  
+  
+  
+
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://keepthethink.github.io/archives/2197869946/">
 
-      <h3 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Helium">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar1.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Heliumの博客">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/archives/3769932704/" itemprop="url">
-            
-              <span itemprop="name">NOIP2018游记</span>
-            
-          </a>
         
-      </h3>
+          <h2 class="post-title" itemprop="name headline">洛谷题解 P1002 【过河卒】
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated" datetime="2019-03-08T22:39:00+08:00" content="2019-03-08">
-          03-08
-        </time>
-      </div>
+              
+            
+          </h2>
+        
 
-    </header>
-  </article>
+        <div class="post-meta">
+          <span class="post-time">
 
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-04-12 20:34:00" itemprop="dateCreated datePublished" datetime="2019-04-12T20:34:00+08:00">2019-04-12</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-05-05 14:55:57" itemprop="dateModified" datetime="2019-05-05T14:55:57+08:00">2019-05-05</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/题解/" itemprop="url" rel="index"><span itemprop="name">题解</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">1.5k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">1 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>棋盘上AA点有一个过河卒，需要走到目标BB点。卒行走的规则：可以向下、或者向右。同时在棋盘上CC点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
+<p>棋盘用坐标表示，AA点$(0, 0)$、BB点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。</p>
+<p>现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
+<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>一行四个数据，分别表示$B$点坐标和马的坐标。</p>
+<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>一个数据，表示所有的路径条数。</p>
+<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h2><p>6 6 3 3</p>
+<h2 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h2><p>6</p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>结果可能很大！</p>
+<hr>
+<p>看到题目二话不说用了搜索，直到在提交前看了一下算法标签，又看了一下数据范围。。。</p>
+<p>状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。</p>
+<p>上代码，这道题算是一道DP入门题吧。</p>
+<pre><code class="cpp">#include&lt;stdio.h&gt;
+
+const int MAXN = 20 + 5;
+const int attack[9][2] = {{0, 0}, {1, 2}, {2, 1}, {-1, 2}, {2, -1}, {1, -2}, {-2, 1}, {-1, -2}, {-2, -1}};
+long long dist[MAXN][MAXN];
+int map[MAXN][MAXN];
+int n, m, x, y;
+
+void init(void) {
+    for(int i = 0; i &lt; 9; i++) {
+        if(x + attack[i][0] &lt;= n &amp;&amp; x + attack[i][0] &gt;= 0) {
+            if(y + attack[i][1] &lt;= m &amp;&amp; y + attack[i][1] &gt;= 0) {
+                map[x + attack[i][0]][y + attack[i][1]] = true;
+            }
+        }
+    }
+}
+
+int main() {
+    scanf(&quot;%d%d%d%d&quot;, &amp;n, &amp;m, &amp;x, &amp;y);
+
+    init();
+
+    int k = 1;
+    for(int i = 0; i &lt;= n; i++) {
+        dist[i][0] = map[i][0] ? k = 0 : k;
+    }
+    k = 1;
+    for(int i = 0; i &lt;= m; i++) {
+        dist[0][i] = map[0][i] ? k = 0 : k;
+    }
+    for(int i = 1; i &lt;= n; i++) {
+        for(int j = 1; j &lt;= m; j++) {
+            dist[i][j] = map[i][j] ? 0 : dist[i - 1][j] + dist[i][j - 1];
+        }
+    }
+
+    printf(&quot;%lld\n&quot;, dist[n][m]);
+
+    return 0;
+}
+</code></pre>
 
       
     </div>
 
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>Helium</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://keepthethink.github.io/archives/2197869946/" title="洛谷题解 P1002 【过河卒】">https://keepthethink.github.io/archives/2197869946/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/洛谷/" rel="tag"># 洛谷</a>
+          
+            <a href="/tags/题解/" rel="tag"># 题解</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/archives/2538557693/" rel="next" title="理性看待CCF">
+                <i class="fa fa-chevron-left"></i> 理性看待CCF
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/archives/2078626702/" rel="prev" title="人类首张黑洞照片">
+                人类首张黑洞照片 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+  </div>
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="disqus_thread">
+        <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+      </div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -485,8 +736,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -669,6 +929,23 @@
       </div>
 
       
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出格式"><span class="nav-number">2.</span> <span class="nav-text">输入输出格式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入格式："><span class="nav-number">2.1.</span> <span class="nav-text">输入格式：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出格式："><span class="nav-number">2.2.</span> <span class="nav-text">输出格式：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#输入输出样例"><span class="nav-number">3.</span> <span class="nav-text">输入输出样例</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#输入样例-1："><span class="nav-number">3.1.</span> <span class="nav-text">输入样例#1：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出样例-1："><span class="nav-number">3.2.</span> <span class="nav-text">输出样例#1：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">4.</span> <span class="nav-text">说明</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
 
       
         <div class="back-to-top">
@@ -845,6 +1122,10 @@
 
 
   
+  <script src="/js/src/scrollspy.js?v=6.7.0"></script>
+<script src="/js/src/post-details.js?v=6.7.0"></script>
+
+
 
   
 
@@ -857,6 +1138,41 @@
 
   
 
+  
+    <script>
+      var disqus_config = function () {
+        this.page.url = "https://keepthethink.github.io/archives/2197869946/";
+        this.page.identifier = "archives/2197869946/";
+        this.page.title = '洛谷题解 P1002 【过河卒】';
+        };
+      function loadComments () {
+        var d = document, s = d.createElement('script');
+        s.src = 'https://heliumblog-1.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      }
+      
+        $(function () {
+          var offsetTop = $('#comments').offset().top - $(window).height();
+          if (offsetTop <= 0) {
+            // load directly when there's no a scrollbar
+            loadComments();
+          } else {
+            $(window).on('scroll.disqus_scroll', function () {
+              // offsetTop may changes because of manually resizing browser window or lazy loading images.
+              var offsetTop = $('#comments').offset().top - $(window).height();
+              var scrollTop = $(window).scrollTop();
+
+              // pre-load comments a bit? (margin or anything else)
+              if (offsetTop - scrollTop < 60) {
+                $(window).off('.disqus_scroll');
+                loadComments();
+              }
+            });
+          }
+        });
+      
+    </script>
   
 
 
