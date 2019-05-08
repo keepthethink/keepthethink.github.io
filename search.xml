@@ -172,6 +172,11 @@
     <content type="text"><![CDATA[]]></content>
   </entry>
   <entry>
+    <title><![CDATA[关于]]></title>
+    <url>%2Fabout%2Findex.html</url>
+    <content type="text"><![CDATA[一名半退役OIer。 ——2019年4月12日]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[分类]]></title>
     <url>%2Fcategories%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
@@ -190,10 +195,5 @@
     <title><![CDATA[时间轴]]></title>
     <url>%2Ftimeline%2Findex.html</url>
     <content type="text"><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title><![CDATA[关于]]></title>
-    <url>%2Fabout%2Findex.html</url>
-    <content type="text"><![CDATA[一名半退役OIer。 ——2019年4月12日]]></content>
   </entry>
 </search>
