@@ -14,7 +14,7 @@
   
 
 
-<html class="theme-next mist use-motion" lang="zh-CN">
+<html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -81,7 +81,7 @@
   var NexT = window.NexT || {};
   var CONFIG = {
     root: '/',
-    scheme: 'Mist',
+    scheme: 'Gemini',
     version: '6.7.0',
     sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
     fancybox: false,
@@ -351,9 +351,6 @@
   
 
   
-    
-
-  
 
   
     <div class="site-search">
@@ -394,6 +391,9 @@
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
           
           <div id="content" class="content">
             
@@ -1020,6 +1020,15 @@ int root = 0, cnt = 0;
           
 
           
+             <div class="cc-license motion-element" itemprop="license">
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
 
           
           
@@ -1032,10 +1041,6 @@ int root = 0, cnt = 0;
                 
                   <li class="links-of-blogroll-item">
                     <a href="https://oi-wiki.org/" title="https://oi-wiki.org/" rel="noopener" target="_blank">OI Wiki</a>
-                  </li>
-                
-                  <li class="links-of-blogroll-item">
-                    <a href="https://program-think.blogspot.com/" title="https://program-think.blogspot.com/" rel="noopener" target="_blank">编程随想</a>
                   </li>
                 
                   <li class="links-of-blogroll-item">
@@ -1138,7 +1143,7 @@ int root = 0, cnt = 0;
 
 
 
-  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> v6.7.0</div>
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v6.7.0</div>
 
 
 
@@ -1250,6 +1255,13 @@ int root = 0, cnt = 0;
   
   
 
+
+  <script src="/js/src/affix.js?v=6.7.0"></script>
+
+  <script src="/js/src/schemes/pisces.js?v=6.7.0"></script>
+
+
+
   
   <script src="/js/src/scrollspy.js?v=6.7.0"></script>
 <script src="/js/src/post-details.js?v=6.7.0"></script>
@@ -1281,11 +1293,15 @@ int root = 0, cnt = 0;
 
   
   
-  <script src="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.min.js"></script>
+    
+  
+  <script src="https://cdn.bootcss.com/gitalk/1.5.0/gitalk.min.js"></script>
 
   
   
-  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1.4.0/dist/gitalk.css">
+    
+  
+  <link rel="stylesheet" href="https://cdn.bootcss.com/gitalk/1.5.0/gitalk.css">
 
   
   
@@ -1649,8 +1665,39 @@ int root = 0, cnt = 0;
 
   
     
-      <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/katex@0.7.1/dist/katex.min.css">
+      <script type="text/x-mathjax-config">
+  
 
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+      for (i = 0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+<script src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<style>
+.MathJax_Display {
+  overflow: auto hidden;
+}
+</style>
 
     
   
