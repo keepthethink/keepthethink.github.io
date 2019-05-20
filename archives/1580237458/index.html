@@ -113,7 +113,7 @@
 <meta property="og:site_name" content="Heliumの博客">
 <meta property="og:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现：">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-05-05T06:55:57.223Z">
+<meta property="og:updated_time" content="2019-05-12T10:09:53.423Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一维数据结构学习笔记">
 <meta name="twitter:description" content="一维数据结构学习笔记链表链表:按顺序记录元素的线性数据结构。 其中的“顺序”是逻辑上的顺序，不一定是物理存储上的顺序。 链表分为单向与双向两种： 1.单向链表:每个元素只记录了下一个元素的位置。 2.双向链表:每个元素记录了上一个及下一个元素的位置。 代码实现：">
@@ -471,7 +471,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-05 14:55:57" itemprop="dateModified" datetime="2019-05-05T14:55:57+08:00">2019-05-05</time>
+                <time title="修改时间：2019-05-12 18:09:53" itemprop="dateModified" datetime="2019-05-12T18:09:53+08:00">2019-05-12</time>
               
             
           </span>
@@ -620,19 +620,19 @@ delete i;
 <p>如果有变量用来记录链表头，头被删除时要记得更新。</p>
 <p>链表尾同理。</p>
 </blockquote>
-<h3 id="链表-Q-amp-A"><a href="#链表-Q-amp-A" class="headerlink" title="链表 Q&amp;A"></a>链表 Q&amp;A</h3><p><strong>Q：</strong>单向链表可以进行删除元素操作吗?</p>
-<p><strong>A：</strong>可以。通过预判下一个元素的方式，找到要删除元素的上一个元素，再更新下一个元素。</p>
+<h3 id="链表-Q-amp-A"><a href="#链表-Q-amp-A" class="headerlink" title="链表 Q&amp;A"></a>链表 Q&amp;A</h3><p><strong>Q：</strong> 单向链表可以进行删除元素操作吗?</p>
+<p><strong>A：</strong> 可以。通过预判下一个元素的方式，找到要删除元素的上一个元素，再更新下一个元素。</p>
 <pre><code class="cpp">if (pr -&gt; next != NULL) {
     pr -&gt; next = pr -&gt; next -&gt; next;
 }
 </code></pre>
 <p>当然，还是要特判删除链表头的情况。</p>
-<p><strong>Q：</strong>还有别的方式可以用来实现链表吗?</p>
-<p><strong>A：</strong>通常情况下，使用数组来实现链表会更加简便。</p>
+<p><strong>Q：</strong> 还有别的方式可以用来实现链表吗?</p>
+<p><strong>A：</strong> 通常情况下，使用数组来实现链表会更加简便。</p>
 <p>给每个元素一个编号(地址)，以代替指针的引用。</p>
 <p>为了记录每个元素的属性，可以使用结构体、二维数组或者多个数组。</p>
-<p><strong>Q：</strong>用数组实现链表有哪些缺点?</p>
-<p><strong>A：</strong>1.数组必须一次性初始化，并且长度固定。2.删除元素不会真正的释放空间。</p>
+<p><strong>Q：</strong> 用数组实现链表有哪些缺点?</p>
+<p><strong>A：</strong> 1.数组必须一次性初始化，并且长度固定。2.删除元素不会真正的释放空间。</p>
 <h2 id="队列"><a href="#队列" class="headerlink" title="队列"></a>队列</h2><p>从严格意义上来说，队列是一种特殊的链表，只支持添加队列尾元素和删除队列头元素两种操作。</p>
 <p>或者说，队列是链表的子集。</p>
 <h3 id="队列常用操作-从队列尾部添加元素"><a href="#队列常用操作-从队列尾部添加元素" class="headerlink" title="队列常用操作:从队列尾部添加元素"></a>队列常用操作:从队列尾部添加元素</h3><p>创建一个新元素，将队尾元素的下一个元素指向新元素。</p>
@@ -685,15 +685,15 @@ int head = 0, tile = 0;
     }
 }
 </code></pre>
-<h3 id="队列-Q-amp-A"><a href="#队列-Q-amp-A" class="headerlink" title="队列 Q&amp;A"></a>队列 Q&amp;A</h3><p><strong>Q：</strong>队列是单向链表还是双向链表?</p>
-<p><strong>A：</strong>使用单向链表足以支持队列的操作。</p>
-<p><strong>Q：</strong>如果是双向队列，需要额外增加哪些操作?</p>
-<p><strong>A：</strong>添加时要设置新元素的前一个元素，删除时要清空新队头的前一个元素。</p>
-<p><strong>Q：</strong>数组队列有哪些优点与缺点?</p>
-<p><strong>A：</strong>优点：队列不需要删除中间元素，数组完全满足队列的操作要求。</p>
+<h3 id="队列-Q-amp-A"><a href="#队列-Q-amp-A" class="headerlink" title="队列 Q&amp;A"></a>队列 Q&amp;A</h3><p><strong>Q：</strong> 队列是单向链表还是双向链表?</p>
+<p><strong>A：</strong> 使用单向链表足以支持队列的操作。</p>
+<p><strong>Q：</strong> 如果是双向队列，需要额外增加哪些操作?</p>
+<p><strong>A：</strong> 添加时要设置新元素的前一个元素，删除时要清空新队头的前一个元素。</p>
+<p><strong>Q：</strong> 数组队列有哪些优点与缺点?</p>
+<p><strong>A：</strong> 优点：队列不需要删除中间元素，数组完全满足队列的操作要求。</p>
 <p>缺点：删除掉的空间无法被重复利用。</p>
-<p><strong>Q：</strong>如何区分循环队列是满还是空?</p>
-<p><strong>A：</strong>有两种方案：</p>
+<p><strong>Q：</strong> 如何区分循环队列是满还是空?</p>
+<p><strong>A：</strong> 有两种方案：</p>
 <blockquote>
 <p>1.用一个额外的变量记录队列的元素个数。</p>
 <p>2.将实际队列的容量变为数组长度-1，让队列空和满时的队尾指针在不同的位置。</p>
@@ -1030,7 +1030,7 @@ oldTail -&gt; prev = NULL;
                   </li>
                 
                   <li class="links-of-blogroll-item">
-                    <a href="http://xht37.cnblogs.com/" title="http://xht37.cnblogs.com/" rel="noopener" target="_blank">xht37</a>
+                    <a href="http://cnblogs.com/xht37/" title="http://cnblogs.com/xht37/" rel="noopener" target="_blank">xht37</a>
                   </li>
                 
               </ul>
@@ -1104,7 +1104,7 @@ oldTail -&gt; prev = NULL;
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">32 分钟</span>
+    <span title="站点阅读时长">33 分钟</span>
   
 </div>
 
