@@ -116,7 +116,7 @@
 <meta property="og:image" content="https://i.loli.net/2019/04/26/5cc2c1cf0d688.jpg">
 <meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142149@2x.jpg">
 <meta property="og:image" content="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg">
-<meta property="og:updated_time" content="2019-05-31T02:06:29.212Z">
+<meta property="og:updated_time" content="2019-05-31T12:43:16.749Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DNS-over-HTTPS(DoH)简析与配置">
 <meta name="twitter:description" content="本文同步发布于 Heliumの博客，到我的博客阅读体验更佳QwQ DNS是什么DNS（Domain Name System）是一项网络服务，用途是对全球各个网站的域名进行解析。如果听不懂上面这句话也没关系，接下来会讲解。如果你是网络方面的大牛可以直接跳过或关闭此网页。 简明易懂的DNS举个例子，从前有个叫小明的人（目测此人已累死），开了一家商店。一开始顾客要去购物时,就直接去商店里买。 但由于网络">
@@ -475,7 +475,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-05-31 10:06:29" itemprop="dateModified" datetime="2019-05-31T10:06:29+08:00">2019-05-31</time>
+                <time title="修改时间：2019-05-31 20:43:16" itemprop="dateModified" datetime="2019-05-31T20:43:16+08:00">2019-05-31</time>
               
             
           </span>
@@ -527,7 +527,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">4.1k</span>
+                <span title="本文字数">4.5k</span>
               
 
               
@@ -604,6 +604,11 @@
 <p>你的电脑 -&gt; DoH服务器 -&gt; DNS服务器 -&gt; DoH服务器 -&gt; 你的电脑</p>
 </blockquote>
 <p>以上流程中的一个箭头代表一个HTTPS加密链接，使得该过程中的所有流量皆受到强加密，这样一来，除非拖出量子计算机或智子，否则绝无可能被破解。</p>
+<p>（当然，如果HTTPS本身出现漏洞，流量自然就会被破解。但这样一来所有与网络有关的事务都会彻底崩溃，不多你一个。）</p>
+<h2 id="提示"><a href="#提示" class="headerlink" title="提示"></a>提示</h2><ol>
+<li>本人电脑为macOS + Firefox，亲测有效。</li>
+<li>新疆OIer会因为某些原因而无法使用DoH。</li>
+</ol>
 <h2 id="在Firefox浏览器中体验DoH"><a href="#在Firefox浏览器中体验DoH" class="headerlink" title="在Firefox浏览器中体验DoH"></a>在Firefox浏览器中体验DoH</h2><p>首先，把你的Firefox Quantum更新到最新版。（废话）</p>
 <p>点击右侧的“菜单”，就是那个三条横线的图标；</p>
 <p>在菜单里点击“首选项”；</p>
@@ -612,6 +617,18 @@
 <p>滚动页面到最下方，选择“网络设置”；</p>
 <p><img src="https://keepthethink.github.io/images/Jietu20190416-142524@2x.jpg" alt></p>
 <p>在弹出窗口的最下方选择“启用基于HTTPS的DNS”，点击“使用默认值”即可。</p>
+<h2 id="在Google-Chrome中体验DoH"><a href="#在Google-Chrome中体验DoH" class="headerlink" title="在Google Chrome中体验DoH"></a>在Google Chrome中体验DoH</h2><p>遗憾的是，直到这篇科普写完时，Chrome仍然不支持直接配置DoH。如果你希望使用Chrome，请参见下面的教程。</p>
+<h2 id="在Windows上使用DoH"><a href="#在Windows上使用DoH" class="headerlink" title="在Windows上使用DoH"></a>在Windows上使用DoH</h2><p>想再Windows上使用DoH？直接安装Firefox不就好了？</p>
+<p>当然，如果你是一名狂信徒，非要使用其他浏览器，我这里倒是有个思路：</p>
+<ol>
+<li><p>买一台服务器，系统是Linux。</p>
+</li>
+<li><p>在服务器上重复“在Linux中体验DoH”中的方案</p>
+</li>
+<li><p>把你的DNS服务器地址设为你的服务器的公网IP地址</p>
+</li>
+</ol>
+<p>当然，可能你自己得花点钱。</p>
 <h2 id="在macOS中体验DoH"><a href="#在macOS中体验DoH" class="headerlink" title="在macOS中体验DoH"></a>在macOS中体验DoH</h2><p>首先，为了安装必要的组件，我们首先要安装Homebrew软件包管理器。在终端中输入：</p>
 <pre><code class="shell">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
 </code></pre>
@@ -628,6 +645,7 @@ proxy-dns-upstream:
 <p>配置结束，启动服务：</p>
 <pre><code>sudo cloudflared service install
 </code></pre><p>QED！现在你的电脑已经成了一台DoH服务器，高兴的话你也可以把它当作DNS服务器来用。打开 系统首选项 -&gt; 网络 -&gt; 高级 -&gt; DNS，在列表的最顶端添加 127.0.0.1 即可。</p>
+<h2 id="在Linux中体验DoH"><a href="#在Linux中体验DoH" class="headerlink" title="在Linux中体验DoH"></a>在Linux中体验DoH</h2><p>同macOS，但安装时一定要记得加PPA源～</p>
 <h2 id="DoH的使用测试"><a href="#DoH的使用测试" class="headerlink" title="DoH的使用测试"></a>DoH的使用测试</h2><p>用dig命令测试一下，发现DOH的使用体验还是相当不错的。对域名<a href="http://www.google.com的查询结果如下：" target="_blank" rel="noopener">www.google.com的查询结果如下：</a></p>
 <pre><code>$ dig @127.0.0.1 www.google.com
 
@@ -998,7 +1016,7 @@ www.google.com.        66    IN    A    216.58.194.196
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS是什么"><span class="nav-number">1.</span> <span class="nav-text">DNS是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简明易懂的DNS"><span class="nav-number">1.1.</span> <span class="nav-text">简明易懂的DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cloudflare-DNS"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cloudflare DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Public-DNS"><span class="nav-number">1.1.2.</span> <span class="nav-text">Google Public DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenDNS"><span class="nav-number">1.1.3.</span> <span class="nav-text">OpenDNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS查询"><span class="nav-number">1.2.</span> <span class="nav-text">DNS查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">1.3.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS缓存"><span class="nav-number">1.4.</span> <span class="nav-text">DNS缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS劫持与HTTP劫持"><span class="nav-number">1.5.</span> <span class="nav-text">DNS劫持与HTTP劫持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS劫持：当DNS不那么老实"><span class="nav-number">1.5.1.</span> <span class="nav-text">DNS劫持：当DNS不那么老实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP劫持：当ISP不那么老实"><span class="nav-number">1.5.2.</span> <span class="nav-text">HTTP劫持：当ISP不那么老实</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DoH的具体原理"><span class="nav-number">2.</span> <span class="nav-text">DoH的具体原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#在Firefox浏览器中体验DoH"><span class="nav-number">2.1.</span> <span class="nav-text">在Firefox浏览器中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在macOS中体验DoH"><span class="nav-number">2.2.</span> <span class="nav-text">在macOS中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoH的使用测试"><span class="nav-number">2.3.</span> <span class="nav-text">DoH的使用测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DNS是什么"><span class="nav-number">1.</span> <span class="nav-text">DNS是什么</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简明易懂的DNS"><span class="nav-number">1.1.</span> <span class="nav-text">简明易懂的DNS</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Cloudflare-DNS"><span class="nav-number">1.1.1.</span> <span class="nav-text">Cloudflare DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Google-Public-DNS"><span class="nav-number">1.1.2.</span> <span class="nav-text">Google Public DNS:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#OpenDNS"><span class="nav-number">1.1.3.</span> <span class="nav-text">OpenDNS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS查询"><span class="nav-number">1.2.</span> <span class="nav-text">DNS查询</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#注意事项"><span class="nav-number">1.3.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS缓存"><span class="nav-number">1.4.</span> <span class="nav-text">DNS缓存</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DNS劫持与HTTP劫持"><span class="nav-number">1.5.</span> <span class="nav-text">DNS劫持与HTTP劫持</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#DNS劫持：当DNS不那么老实"><span class="nav-number">1.5.1.</span> <span class="nav-text">DNS劫持：当DNS不那么老实</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#HTTP劫持：当ISP不那么老实"><span class="nav-number">1.5.2.</span> <span class="nav-text">HTTP劫持：当ISP不那么老实</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#DoH的具体原理"><span class="nav-number">2.</span> <span class="nav-text">DoH的具体原理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#提示"><span class="nav-number">2.1.</span> <span class="nav-text">提示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Firefox浏览器中体验DoH"><span class="nav-number">2.2.</span> <span class="nav-text">在Firefox浏览器中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Google-Chrome中体验DoH"><span class="nav-number">2.3.</span> <span class="nav-text">在Google Chrome中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Windows上使用DoH"><span class="nav-number">2.4.</span> <span class="nav-text">在Windows上使用DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在macOS中体验DoH"><span class="nav-number">2.5.</span> <span class="nav-text">在macOS中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#在Linux中体验DoH"><span class="nav-number">2.6.</span> <span class="nav-text">在Linux中体验DoH</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#DoH的使用测试"><span class="nav-number">2.7.</span> <span class="nav-text">DoH的使用测试</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div>
             
 
           </div>
@@ -1046,7 +1064,7 @@ www.google.com.        66    IN    A    216.58.194.196
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">36 分钟</span>
   
 </div>
 
