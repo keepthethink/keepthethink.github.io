@@ -1,6 +1,7 @@
 {
   "name": "Heliumの博客",
-  "short_name": "Junzhou",
+  "short_name": "Helium",
+  "description": "About an data engineer & PM who loves data.",
   "theme_color": "#2196f3",
   "background_color": "#2196f3",
   "display": "standalone",
