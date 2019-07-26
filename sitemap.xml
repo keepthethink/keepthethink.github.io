@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://keepthethink.github.io/cross/index.html</loc>
+    
+    <lastmod>2019-07-26T08:40:07.534Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://keepthethink.github.io/archives/3811762271/</loc>
     
     <lastmod>2019-07-11T07:48:02.194Z</lastmod>
@@ -12,13 +19,6 @@
     <loc>https://keepthethink.github.io/about/index.html</loc>
     
     <lastmod>2019-07-11T07:47:09.990Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://keepthethink.github.io/cross/index.html</loc>
-    
-    <lastmod>2019-07-07T10:32:00.361Z</lastmod>
     
   </url>
   
