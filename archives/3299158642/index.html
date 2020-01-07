@@ -105,18 +105,18 @@
 
 
 
-  <meta name="description" content="题目描述洛谷P1226 说明看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivalent t">
+  <meta name="description" content="题目描述 洛谷P1226  说明 看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivale">
 <meta name="keywords" content="洛谷,题解">
 <meta property="og:type" content="article">
 <meta property="og:title" content="洛谷题解 P1226 【【模板】快速幂||取余运算】">
 <meta property="og:url" content="https://keepthethink.github.io/archives/3299158642/index.html">
 <meta property="og:site_name" content="Heliumの博客">
-<meta property="og:description" content="题目描述洛谷P1226 说明看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivalent t">
+<meta property="og:description" content="题目描述 洛谷P1226  说明 看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivale">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-05-05T06:55:57.228Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="洛谷题解 P1226 【【模板】快速幂||取余运算】">
-<meta name="twitter:description" content="题目描述洛谷P1226 说明看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivalent t">
+<meta name="twitter:description" content="题目描述 洛谷P1226  说明 看到题解里貌似并没有Python的题解，我来发一个，共两行。 众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然 对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的： 12345pow(x, y, z=None, /)    Equivale">
 
 
 
@@ -523,7 +523,7 @@
                 
                   <span class="post-meta-item-text">本文字数：</span>
                 
-                <span title="本文字数">699</span>
+                <span title="本文字数">703</span>
               
 
               
@@ -557,8 +557,10 @@
       
 
       
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">洛谷P1226</a></p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>看到题解里貌似并没有Python的题解，我来发一个，共两行。</p>
+        <h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
+<p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">洛谷P1226</a></p>
+<h1 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h1>
+<p>看到题解里貌似并没有Python的题解，我来发一个，共两行。</p>
 <p>众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然</p>
 <p>对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pow(x, y, z=<span class="literal">None</span>, /)</span><br><span class="line">    Equivalent to x**y (<span class="keyword">with</span> two arguments) <span class="keyword">or</span> x**y % z (<span class="keyword">with</span> three arguments)</span><br><span class="line"></span><br><span class="line">    Some types, such <span class="keyword">as</span> ints, are able to use a more efficient algorithm when</span><br><span class="line">    invoked using the three argument form.</span><br></pre></td></tr></table></figure>
@@ -920,7 +922,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text">题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text">说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题目描述"><span class="nav-number">1.</span> <span class="nav-text"> 题目描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#说明"><span class="nav-number">2.</span> <span class="nav-text"> 说明</span></a></li></ol></div>
             
 
           </div>
@@ -959,7 +961,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="站点总字数">46k</span>
+    <span title="站点总字数">47k</span>
   
 
   
@@ -968,7 +970,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="站点阅读时长">42 分钟</span>
+    <span title="站点阅读时长">43 分钟</span>
   
 </div>
 
