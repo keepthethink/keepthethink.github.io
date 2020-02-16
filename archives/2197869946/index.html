@@ -371,7 +371,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#输入输出格式"><span class="post-toc-number">2.</span> <span class="post-toc-text">输入输出格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入格式："><span class="post-toc-number">2.1.</span> <span class="post-toc-text">输入格式：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出格式："><span class="post-toc-number">2.2.</span> <span class="post-toc-text">输出格式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#输入输出样例"><span class="post-toc-number">3.</span> <span class="post-toc-text">输入输出样例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入样例-1："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">输入样例#1：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出样例-1："><span class="post-toc-number">3.2.</span> <span class="post-toc-text">输出样例#1：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">4.</span> <span class="post-toc-text">说明</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 题目描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#输入输出格式"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 输入输出格式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入格式"><span class="post-toc-number">2.1.</span> <span class="post-toc-text"> 输入格式：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出格式"><span class="post-toc-number">2.2.</span> <span class="post-toc-text"> 输出格式：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#输入输出样例"><span class="post-toc-number">3.</span> <span class="post-toc-text"> 输入输出样例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输入样例1"><span class="post-toc-number">3.1.</span> <span class="post-toc-text"> 输入样例#1：</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#输出样例1"><span class="post-toc-number">3.2.</span> <span class="post-toc-text"> 输出样例#1：</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">4.</span> <span class="post-toc-text"> 说明</span></a></li></ol>
     </ul>
     
 
@@ -429,7 +429,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:580字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:586字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈2分</span>
     |
@@ -564,14 +564,22 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p>棋盘上$A$点有一个过河卒，需要走到目标$B$点。卒行走的规则：可以向下、或者向右。同时在棋盘上$C$点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
-<p>棋盘用坐标表示，$A$点$(0, 0)$、$B$点$(n, m)$($n$, $m$为不超过$20$的整数)，同样马的位置坐标是需要给出的。</p>
-<p>现在要求你计算出卒从$A$点能够到达$B$点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
-<h1 id="输入输出格式"><a href="#输入输出格式" class="headerlink" title="输入输出格式"></a>输入输出格式</h1><h2 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h2><p>一行四个数据，分别表示$B$点坐标和马的坐标。</p>
-<h2 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h2><p>一个数据，表示所有的路径条数。</p>
-<h1 id="输入输出样例"><a href="#输入输出样例" class="headerlink" title="输入输出样例"></a>输入输出样例</h1><h2 id="输入样例-1："><a href="#输入样例-1：" class="headerlink" title="输入样例#1："></a>输入样例#1：</h2><p>6 6 3 3</p>
-<h2 id="输出样例-1："><a href="#输出样例-1：" class="headerlink" title="输出样例#1："></a>输出样例#1：</h2><p>6</p>
-<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>结果可能很大！</p>
+        <h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
+<p>棋盘上<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>点有一个过河卒，需要走到目标<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>点。卒行走的规则：可以向下、或者向右。同时在棋盘上<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>C</mi></mrow><annotation encoding="application/x-tex">C</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.07153em;">C</span></span></span></span>点有一个对方的马，该马所在的点和所有跳跃一步可达的点称为对方马的控制点。因此称之为“马拦过河卒”。</p>
+<p>棋盘用坐标表示，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mn>0</mn><mo separator="true">,</mo><mn>0</mn><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(0, 0)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord">0</span><span class="mclose">)</span></span></span></span>、<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mo stretchy="false">(</mo><mi>n</mi><mo separator="true">,</mo><mi>m</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">(n, m)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">m</span><span class="mclose">)</span></span></span></span>(<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>m</mi></mrow><annotation encoding="application/x-tex">m</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">m</span></span></span></span>为不超过<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>20</mn></mrow><annotation encoding="application/x-tex">20</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">2</span><span class="mord">0</span></span></span></span>的整数)，同样马的位置坐标是需要给出的。</p>
+<p>现在要求你计算出卒从<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>A</mi></mrow><annotation encoding="application/x-tex">A</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">A</span></span></span></span>点能够到达<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>点的路径的条数，假设马的位置是固定不动的，并不是卒走一步马走一步。</p>
+<h1 id="输入输出格式"><a class="markdownIt-Anchor" href="#输入输出格式"></a> 输入输出格式</h1>
+<h2 id="输入格式"><a class="markdownIt-Anchor" href="#输入格式"></a> 输入格式：</h2>
+<p>一行四个数据，分别表示<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>B</mi></mrow><annotation encoding="application/x-tex">B</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05017em;">B</span></span></span></span>点坐标和马的坐标。</p>
+<h2 id="输出格式"><a class="markdownIt-Anchor" href="#输出格式"></a> 输出格式：</h2>
+<p>一个数据，表示所有的路径条数。</p>
+<h1 id="输入输出样例"><a class="markdownIt-Anchor" href="#输入输出样例"></a> 输入输出样例</h1>
+<h2 id="输入样例1"><a class="markdownIt-Anchor" href="#输入样例1"></a> 输入样例#1：</h2>
+<p>6 6 3 3</p>
+<h2 id="输出样例1"><a class="markdownIt-Anchor" href="#输出样例1"></a> 输出样例#1：</h2>
+<p>6</p>
+<h1 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h1>
+<p>结果可能很大！</p>
 <hr>
 <p>看到题目二话不说用了搜索，直到在提交前看了一下算法标签，又看了一下数据范围。。。</p>
 <p>状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。</p>
@@ -976,7 +984,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
                 
         </div>
 
