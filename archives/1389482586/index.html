@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -429,7 +434,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:551字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:524字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈2分</span>
     |
@@ -581,7 +586,69 @@
 <h2 id="边界条件"><a class="markdownIt-Anchor" href="#边界条件"></a> 边界条件</h2>
 <p><s>显然，</s> 若两人本来就相邻，则<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>d</mi><msub><mi>p</mi><mrow><mi>i</mi><mo separator="true">,</mo><mi>j</mi></mrow></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">dp_{i,j} = 1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.980548em;vertical-align:-0.286108em;"></span><span class="mord mathdefault">d</span><span class="mord"><span class="mord mathdefault">p</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.311664em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mpunct mtight">,</span><span class="mord mathdefault mtight" style="margin-right:0.05724em;">j</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.286108em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">1</span></span></span></span></p>
 <h2 id="代码"><a class="markdownIt-Anchor" href="#代码"></a> 代码</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">100</span> * <span class="number">2</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> w[MAXN][MAXN], f[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> t;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span>(t--) &#123;</span><br><span class="line">        <span class="built_in">memset</span>(f, <span class="number">0</span>, <span class="keyword">sizeof</span>(f)); <span class="comment">//数组清零，我在这里掉了两次坑</span></span><br><span class="line">        <span class="built_in">memset</span>(w, <span class="number">0</span>, <span class="keyword">sizeof</span>(w));</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= n; j++) &#123;</span><br><span class="line">                <span class="keyword">char</span> c;</span><br><span class="line">                <span class="built_in">cin</span> &gt;&gt; c;</span><br><span class="line">                w[i][j] = c - <span class="string">'0'</span>;</span><br><span class="line">                w[i + n][j + n] = w[i + n][j] = w[i][j + n] = w[i][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> l = <span class="number">1</span>; l &lt;= n + <span class="number">1</span>; l++) &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i + l - <span class="number">1</span> &lt;= n * <span class="number">2</span>; i++) &#123;</span><br><span class="line">                <span class="keyword">int</span> j = i + l - <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">if</span>(l &lt;= <span class="number">2</span>) &#123;</span><br><span class="line">                    f[i][j] = <span class="number">1</span>; <span class="comment">//边界条件</span></span><br><span class="line">                    <span class="keyword">continue</span>;</span><br><span class="line">                &#125;</span><br><span class="line"></span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> k = i; k &lt;= j; k++) &#123;</span><br><span class="line">                    <span class="keyword">if</span>(f[i][k] &amp;&amp; f[k][j] &amp;&amp; (w[i][k] || w[j][k])) &#123;</span><br><span class="line">                        f[i][j] = <span class="number">1</span>;</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(f[i][i + n]) &#123;</span><br><span class="line">                ans++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">            <span class="keyword">if</span>(f[i][i + n]) &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;iostream&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstring&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">100</span> * <span class="hljs-number">2</span> + <span class="hljs-number">5</span>;
+
+<span class="hljs-keyword">int</span> w[MAXN][MAXN], f[MAXN][MAXN];
+<span class="hljs-keyword">int</span> n;
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">int</span> t;
+
+    <span class="hljs-built_in">cin</span> &gt;&gt; t;
+    <span class="hljs-keyword">while</span>(t--) {
+        <span class="hljs-built_in">memset</span>(f, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(f)); <span class="hljs-comment">//数组清零，我在这里掉了两次坑</span>
+        <span class="hljs-built_in">memset</span>(w, <span class="hljs-number">0</span>, <span class="hljs-keyword">sizeof</span>(w));
+
+        <span class="hljs-built_in">cin</span> &gt;&gt; n;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) {
+                <span class="hljs-keyword">char</span> c;
+                <span class="hljs-built_in">cin</span> &gt;&gt; c;
+                w[i][j] = c - <span class="hljs-string">'0'</span>;
+                w[i + n][j + n] = w[i + n][j] = w[i][j + n] = w[i][j];
+            }
+        }
+
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> l = <span class="hljs-number">1</span>; l &lt;= n + <span class="hljs-number">1</span>; l++) {
+            <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i + l - <span class="hljs-number">1</span> &lt;= n * <span class="hljs-number">2</span>; i++) {
+                <span class="hljs-keyword">int</span> j = i + l - <span class="hljs-number">1</span>;
+
+                <span class="hljs-keyword">if</span>(l &lt;= <span class="hljs-number">2</span>) {
+                    f[i][j] = <span class="hljs-number">1</span>; <span class="hljs-comment">//边界条件</span>
+                    <span class="hljs-keyword">continue</span>;
+                }
+
+                <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> k = i; k &lt;= j; k++) {
+                    <span class="hljs-keyword">if</span>(f[i][k] &amp;&amp; f[k][j] &amp;&amp; (w[i][k] || w[j][k])) {
+                        f[i][j] = <span class="hljs-number">1</span>;
+                        <span class="hljs-keyword">break</span>;
+                    }
+                }
+            }
+        }
+
+        <span class="hljs-keyword">int</span> ans = <span class="hljs-number">0</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+            <span class="hljs-keyword">if</span>(f[i][i + n]) {
+                ans++;
+            }
+        }
+        <span class="hljs-built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>;
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+            <span class="hljs-keyword">if</span>(f[i][i + n]) {
+                <span class="hljs-built_in">cout</span> &lt;&lt; i &lt;&lt; <span class="hljs-built_in">endl</span>;
+            }
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -981,7 +1048,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1067,6 +1134,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1077,6 +1150,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

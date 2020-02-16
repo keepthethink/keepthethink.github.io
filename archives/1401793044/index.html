@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -429,7 +434,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:1.8k字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:1.7k字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈7分</span>
     |
@@ -575,24 +580,44 @@
 <p><code>node.size</code>：以节点node为根节点的子树的节点总数</p>
 <p><code>node.cnt</code>：数值与节点node相同的节点的数量（都储存在节点node中）</p>
 <p>代码：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> v, father, ch[<span class="number">2</span>], size, cnt;</span><br><span class="line"></span><br><span class="line">    Node(<span class="keyword">int</span> v = <span class="number">0</span>, <span class="keyword">int</span> father = <span class="number">0</span>, <span class="keyword">int</span> size = <span class="number">0</span>, <span class="keyword">int</span> cnt = <span class="number">0</span>):v(v), father(father), size(size), cnt(cnt) &#123;</span><br><span class="line">        ch[<span class="number">0</span>] = ch[<span class="number">1</span>] = <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> v, father, ch[<span class="hljs-number">2</span>], size, cnt;
+
+    Node(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> father = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> size = <span class="hljs-number">0</span>, <span class="hljs-keyword">int</span> cnt = <span class="hljs-number">0</span>):v(v), father(father), size(size), cnt(cnt) {
+        ch[<span class="hljs-number">0</span>] = ch[<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;
+    }
+};
+</code></pre>
 <h2 id="树"><a class="markdownIt-Anchor" href="#树"></a> 树</h2>
 <p><code>root</code>：根节点</p>
 <p><code>cnt</code>：总结点数</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Node node[MAXN];</span><br><span class="line"><span class="keyword">int</span> root = <span class="number">0</span>, cnt = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node node[MAXN];
+<span class="hljs-keyword">int</span> root = <span class="hljs-number">0</span>, cnt = <span class="hljs-number">0</span>;
+</code></pre>
 <h1 id="操作"><a class="markdownIt-Anchor" href="#操作"></a> 操作</h1>
 <h2 id="基本操作"><a class="markdownIt-Anchor" href="#基本操作"></a> 基本操作</h2>
 <h3 id="pushup"><a class="markdownIt-Anchor" href="#pushup"></a> pushup</h3>
 <p><code>pushup()</code>函数：<strong>更新</strong>节点p的<code>size</code>值</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">pushup</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    node[p].size = node[node[p].ch[<span class="number">0</span>]].size + node[p].cnt + node[node[p].ch[<span class="number">1</span>]].size; <span class="comment">//节点数 = 左子树节点数 + 本身的节点数 + 右子树节点数</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">pushup</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>{
+    node[p].size = node[node[p].ch[<span class="hljs-number">0</span>]].size + node[p].cnt + node[node[p].ch[<span class="hljs-number">1</span>]].size; <span class="hljs-comment">//节点数 = 左子树节点数 + 本身的节点数 + 右子树节点数</span>
+}
+</code></pre>
 <hr>
 <h3 id="check"><a class="markdownIt-Anchor" href="#check"></a> check</h3>
 <p><code>check()</code>函数：询问节点p是其父节点的左子节点还是右子节点</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">check</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> node[node[p].father].ch[<span class="number">0</span>] == p ? <span class="number">0</span> : <span class="number">1</span>; <span class="comment">//0代表左子节点，1代表右子节点</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">check</span><span class="hljs-params">(<span class="hljs-keyword">int</span> p)</span> </span>{
+    <span class="hljs-keyword">return</span> node[node[p].father].ch[<span class="hljs-number">0</span>] == p ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>; <span class="hljs-comment">//0代表左子节点，1代表右子节点</span>
+}
+</code></pre>
 <hr>
 <h3 id="connect"><a class="markdownIt-Anchor" href="#connect"></a> connect</h3>
 <p><code>connect()</code>函数：将节点x连接为节点f的子节点，方向为d (d = 0, 1，同上)</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">connect</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> f, <span class="keyword">int</span> d)</span> </span>&#123;</span><br><span class="line">    node[f].ch[d] = x; <span class="comment">//将节点f的子节点设置为x</span></span><br><span class="line">    node[x].father = f; <span class="comment">//将节点x的父节点设置为f</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">connect</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> f, <span class="hljs-keyword">int</span> d)</span> </span>{
+    node[f].ch[d] = x; <span class="hljs-comment">//将节点f的子节点设置为x</span>
+    node[x].father = f; <span class="hljs-comment">//将节点x的父节点设置为f</span>
+}
+</code></pre>
 <h2 id="旋转"><a class="markdownIt-Anchor" href="#旋转"></a> 旋转</h2>
 <h3 id="rotate"><a class="markdownIt-Anchor" href="#rotate"></a> rotate</h3>
 <p>旋转是平衡树最主要的操作，其本质在于，每次进行旋转时，左右子树当中之一高度 -1，另外一棵高度 +1，以达到平衡的目的。</p>
@@ -607,33 +632,113 @@
 <p>第三次连边，节点x的父节点成为节点x的右子节点</p>
 <p><img src="https://keepthethink.github.io/images/right_rotate.jpg" alt></p>
 <p>旋转操作只与标为红，蓝，绿的三个部分有关。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">rotate</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> y = node[x].father, z = node[y].father, d = check(x), w = node[x].ch[d ^ <span class="number">1</span>]; <span class="comment">//w判断应该左旋还是右旋</span></span><br><span class="line">    connect(w, y, d); <span class="comment">//第一次连边，节点x的子节点连接到x的父节点，方向与节点x相同</span></span><br><span class="line">    connect(x, z, check(y)); <span class="comment">//第二次连边，节点x连接到节点x的父节点的父节点，方向与x的父节点相同</span></span><br><span class="line">    connect(y, x, d ^ <span class="number">1</span>); <span class="comment">//第三次连边，节点x的父节点连接到节点x，方向与节点x原先的方向相反</span></span><br><span class="line">    pushup(y); <span class="comment">//更新子树</span></span><br><span class="line">    pushup(x); <span class="comment">//更新子树</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">rotate</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    <span class="hljs-keyword">int</span> y = node[x].father, z = node[y].father, d = check(x), w = node[x].ch[d ^ <span class="hljs-number">1</span>]; <span class="hljs-comment">//w判断应该左旋还是右旋</span>
+    connect(w, y, d); <span class="hljs-comment">//第一次连边，节点x的子节点连接到x的父节点，方向与节点x相同</span>
+    connect(x, z, check(y)); <span class="hljs-comment">//第二次连边，节点x连接到节点x的父节点的父节点，方向与x的父节点相同</span>
+    connect(y, x, d ^ <span class="hljs-number">1</span>); <span class="hljs-comment">//第三次连边，节点x的父节点连接到节点x，方向与节点x原先的方向相反</span>
+    pushup(y); <span class="hljs-comment">//更新子树</span>
+    pushup(x); <span class="hljs-comment">//更新子树</span>
+}
+</code></pre>
 <h2 id="伸展"><a class="markdownIt-Anchor" href="#伸展"></a> 伸展</h2>
 <h3 id="splay"><a class="markdownIt-Anchor" href="#splay"></a> splay</h3>
 <p>Splay操作：将节点x旋转到节点dist的子节点。通常是将该节点旋转到根节点，在这种情况下，应当将<code>root</code>置为x</p>
 <p>最朴素的想法：只要父节点不是dist就一直旋转该节点，但这样很容易被某些机（wu）智（liang）出题人卡。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> dist = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(node[x].father != dist) &#123;</span><br><span class="line">        rotate(x);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dist == <span class="number">0</span>) &#123;</span><br><span class="line">        root = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">splay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> dist = <span class="hljs-number">0</span>)</span> </span>{
+    <span class="hljs-keyword">while</span>(node[x].father != dist) {
+        rotate(x);
+    }
+    <span class="hljs-keyword">if</span>(dist == <span class="hljs-number">0</span>) {
+        root = x;
+    }
+}
+</code></pre>
 <p>所以，在实际操作中，通常会预判节点x的父节点的方向，若方向一致则旋转其父节点，减少被卡的可能性。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">splay</span><span class="params">(<span class="keyword">int</span> x, <span class="keyword">int</span> dist = <span class="number">0</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> f = node[x].father; f = node[x].father, f != dist; rotate(x)) &#123;</span><br><span class="line">        <span class="keyword">if</span>(node[f].father != dist) &#123;</span><br><span class="line">            <span class="keyword">if</span>(check(x) == check(f)) &#123;</span><br><span class="line">                rotate(f); <span class="comment">//方向一致则旋转x的父节点</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                rotate(x); <span class="comment">//方向不一致则旋转x</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(dist == <span class="number">0</span>) &#123;</span><br><span class="line">        root = x;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">splay</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x, <span class="hljs-keyword">int</span> dist = <span class="hljs-number">0</span>)</span> </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> f = node[x].father; f = node[x].father, f != dist; rotate(x)) {
+        <span class="hljs-keyword">if</span>(node[f].father != dist) {
+            <span class="hljs-keyword">if</span>(check(x) == check(f)) {
+                rotate(f); <span class="hljs-comment">//方向一致则旋转x的父节点</span>
+            } <span class="hljs-keyword">else</span> {
+                rotate(x); <span class="hljs-comment">//方向不一致则旋转x</span>
+            }
+        }
+    }
+    <span class="hljs-keyword">if</span>(dist == <span class="hljs-number">0</span>) {
+        root = x;
+    }
+}
+</code></pre>
 <h2 id="查找"><a class="markdownIt-Anchor" href="#查找"></a> 查找</h2>
 <h3 id="find"><a class="markdownIt-Anchor" href="#find"></a> find</h3>
 <p>查找值为x的节点，找到后将其置为<code>root</code>以便操作。</p>
 <p><code>find</code>操作的意义在于将值为x的节点伸展（splay）到根，在不存在值为x的节点的情况下，应将小于x的节点中最大的节点伸展（splay）到根。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">find</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cur = root;</span><br><span class="line">    <span class="keyword">while</span>(node[cur].ch[x &gt; node[cur].v] != <span class="number">0</span> &amp;&amp; x != node[cur].v) &#123;</span><br><span class="line">        cur = node[cur].ch[x &gt; node[cur].v]; <span class="comment">//查找值为x的节点</span></span><br><span class="line">    &#125;</span><br><span class="line">    splay(cur);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    <span class="hljs-keyword">int</span> cur = root;
+    <span class="hljs-keyword">while</span>(node[cur].ch[x &gt; node[cur].v] != <span class="hljs-number">0</span> &amp;&amp; x != node[cur].v) {
+        cur = node[cur].ch[x &gt; node[cur].v]; <span class="hljs-comment">//查找值为x的节点</span>
+    }
+    splay(cur);
+}
+</code></pre>
 <h2 id="公共操作"><a class="markdownIt-Anchor" href="#公共操作"></a> 公共操作</h2>
 <p>如果将本文讲的Splay打包成一个<code>class</code>，则前文所述的操作应包含在<code>private</code>中，本节所述的操作应包含在<code>public</code>中。</p>
 <h3 id="insert"><a class="markdownIt-Anchor" href="#insert"></a> insert</h3>
 <p>Splay中的<code>insert</code>其实与朴素BST中的<code>insert</code>没有什么区别，但若直接插入可能导致树退化为链，所以要在末尾处调用一次splay()函数，使Splay树保持平衡。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">insert</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cur = root, p = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">while</span>(cur != <span class="number">0</span> &amp;&amp; node[cur].v != x) &#123;</span><br><span class="line">        p = cur;</span><br><span class="line">        cur = node[cur].ch[x &lt; node[cur].v ? <span class="number">0</span> : <span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(cur != <span class="number">0</span>) &#123;</span><br><span class="line">        node[cur].cnt++;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        cur = ++cnt;</span><br><span class="line">        <span class="keyword">if</span>(p != <span class="number">0</span>) &#123;</span><br><span class="line">            node[p].ch[x &lt;= node[p].v ? <span class="number">0</span> : <span class="number">1</span>] = cur;</span><br><span class="line">        &#125;</span><br><span class="line">        node[cur] = Node(x, p, <span class="number">1</span>, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    splay(cur);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">insert</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    <span class="hljs-keyword">int</span> cur = root, p = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">while</span>(cur != <span class="hljs-number">0</span> &amp;&amp; node[cur].v != x) {
+        p = cur;
+        cur = node[cur].ch[x &lt; node[cur].v ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>];
+    }
+    <span class="hljs-keyword">if</span>(cur != <span class="hljs-number">0</span>) {
+        node[cur].cnt++;
+    } <span class="hljs-keyword">else</span> {
+        cur = ++cnt;
+        <span class="hljs-keyword">if</span>(p != <span class="hljs-number">0</span>) {
+            node[p].ch[x &lt;= node[p].v ? <span class="hljs-number">0</span> : <span class="hljs-number">1</span>] = cur;
+        }
+        node[cur] = Node(x, p, <span class="hljs-number">1</span>, <span class="hljs-number">1</span>);
+    }
+    splay(cur);
+}
+</code></pre>
 <h3 id="serial"><a class="markdownIt-Anchor" href="#serial"></a> serial</h3>
 <p><code>serial</code>操作：查询值为x的节点，在<code>find</code>操作的基础上，<code>serial</code>只需要在<code>find</code>过后输出左子树节点数量即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">serial</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    find(x);</span><br><span class="line">    <span class="keyword">return</span> node[node[root].ch[<span class="number">0</span>]].size</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">serial</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    find(x);
+    <span class="hljs-keyword">return</span> node[node[root].ch[<span class="hljs-number">0</span>]].size
+}
+</code></pre>
 <h3 id="pre"><a class="markdownIt-Anchor" href="#pre"></a> pre</h3>
 <p>找出值为x的节点的前驱，将节点splay到root后在左子树查找最大值即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">pre</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    find(x);</span><br><span class="line">    <span class="keyword">if</span>(node[root].v &lt; x) &#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cur = node[root].ch[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">while</span>(node[cur].ch[<span class="number">1</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">        cur = node[cur].ch[<span class="number">1</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">pre</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    find(x);
+    <span class="hljs-keyword">if</span>(node[root].v &lt; x) {
+        <span class="hljs-keyword">return</span> root;
+    }
+    <span class="hljs-keyword">int</span> cur = node[root].ch[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">while</span>(node[cur].ch[<span class="hljs-number">1</span>] != <span class="hljs-number">0</span>) {
+        cur = node[cur].ch[<span class="hljs-number">1</span>];
+    }
+    <span class="hljs-keyword">return</span> cur;
+}
+</code></pre>
 <h3 id="suc"><a class="markdownIt-Anchor" href="#suc"></a> suc</h3>
 <p>找出值为x的点的后继，与前驱同理。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">suc</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    find(x);</span><br><span class="line">    <span class="keyword">if</span>(node[root].v &gt; x) &#123;</span><br><span class="line">        <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> cur = node[root].ch[<span class="number">1</span>];</span><br><span class="line">    <span class="keyword">while</span>(node[cur].ch[<span class="number">0</span>] != <span class="number">0</span>) &#123;</span><br><span class="line">        cur = node[cur].ch[<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> cur;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">suc</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    find(x);
+    <span class="hljs-keyword">if</span>(node[root].v &gt; x) {
+        <span class="hljs-keyword">return</span> root;
+    }
+    <span class="hljs-keyword">int</span> cur = node[root].ch[<span class="hljs-number">1</span>];
+    <span class="hljs-keyword">while</span>(node[cur].ch[<span class="hljs-number">0</span>] != <span class="hljs-number">0</span>) {
+        cur = node[cur].ch[<span class="hljs-number">0</span>];
+    }
+    <span class="hljs-keyword">return</span> cur;
+}
+</code></pre>
 <h3 id="remove"><a class="markdownIt-Anchor" href="#remove"></a> remove</h3>
 <p>删除一个节点。</p>
 <p>删除较为复杂，分四步来完成：</p>
@@ -643,11 +748,38 @@
 <li>将<code>next</code>节点splay到<code>last</code>的子节右点，此时<code>next</code>的右子树皆大于x</li>
 <li><code>next</code>的左节点<code>rm</code>必然满足 <code>last</code> &lt; rm &lt; <code>next</code>，删除<code>rm</code>即可</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">remove</span><span class="params">(<span class="keyword">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> last = pre(x), next = suc(x);</span><br><span class="line">    splay(last);</span><br><span class="line">    splay(next, last);</span><br><span class="line">    <span class="keyword">int</span> rm = node[next].ch[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">if</span>(node[rm].cnt &gt; <span class="number">1</span>) &#123;</span><br><span class="line">        node[rm].cnt--;</span><br><span class="line">        splay(rm);</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        node[next].ch[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        pushup(next);</span><br><span class="line">        pushup(root);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">remove</span><span class="hljs-params">(<span class="hljs-keyword">int</span> x)</span> </span>{
+    <span class="hljs-keyword">int</span> last = pre(x), next = suc(x);
+    splay(last);
+    splay(next, last);
+    <span class="hljs-keyword">int</span> rm = node[next].ch[<span class="hljs-number">0</span>];
+    <span class="hljs-keyword">if</span>(node[rm].cnt &gt; <span class="hljs-number">1</span>) {
+        node[rm].cnt--;
+        splay(rm);
+    } <span class="hljs-keyword">else</span> {
+        node[next].ch[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;
+        pushup(next);
+        pushup(root);
+    }
+}
+</code></pre>
 <h3 id="rank"><a class="markdownIt-Anchor" href="#rank"></a> rank</h3>
 <p>查找排名为k的节点</p>
 <p>用一个指针cur从root开始查找，每次根据左子树大小于k的关系修改cur以及k。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">rank</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> cur = root;</span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(node[cur].ch[<span class="number">0</span>] != <span class="number">0</span> &amp;&amp; k &lt;= node[node[cur].ch[<span class="number">0</span>]].size) &#123;</span><br><span class="line">            cur = node[cur].ch[<span class="number">0</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(k &gt; node[node[cur].ch[<span class="number">0</span>]].size + node[cur].cnt) &#123;</span><br><span class="line">            k -= node[node[cur].ch[<span class="number">0</span>]].size + node[cur].cnt;</span><br><span class="line">            cur = node[cur].ch[<span class="number">1</span>];</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> cur;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">rank</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span> </span>{
+    <span class="hljs-keyword">int</span> cur = root;
+    <span class="hljs-keyword">while</span>(<span class="hljs-number">1</span>) {
+        <span class="hljs-keyword">if</span>(node[cur].ch[<span class="hljs-number">0</span>] != <span class="hljs-number">0</span> &amp;&amp; k &lt;= node[node[cur].ch[<span class="hljs-number">0</span>]].size) {
+            cur = node[cur].ch[<span class="hljs-number">0</span>];
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(k &gt; node[node[cur].ch[<span class="hljs-number">0</span>]].size + node[cur].cnt) {
+            k -= node[node[cur].ch[<span class="hljs-number">0</span>]].size + node[cur].cnt;
+            cur = node[cur].ch[<span class="hljs-number">1</span>];
+        } <span class="hljs-keyword">else</span> {
+            <span class="hljs-keyword">return</span> cur;
+        }
+    }
+}
+</code></pre>
 <h1 id="参考资料"><a class="markdownIt-Anchor" href="#参考资料"></a> 参考资料</h1>
 <p><a href="https://zh.wikipedia.org/zh-hans/%E4%BC%B8%E5%B1%95%E6%A0%91" target="_blank" rel="noopener">伸展树- 维基百科，自由的百科全书</a></p>
 <p><a href="https://www.youtube.com/watch?v=IBY4NtxmGg8" target="_blank" rel="noopener">Splay Tree Introduction</a></p>
@@ -1051,7 +1183,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1137,6 +1269,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1147,6 +1285,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

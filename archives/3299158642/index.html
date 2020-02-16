@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -570,11 +575,19 @@
 <p>看到题解里貌似并没有Python的题解，我来发一个，共两行。</p>
 <p>众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然</p>
 <p>对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pow(x, y, z=<span class="literal">None</span>, /)</span><br><span class="line">    Equivalent to x**y (<span class="keyword">with</span> two arguments) <span class="keyword">or</span> x**y % z (<span class="keyword">with</span> three arguments)</span><br><span class="line"></span><br><span class="line">    Some types, such <span class="keyword">as</span> ints, are able to use a more efficient algorithm when</span><br><span class="line">    invoked using the three argument form.</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="python">pow(x, y, z=<span class="hljs-literal">None</span>, /)
+    Equivalent to x**y (<span class="hljs-keyword">with</span> two arguments) <span class="hljs-keyword">or</span> x**y % z (<span class="hljs-keyword">with</span> three arguments)
+
+    Some types, such <span class="hljs-keyword">as</span> ints, are able to use a more efficient algorithm when
+    invoked using the three argument form.
+</code></pre>
 <p><code>x**y % z</code>，这正好就是这道题所用到的算法，所以直接调用<code>pow(b, p, k)</code>就OK了。一般来说，编程语言本身的库函数都会往死里优化，基本上不用担心时间复杂度的问题。（除了某些特别坑的）</p>
 <p>最后要注意的一点就是，很多人提交Python都莫名RE，原因是Python 3的<code>input()</code>函数返回的是字符串，必须用<code>int()</code>转换为整数。如果一行有多个数字，则调用<code>split()</code>方法分割成多个字符串。</p>
 <p>上代码：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a = input().split()</span><br><span class="line">print(a[<span class="number">0</span>] + <span class="string">'^'</span> + a[<span class="number">1</span>] + <span class="string">' mod '</span> + a[<span class="number">2</span>] + <span class="string">'='</span> + str(pow(int(a[<span class="number">0</span>]), int(a[<span class="number">1</span>]), int(a[<span class="number">2</span>]))))</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="python">a = input().split()
+print(a[<span class="hljs-number">0</span>] + <span class="hljs-string">'^'</span> + a[<span class="hljs-number">1</span>] + <span class="hljs-string">' mod '</span> + a[<span class="hljs-number">2</span>] + <span class="hljs-string">'='</span> + str(pow(int(a[<span class="hljs-number">0</span>]), int(a[<span class="hljs-number">1</span>]), int(a[<span class="hljs-number">2</span>]))))
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -974,7 +987,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1060,6 +1073,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1070,6 +1089,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

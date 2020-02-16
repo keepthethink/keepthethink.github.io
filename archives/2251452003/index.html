@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -654,22 +659,51 @@
 <p>当然，可能你自己得花点钱。</p>
 <h2 id="在macos中体验doh"><a class="markdownIt-Anchor" href="#在macos中体验doh"></a> 在macOS中体验DoH</h2>
 <p>首先，为了安装必要的组件，我们首先要安装Homebrew软件包管理器。在终端中输入：</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="shell">/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+</code></pre>
 <p>安装完成后，输入以下命令安装cloudflared：</p>
-<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">brew </span><span class="keyword">install </span><span class="keyword">cloudflare/cloudflare/cloudflared</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class>brew install cloudflare/cloudflare/cloudflared
+</code></pre>
 <p>等待安装，这段时间内你可以去换（chuan）件（shang）衣（nv）服（zhuang）。</p>
 <p>然后，我们要修改一下配置文件，新建一个文件<code>/usr/local/etc/cloudflared/config.yaml</code>，输入如下内容：</p>
-<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">proxy-<span class="string">dns:</span> <span class="literal">true</span></span><br><span class="line">proxy-dns-<span class="string">upstream:</span></span><br><span class="line">  - <span class="string">https:</span><span class="comment">//1.1.1.1/dns-query</span></span><br><span class="line">  - <span class="string">https:</span><span class="comment">//1.0.0.1/dns-query</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class>proxy-dns: true
+proxy-dns-upstream:
+  - https://1.1.1.1/dns-query
+  - https://1.0.0.1/dns-query
+</code></pre>
 <p>（顺便提一下，如果1.1.1.1和1.0.0.1两个都连不上，可以把网址删除换成<code>https://dns.google.com/experimental</code>试试，</p>
 <p>好了不要吵了我知道这是天方夜谭）</p>
 <p>配置结束，启动服务：</p>
-<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo cloudflared<span class="built_in"> service </span>install</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class>sudo cloudflared service install
+</code></pre>
 <p>QED！现在你的电脑已经成了一台DoH服务器，高兴的话你也可以把它当作DNS服务器来用。打开 系统首选项 -&gt; 网络 -&gt; 高级 -&gt; DNS，在列表的最顶端添加 127.0.0.1 即可。</p>
 <h2 id="在linux中体验doh"><a class="markdownIt-Anchor" href="#在linux中体验doh"></a> 在Linux中体验DoH</h2>
 <p>同macOS，但安装时一定要记得加PPA源～</p>
 <h2 id="doh的使用测试"><a class="markdownIt-Anchor" href="#doh的使用测试"></a> DoH的使用测试</h2>
 <p>用dig命令测试一下，发现DOH的使用体验还是相当不错的。对域名www.google.com的查询结果如下：</p>
-<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$ dig @<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> www.google.com</span><br><span class="line"></span><br><span class="line">; &lt;&lt;&gt;&gt; DiG <span class="number">9.10</span><span class="number">.6</span> &lt;&lt;&gt;&gt; @<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span> www.google.com</span><br><span class="line">; (<span class="number">1</span> server found)</span><br><span class="line">;; global options: +cmd</span><br><span class="line">;; Got answer:</span><br><span class="line">;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: <span class="number">48175</span></span><br><span class="line">;; flags: qr rd ra; QUERY: <span class="number">1</span>, ANSWER: <span class="number">1</span>, AUTHORITY: <span class="number">0</span>, ADDITIONAL: <span class="number">1</span></span><br><span class="line"></span><br><span class="line">;; OPT PSEUDOSECTION:</span><br><span class="line">; EDNS: version: <span class="number">0</span>, flags:; udp: <span class="number">1452</span></span><br><span class="line">; PAD: <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> <span class="number">00</span> (<span class="string">"................................................................."</span>)</span><br><span class="line">;; QUESTION SECTION:</span><br><span class="line">;www.google.com.			IN	A</span><br><span class="line"></span><br><span class="line">;; ANSWER SECTION:</span><br><span class="line">www.google.com.		<span class="number">66</span>	IN	A	<span class="number">216.58</span><span class="number">.194</span><span class="number">.196</span></span><br><span class="line"></span><br><span class="line">;; Query time: <span class="number">165</span> msec</span><br><span class="line">;; SERVER: <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>#<span class="number">53</span>(<span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>)</span><br><span class="line">;; WHEN: Tue Apr <span class="number">16</span> <span class="number">16</span>:<span class="number">33</span>:<span class="number">38</span> CST <span class="number">2019</span></span><br><span class="line">;; MSG SIZE  rcvd: <span class="number">142</span></span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class>$ dig @127.0.0.1 www.google.com
+
+; &lt;&lt;&gt;&gt; DiG 9.10.6 &lt;&lt;&gt;&gt; @127.0.0.1 www.google.com
+; (1 server found)
+;; global options: +cmd
+;; Got answer:
+;; -&gt;&gt;HEADER&lt;&lt;- opcode: QUERY, status: NOERROR, id: 48175
+;; flags: qr rd ra; QUERY: 1, ANSWER: 1, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 1452
+; PAD: 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 (&quot;.................................................................&quot;)
+;; QUESTION SECTION:
+;www.google.com.			IN	A
+
+;; ANSWER SECTION:
+www.google.com.		66	IN	A	216.58.194.196
+
+;; Query time: 165 msec
+;; SERVER: 127.0.0.1#53(127.0.0.1)
+;; WHEN: Tue Apr 16 16:33:38 CST 2019
+;; MSG SIZE  rcvd: 142
+</code></pre>
 <p>注意最下方几行：165毫秒的查询时间不可谓不快。</p>
 <h1 id="总结"><a class="markdownIt-Anchor" href="#总结"></a> 总结</h1>
 <p>事实上，如果你饱受各种小广告弹窗之苦，DoH是个不错的应对措施；</p>
@@ -1076,7 +1110,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1162,6 +1196,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1172,6 +1212,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

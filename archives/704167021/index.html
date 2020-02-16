@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -429,9 +434,9 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:588字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:552字</span>
     |
-    <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈3分</span>
+    <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈2分</span>
     |
     
 
@@ -566,9 +571,113 @@
     
         <p>对于初学计算几何的OIer来说，Graham算法是个不错的凸包算法。Graham算法相比极角排序法来说，更为直观也更容易理解。</p>
 <h1 id="数据定义"><a class="markdownIt-Anchor" href="#数据定义"></a> 数据定义</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Point</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">double</span> x, y;</span><br><span class="line"></span><br><span class="line">    Point(<span class="keyword">double</span> x = <span class="number">0</span>, <span class="keyword">double</span> y = <span class="number">0</span>):x(x), y(y) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    Point(Point a, Point b) &#123;</span><br><span class="line">        <span class="comment">//构造从a到b的向量</span></span><br><span class="line">        x = b.x - a.x;</span><br><span class="line">        y = b.y - a.y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">dist</span><span class="params">(<span class="keyword">const</span> Point&amp; p)</span> <span class="keyword">const</span> </span>&#123;</span><br><span class="line">        <span class="comment">//计算从自身到点P的距离</span></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">sqrt</span>((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">double</span> <span class="keyword">operator</span> * (<span class="keyword">const</span> Point&amp; p) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="comment">//计算向量叉积</span></span><br><span class="line">        <span class="keyword">return</span> x * p.y - p.x * y;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Point&amp; p) <span class="keyword">const</span> &#123;</span><br><span class="line">        <span class="comment">//按照X轴排序</span></span><br><span class="line">        <span class="keyword">return</span> (x == p.x) ? (y &lt; p.y) : (x &lt; p.x);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">friend</span> istream&amp; <span class="keyword">operator</span> &gt;&gt; (istream&amp; in, Point&amp; p) &#123;</span><br><span class="line">        <span class="comment">//重载 &gt;&gt; 运算符使得cin可以输入</span></span><br><span class="line">        in &gt;&gt; p.x &gt;&gt; p.y;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> in;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">10000</span> + <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">Point p[MAXN];</span><br><span class="line"><span class="keyword">int</span> st[MAXN], top = <span class="number">-1</span>; <span class="comment">//点栈</span></span><br><span class="line"><span class="keyword">int</span> n;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Point</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">double</span> x, y;
+
+    Point(<span class="hljs-keyword">double</span> x = <span class="hljs-number">0</span>, <span class="hljs-keyword">double</span> y = <span class="hljs-number">0</span>):x(x), y(y) {}
+
+    Point(Point a, Point b) {
+        <span class="hljs-comment">//构造从a到b的向量</span>
+        x = b.x - a.x;
+        y = b.y - a.y;
+    }
+
+    <span class="hljs-function"><span class="hljs-keyword">double</span> <span class="hljs-title">dist</span><span class="hljs-params">(<span class="hljs-keyword">const</span> Point&amp; p)</span> <span class="hljs-keyword">const</span> </span>{
+        <span class="hljs-comment">//计算从自身到点P的距离</span>
+        <span class="hljs-keyword">return</span> <span class="hljs-built_in">sqrt</span>((x - p.x) * (x - p.x) + (y - p.y) * (y - p.y));
+    }
+
+    <span class="hljs-keyword">double</span> <span class="hljs-keyword">operator</span> * (<span class="hljs-keyword">const</span> Point&amp; p) <span class="hljs-keyword">const</span> {
+        <span class="hljs-comment">//计算向量叉积</span>
+        <span class="hljs-keyword">return</span> x * p.y - p.x * y;
+    }
+
+    <span class="hljs-keyword">bool</span> <span class="hljs-keyword">operator</span> &lt; (<span class="hljs-keyword">const</span> Point&amp; p) <span class="hljs-keyword">const</span> {
+        <span class="hljs-comment">//按照X轴排序</span>
+        <span class="hljs-keyword">return</span> (x == p.x) ? (y &lt; p.y) : (x &lt; p.x);
+    }
+
+    <span class="hljs-keyword">friend</span> istream&amp; <span class="hljs-keyword">operator</span> &gt;&gt; (istream&amp; in, Point&amp; p) {
+        <span class="hljs-comment">//重载 &gt;&gt; 运算符使得cin可以输入</span>
+        in &gt;&gt; p.x &gt;&gt; p.y;
+
+        <span class="hljs-keyword">return</span> in;
+    }
+};
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">10000</span> + <span class="hljs-number">5</span>;
+
+Point p[MAXN];
+<span class="hljs-keyword">int</span> st[MAXN], top = <span class="hljs-number">-1</span>; <span class="hljs-comment">//点栈</span>
+<span class="hljs-keyword">int</span> n;
+</code></pre>
 <h1 id="主程序"><a class="markdownIt-Anchor" href="#主程序"></a> 主程序</h1>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123; <span class="comment">//输入所有点</span></span><br><span class="line">    <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="built_in">cin</span> &gt;&gt; p[i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    input();</span><br><span class="line">    sort(p, p + n); <span class="comment">//对点进行直角坐标排序􏰣􏰳􏰣􏰳􏰮􏰂</span></span><br><span class="line">    <span class="keyword">double</span> ans = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    st[++top] = <span class="number">0</span>; <span class="comment">//将第一个点入栈</span></span><br><span class="line">    st[++top] = <span class="number">1</span>; <span class="comment">//将第二个点入栈</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="function">Point <span class="title">u</span><span class="params">(p[st[top - <span class="number">1</span>]], p[st[top]])</span></span>; <span class="comment">//计算栈顶两个点构成的向量</span></span><br><span class="line">        <span class="function">Point <span class="title">v</span><span class="params">(p[st[top]], p[i])</span></span>; <span class="comment">//计算当前点与栈顶构成的向量</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(u * v &lt; <span class="number">0</span>) &#123; <span class="comment">//若叉积小于0</span></span><br><span class="line">            <span class="keyword">if</span>(top == <span class="number">0</span>) &#123; <span class="comment">//当栈中只有一个元素时，退出循环</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            top--; <span class="comment">//弹出栈顶</span></span><br><span class="line">            u = Point(p[st[top - <span class="number">1</span>]], p[st[top]]); <span class="comment">//更新</span></span><br><span class="line">            v = Point(p[st[top]], p[i]); <span class="comment">//更新</span></span><br><span class="line">        &#125;</span><br><span class="line">        st[++top] = i; <span class="comment">//将第i个点压入栈中</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= top - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        ans += p[st[i]].dist(p[st[i + <span class="number">1</span>]]); <span class="comment">//累加下半个凸包的长度</span></span><br><span class="line">    &#125;</span><br><span class="line">    top = <span class="number">-1</span>; <span class="comment">//清空栈</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//求出上半个凸包，与前半部分大同小异</span></span><br><span class="line">    st[++top] = <span class="number">0</span>;</span><br><span class="line">    st[++top] = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; n; i++) &#123;</span><br><span class="line">        <span class="function">Point <span class="title">u</span><span class="params">(p[st[top - <span class="number">1</span>]], p[st[top]])</span></span>;</span><br><span class="line">        <span class="function">Point <span class="title">v</span><span class="params">(p[st[top]], p[i])</span></span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(u * v &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(top == <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            top--;</span><br><span class="line">            u = Point(p[st[top - <span class="number">1</span>]], p[st[top]]);</span><br><span class="line">            v = Point(p[st[top]], p[i]);</span><br><span class="line">        &#125;</span><br><span class="line">        st[++top] = i;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= top - <span class="number">1</span>; i++) &#123;</span><br><span class="line">        ans += p[st[i]].dist(p[st[i + <span class="number">1</span>]]);</span><br><span class="line">    &#125;</span><br><span class="line">    top = <span class="number">-1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; setprecision(<span class="number">2</span>) &lt;&lt; fixed &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>; <span class="comment">//控制精度</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">input</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">//输入所有点</span>
+    <span class="hljs-built_in">cin</span> &gt;&gt; n;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+        <span class="hljs-built_in">cin</span> &gt;&gt; p[i];
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    input();
+    sort(p, p + n); <span class="hljs-comment">//对点进行直角坐标排序􏰣􏰳􏰣􏰳􏰮􏰂</span>
+    <span class="hljs-keyword">double</span> ans = <span class="hljs-number">0</span>;
+
+    st[++top] = <span class="hljs-number">0</span>; <span class="hljs-comment">//将第一个点入栈</span>
+    st[++top] = <span class="hljs-number">1</span>; <span class="hljs-comment">//将第二个点入栈</span>
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) {
+        <span class="hljs-function">Point <span class="hljs-title">u</span><span class="hljs-params">(p[st[top - <span class="hljs-number">1</span>]], p[st[top]])</span></span>; <span class="hljs-comment">//计算栈顶两个点构成的向量</span>
+        <span class="hljs-function">Point <span class="hljs-title">v</span><span class="hljs-params">(p[st[top]], p[i])</span></span>; <span class="hljs-comment">//计算当前点与栈顶构成的向量</span>
+
+        <span class="hljs-keyword">while</span>(u * v &lt; <span class="hljs-number">0</span>) { <span class="hljs-comment">//若叉积小于0</span>
+            <span class="hljs-keyword">if</span>(top == <span class="hljs-number">0</span>) { <span class="hljs-comment">//当栈中只有一个元素时，退出循环</span>
+                <span class="hljs-keyword">break</span>;
+            }
+            top--; <span class="hljs-comment">//弹出栈顶</span>
+            u = Point(p[st[top - <span class="hljs-number">1</span>]], p[st[top]]); <span class="hljs-comment">//更新</span>
+            v = Point(p[st[top]], p[i]); <span class="hljs-comment">//更新</span>
+        }
+        st[++top] = i; <span class="hljs-comment">//将第i个点压入栈中</span>
+    }
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= top - <span class="hljs-number">1</span>; i++) {
+        ans += p[st[i]].dist(p[st[i + <span class="hljs-number">1</span>]]); <span class="hljs-comment">//累加下半个凸包的长度</span>
+    }
+    top = <span class="hljs-number">-1</span>; <span class="hljs-comment">//清空栈</span>
+    
+    <span class="hljs-comment">//求出上半个凸包，与前半部分大同小异</span>
+    st[++top] = <span class="hljs-number">0</span>;
+    st[++top] = <span class="hljs-number">1</span>;
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">2</span>; i &lt; n; i++) {
+        <span class="hljs-function">Point <span class="hljs-title">u</span><span class="hljs-params">(p[st[top - <span class="hljs-number">1</span>]], p[st[top]])</span></span>;
+        <span class="hljs-function">Point <span class="hljs-title">v</span><span class="hljs-params">(p[st[top]], p[i])</span></span>;
+
+        <span class="hljs-keyword">while</span>(u * v &gt; <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">if</span>(top == <span class="hljs-number">0</span>) {
+                <span class="hljs-keyword">break</span>;
+            }
+            top--;
+            u = Point(p[st[top - <span class="hljs-number">1</span>]], p[st[top]]);
+            v = Point(p[st[top]], p[i]);
+        }
+        st[++top] = i;
+    }
+
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= top - <span class="hljs-number">1</span>; i++) {
+        ans += p[st[i]].dist(p[st[i + <span class="hljs-number">1</span>]]);
+    }
+    top = <span class="hljs-number">-1</span>;
+
+    <span class="hljs-built_in">cout</span> &lt;&lt; setprecision(<span class="hljs-number">2</span>) &lt;&lt; fixed &lt;&lt; ans &lt;&lt; <span class="hljs-built_in">endl</span>; <span class="hljs-comment">//控制精度</span>
+
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -968,7 +1077,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1054,6 +1163,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1064,6 +1179,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

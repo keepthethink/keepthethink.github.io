@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -607,7 +612,96 @@
 <p>同时，因为出题人已经给数据排好了顺序，发现未建成时直接中断即可。</p>
 <p>闲话少说，主要看代码注释。</p>
 <p>#代码</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt; </span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">200</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> edge[MAXN][MAXN], times[MAXN];</span><br><span class="line"><span class="keyword">int</span> n, m, q;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">init()函数：</span></span><br><span class="line"><span class="comment">Floyd初始化</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">			edge[i][j] = (i == j ? <span class="number">0</span> : INF);<span class="comment">//节点到自身的距离为0</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">addEdge()函数：</span></span><br><span class="line"><span class="comment">在邻接矩阵中添加一条（双向）边</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">addEdge</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> j, <span class="keyword">int</span> v)</span> </span>&#123;</span><br><span class="line">	edge[i][j] = edge[j][i] = v;<span class="comment">//双向边处理</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">input()函数：</span></span><br><span class="line"><span class="comment">输入数据</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">input</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;m);</span><br><span class="line">	init(); <span class="comment">//读入n, m后进行初始化</span></span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;times[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, v;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;v);</span><br><span class="line">		addEdge(x, y, v);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">update()函数：</span></span><br><span class="line"><span class="comment">以k为中转点更新最短路</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; n; j++) &#123;</span><br><span class="line">			edge[i][j] = min(edge[i][j], edge[i][k] + edge[k][j]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="keyword">int</span> cur = <span class="number">0</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;q);</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; q; i++) &#123;</span><br><span class="line">		<span class="keyword">int</span> x, y, t;</span><br><span class="line">		</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;t);</span><br><span class="line">        </span><br><span class="line">		<span class="comment">//这里是重点</span></span><br><span class="line">		<span class="keyword">while</span>(times[cur] &lt;= t &amp;&amp; cur &lt; n) &#123;</span><br><span class="line">			update(cur);<span class="comment">//若当前可以经过村庄cur，以cur为中转点更新最短路径</span></span><br><span class="line">                        cur++;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(times[x] &gt; t || times[y] &gt; t || edge[x][y] == INF) &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"-1\n"</span>);<span class="comment">//村庄x尚未建成,村庄x尚未建成或村庄x与村庄y在t时并不连通</span></span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, edge[x][y]);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123; <span class="comment">//简洁的main()函数</span></span><br><span class="line">	input();</span><br><span class="line">	work();</span><br><span class="line">    </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;cstdio&gt; </span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;algorithm&gt;</span></span>
+<span class="hljs-keyword">using</span> <span class="hljs-keyword">namespace</span> <span class="hljs-built_in">std</span>;
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">200</span> + <span class="hljs-number">5</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> INF = <span class="hljs-number">1e9</span>;
+
+<span class="hljs-keyword">int</span> edge[MAXN][MAXN], times[MAXN];
+<span class="hljs-keyword">int</span> n, m, q;
+
+<span class="hljs-comment">/*
+init()函数：
+Floyd初始化
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) {
+			edge[i][j] = (i == j ? <span class="hljs-number">0</span> : INF);<span class="hljs-comment">//节点到自身的距离为0</span>
+		}
+	}
+}
+
+<span class="hljs-comment">/*
+addEdge()函数：
+在邻接矩阵中添加一条（双向）边
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">addEdge</span><span class="hljs-params">(<span class="hljs-keyword">int</span> i, <span class="hljs-keyword">int</span> j, <span class="hljs-keyword">int</span> v)</span> </span>{
+	edge[i][j] = edge[j][i] = v;<span class="hljs-comment">//双向边处理</span>
+}
+
+<span class="hljs-comment">/*
+input()函数：
+输入数据
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">input</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d"</span>, &amp;n, &amp;m);
+	init(); <span class="hljs-comment">//读入n, m后进行初始化</span>
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;times[i]);
+	}
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; m; i++) {
+		<span class="hljs-keyword">int</span> x, y, v;
+		
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;v);
+		addEdge(x, y, v);
+	}
+}
+
+<span class="hljs-comment">/*
+update()函数：
+以k为中转点更新最短路
+*/</span>
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">update</span><span class="hljs-params">(<span class="hljs-keyword">int</span> k)</span> </span>{
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) {
+		<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">0</span>; j &lt; n; j++) {
+			edge[i][j] = min(edge[i][j], edge[i][k] + edge[k][j]);
+		}
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">work</span><span class="hljs-params">()</span> </span>{
+	<span class="hljs-keyword">int</span> cur = <span class="hljs-number">0</span>;
+	
+	<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d"</span>, &amp;q);
+	<span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; q; i++) {
+		<span class="hljs-keyword">int</span> x, y, t;
+		
+		<span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d"</span>, &amp;x, &amp;y, &amp;t);
+        
+		<span class="hljs-comment">//这里是重点</span>
+		<span class="hljs-keyword">while</span>(times[cur] &lt;= t &amp;&amp; cur &lt; n) {
+			update(cur);<span class="hljs-comment">//若当前可以经过村庄cur，以cur为中转点更新最短路径</span>
+                        cur++;
+		}
+		<span class="hljs-keyword">if</span>(times[x] &gt; t || times[y] &gt; t || edge[x][y] == INF) {
+			<span class="hljs-built_in">printf</span>(<span class="hljs-string">"-1\n"</span>);<span class="hljs-comment">//村庄x尚未建成,村庄x尚未建成或村庄x与村庄y在t时并不连通</span>
+		} <span class="hljs-keyword">else</span> {
+			<span class="hljs-built_in">printf</span>(<span class="hljs-string">"%d\n"</span>, edge[x][y]);
+		}
+	}
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{ <span class="hljs-comment">//简洁的main()函数</span>
+	input();
+	work();
+    
+	<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -1007,7 +1101,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1093,6 +1187,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1103,6 +1203,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

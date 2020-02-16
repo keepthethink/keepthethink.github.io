@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -429,7 +434,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:1.7k字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:1.6k字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈6分</span>
     |
@@ -572,20 +577,47 @@
 <p>1.单向链表:每个元素只记录了下一个元素的位置。</p>
 <p>2.双向链表:每个元素记录了上一个及下一个元素的位置。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用类来定义链表中的每个元素。</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Node</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> v = <span class="number">0</span>;</span><br><span class="line">    Node * next = <span class="literal">NULL</span>, * prev = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">/*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/</span></span><br><span class="line">    </span><br><span class="line">    Node(<span class="keyword">int</span> v = <span class="number">0</span>, Node * next = <span class="literal">NULL</span>, Node * prev = <span class="literal">NULL</span>):v(v), next(next), prev(prev) &#123;&#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-comment">//用类来定义链表中的每个元素。</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Node</span> {</span>
+<span class="hljs-keyword">public</span>:
+    <span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>;
+    Node * next = <span class="hljs-literal">NULL</span>, * prev = <span class="hljs-literal">NULL</span>;
+    <span class="hljs-comment">/*前一个元素或者后一个元素可以不存在，所以必须要使用指针类型。*/</span>
+    
+    Node(<span class="hljs-keyword">int</span> v = <span class="hljs-number">0</span>, Node * next = <span class="hljs-literal">NULL</span>, Node * prev = <span class="hljs-literal">NULL</span>):v(v), next(next), prev(prev) {}
+};
+</code></pre>
 <h3 id="链表常用操作构造链表"><a class="markdownIt-Anchor" href="#链表常用操作构造链表"></a> 链表常用操作:构造链表</h3>
 <p>通过实例化链表类，创建链表的每个元素并建立元素之间的关系。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//构造一个只有头尾两个元素的链表。</span></span><br><span class="line">Node* head = <span class="keyword">new</span> Node(); </span><br><span class="line">Node* tail = <span class="keyword">new</span> Node(); </span><br><span class="line"></span><br><span class="line">head -&gt; next = tail;</span><br><span class="line">tile -&gt; prev = head;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-comment">//构造一个只有头尾两个元素的链表。</span>
+Node* head = <span class="hljs-keyword">new</span> Node(); 
+Node* tail = <span class="hljs-keyword">new</span> Node(); 
+
+head -&gt; next = tail;
+tile -&gt; prev = head;
+</code></pre>
 <h3 id="链表常用操作遍历链表"><a class="markdownIt-Anchor" href="#链表常用操作遍历链表"></a> 链表常用操作:遍历链表</h3>
 <p>将链表头赋值给临时变量，然后不断寻找下一个元素直到空。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Node* i = head;</span><br><span class="line"><span class="keyword">while</span> (i -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    i = i -&gt; next;</span><br><span class="line">    <span class="comment">//需要对链表元素进行的操作</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node* i = head;
+<span class="hljs-keyword">while</span> (i -&gt; next != <span class="hljs-literal">NULL</span>) {
+    i = i -&gt; next;
+    <span class="hljs-comment">//需要对链表元素进行的操作</span>
+}
+</code></pre>
 <h3 id="链表常用操作插入元素"><a class="markdownIt-Anchor" href="#链表常用操作插入元素"></a> 链表常用操作:插入元素</h3>
 <p>找到要插入元素的位置，一般是记录前一个元素。<br>
 重新设置插入位置两边的元素和插入元素的关系。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//在元素p后面插入元素i</span></span><br><span class="line">i -&gt; next = p -&gt; next;</span><br><span class="line">i -&gt; prev = p;</span><br><span class="line"><span class="keyword">if</span> (p -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    p -&gt; next -&gt; prev = i;</span><br><span class="line">&#125;</span><br><span class="line">p -&gt; next = i;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-comment">//在元素p后面插入元素i</span>
+i -&gt; next = p -&gt; next;
+i -&gt; prev = p;
+<span class="hljs-keyword">if</span> (p -&gt; next != <span class="hljs-literal">NULL</span>) {
+    p -&gt; next -&gt; prev = i;
+}
+p -&gt; next = i;
+</code></pre>
 <p>注意:</p>
 <blockquote>
 <p>1.修改关系的顺序.</p>
@@ -595,7 +627,14 @@
 <p>首先，找到要删除的元素。</p>
 <p>重新设置该元素的前后元素之间的关系，并根据需要释放元素。<br>
 代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (i -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    i -&gt; next -&gt; prev = i -&gt; prev;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">if</span> (i -&gt; prev != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    i -&gt; prev -&gt; next = i -&gt; next;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">delete</span> i;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">if</span> (i -&gt; next != <span class="hljs-literal">NULL</span>) {
+    i -&gt; next -&gt; prev = i -&gt; prev;
+}
+<span class="hljs-keyword">if</span> (i -&gt; prev != <span class="hljs-literal">NULL</span>) {
+    i -&gt; prev -&gt; next = i -&gt; next;
+}
+<span class="hljs-keyword">delete</span> i;
+</code></pre>
 <p>注意:</p>
 <blockquote>
 <p>如果有变量用来记录链表头，头被删除时要记得更新。</p>
@@ -604,7 +643,10 @@
 <h3 id="链表-qa"><a class="markdownIt-Anchor" href="#链表-qa"></a> 链表 Q&amp;A</h3>
 <p><strong>Q：</strong> 单向链表可以进行删除元素操作吗?</p>
 <p><strong>A：</strong> 可以。通过预判下一个元素的方式，找到要删除元素的上一个元素，再更新下一个元素。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (pr -&gt; next != <span class="literal">NULL</span>) &#123;</span><br><span class="line">    pr -&gt; next = pr -&gt; next -&gt; next;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">if</span> (pr -&gt; next != <span class="hljs-literal">NULL</span>) {
+    pr -&gt; next = pr -&gt; next -&gt; next;
+}
+</code></pre>
 <p>当然，还是要特判删除链表头的情况。</p>
 <p><strong>Q：</strong> 还有别的方式可以用来实现链表吗?</p>
 <p><strong>A：</strong> 通常情况下，使用数组来实现链表会更加简便。</p>
@@ -619,12 +661,18 @@
 <p>创建一个新元素，将队尾元素的下一个元素指向新元素。</p>
 <p>将队尾移动到新元素。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node* newTail = <span class="keyword">new</span> Node();</span><br><span class="line">tail -&gt; next = newTail;</span><br><span class="line">tail = newTail;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node* newTail = <span class="hljs-keyword">new</span> Node();
+tail -&gt; next = newTail;
+tail = newTail;
+</code></pre>
 <h3 id="队列常用操作从队列头部删除元素"><a class="markdownIt-Anchor" href="#队列常用操作从队列头部删除元素"></a> 队列常用操作:从队列头部删除元素</h3>
 <p>记录队头元素。</p>
 <p>将队头元素移动到它的下一个元素。根据需要释放旧的队头元素。</p>
 <p>代码实现：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node* oldHead = head;</span><br><span class="line">head = head -&gt; next;</span><br><span class="line">oldHead -&gt; next = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node* oldHead = head;
+head = head -&gt; next;
+oldHead -&gt; next = <span class="hljs-literal">NULL</span>;
+</code></pre>
 <p>注意：</p>
 <blockquote>
 <p>还要特判队列为空的情况。</p>
@@ -637,11 +685,32 @@
 <p>移动指针后如果超出了数组长度，则重置为0。</p>
 <p>当尾指针追赶上头指针时，表示队列溢出。</p>
 <p>定义：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> LENGTH = <span class="number">100</span>;</span><br><span class="line">Node* <span class="built_in">queue</span>[LENGTH];</span><br><span class="line"><span class="keyword">int</span> head = <span class="number">0</span>, tile = <span class="number">0</span>;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> LENGTH = <span class="hljs-number">100</span>;
+Node* <span class="hljs-built_in">queue</span>[LENGTH];
+<span class="hljs-keyword">int</span> head = <span class="hljs-number">0</span>, tile = <span class="hljs-number">0</span>;
+</code></pre>
 <p>添加元素：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">push</span><span class="params">(Node* t)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(head != (tail + <span class="number">2</span>)) &#123; <span class="comment">// 判断满。 </span></span><br><span class="line">        tail = (tail + <span class="number">1</span>) % LENGTH; </span><br><span class="line">        <span class="built_in">queue</span>[tail] = t;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function"><span class="hljs-keyword">bool</span> <span class="hljs-title">push</span><span class="hljs-params">(Node* t)</span> </span>{
+    <span class="hljs-keyword">if</span>(head != (tail + <span class="hljs-number">2</span>)) { <span class="hljs-comment">// 判断满。 </span>
+        tail = (tail + <span class="hljs-number">1</span>) % LENGTH; 
+        <span class="hljs-built_in">queue</span>[tail] = t;
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+    }
+}
+</code></pre>
 <p>删除元素：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">pop</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (head != (tail + <span class="number">1</span>)) &#123; <span class="comment">// 判断空。 </span></span><br><span class="line">        Node* h = <span class="built_in">queue</span>[head];</span><br><span class="line">        head = (head + <span class="number">1</span>) % LENGTH;</span><br><span class="line">        <span class="keyword">return</span> h;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-function">Node* <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-keyword">if</span> (head != (tail + <span class="hljs-number">1</span>)) { <span class="hljs-comment">// 判断空。 </span>
+        Node* h = <span class="hljs-built_in">queue</span>[head];
+        head = (head + <span class="hljs-number">1</span>) % LENGTH;
+        <span class="hljs-keyword">return</span> h;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">NULL</span>;
+    }
+}
+</code></pre>
 <h3 id="队列-qa"><a class="markdownIt-Anchor" href="#队列-qa"></a> 队列 Q&amp;A</h3>
 <p><strong>Q：</strong> 队列是单向链表还是双向链表?</p>
 <p><strong>A：</strong> 使用单向链表足以支持队列的操作。</p>
@@ -664,13 +733,19 @@
 <p>1.创建一个新元素。<br>
 2.将新元素的上一个元素指向栈尾元素。<br>
 3.将栈尾移动到新元素。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node* newTail = <span class="keyword">new</span> Node();</span><br><span class="line">newTail -&gt; prev = tail;</span><br><span class="line">tail = newTail;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node* newTail = <span class="hljs-keyword">new</span> Node();
+newTail -&gt; prev = tail;
+tail = newTail;
+</code></pre>
 <p>注意：还要特判栈为空的情况。</p>
 <h3 id="栈常用操作从栈尾部删除元素"><a class="markdownIt-Anchor" href="#栈常用操作从栈尾部删除元素"></a> 栈常用操作:从栈尾部删除元素</h3>
 <p>1.记录栈尾元素。<br>
 2.将栈尾元素移动到它的上一个元素。<br>
 3.将旧栈尾元素的上一个元素置空。根据需要释放旧的栈尾元素。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Node* oldTail = tail;</span><br><span class="line">tail = tail -&gt; prev;</span><br><span class="line">oldTail -&gt; prev = <span class="literal">NULL</span>;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp">Node* oldTail = tail;
+tail = tail -&gt; prev;
+oldTail -&gt; prev = <span class="hljs-literal">NULL</span>;
+</code></pre>
 <p>注意：还要特判栈为空的情况。</p>
 <h3 id="数组一种特殊的栈"><a class="markdownIt-Anchor" href="#数组一种特殊的栈"></a> 数组:一种特殊的栈</h3>
 <p>用一个整数表示数组的下标，作为栈尾的指针。</p>
@@ -1076,7 +1151,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1162,6 +1237,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1172,6 +1253,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>

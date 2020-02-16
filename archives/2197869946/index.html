@@ -83,6 +83,11 @@
         <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?MKetZV3cUTfDxvMffaOezg==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
 
         
+            
+                <style id="prettify_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_css","/css/prettify.min.css?zp8STOU9v89XWFEnN+6YmQ==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+                <style id="prettify_theme"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("prettify_theme","/css/prettify/tomorrow-night-eighties.min.css?2LJQzURO+Kr8r/fl/T8oMA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+            
+        
 
     
 
@@ -429,7 +434,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:586字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:532字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈2分</span>
     |
@@ -584,7 +589,49 @@
 <p>看到题目二话不说用了搜索，直到在提交前看了一下算法标签，又看了一下数据范围。。。</p>
 <p>状态转移方程的推导并不复杂，每次判断卒是否能走到这个格子，不可以则为0（显而易见），可以则为下方与左方的值之和。</p>
 <p>上代码，这道题算是一道DP入门题吧。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">20</span> + <span class="number">5</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> attack[<span class="number">9</span>][<span class="number">2</span>] = &#123;&#123;<span class="number">0</span>, <span class="number">0</span>&#125;, &#123;<span class="number">1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">2</span>, <span class="number">1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">2</span>&#125;, &#123;<span class="number">2</span>, <span class="number">-1</span>&#125;, &#123;<span class="number">1</span>, <span class="number">-2</span>&#125;, &#123;<span class="number">-2</span>, <span class="number">1</span>&#125;, &#123;<span class="number">-1</span>, <span class="number">-2</span>&#125;, &#123;<span class="number">-2</span>, <span class="number">-1</span>&#125;&#125;;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dist[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> <span class="built_in">map</span>[MAXN][MAXN];</span><br><span class="line"><span class="keyword">int</span> n, m, x, y;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">void</span>)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">9</span>; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(x + attack[i][<span class="number">0</span>] &lt;= n &amp;&amp; x + attack[i][<span class="number">0</span>] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span>(y + attack[i][<span class="number">1</span>] &lt;= m &amp;&amp; y + attack[i][<span class="number">1</span>] &gt;= <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="built_in">map</span>[x + attack[i][<span class="number">0</span>]][y + attack[i][<span class="number">1</span>]] = <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d%d%d%d"</span>, &amp;n, &amp;m, &amp;x, &amp;y);</span><br><span class="line">    </span><br><span class="line">    init();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">int</span> k = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        dist[i][<span class="number">0</span>] = <span class="built_in">map</span>[i][<span class="number">0</span>] ? k = <span class="number">0</span> : k;</span><br><span class="line">    &#125;</span><br><span class="line">    k = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= m; i++) &#123;</span><br><span class="line">        dist[<span class="number">0</span>][i] = <span class="built_in">map</span>[<span class="number">0</span>][i] ? k = <span class="number">0</span> : k;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt;= m; j++) &#123;</span><br><span class="line">            dist[i][j] = <span class="built_in">map</span>[i][j] ? <span class="number">0</span> : dist[i - <span class="number">1</span>][j] + dist[i][j - <span class="number">1</span>];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>, dist[n][m]);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<pre class="highlight"><code class="cpp"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span><span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> MAXN = <span class="hljs-number">20</span> + <span class="hljs-number">5</span>;
+<span class="hljs-keyword">const</span> <span class="hljs-keyword">int</span> attack[<span class="hljs-number">9</span>][<span class="hljs-number">2</span>] = &lt;!--￼<span class="hljs-number">0</span>--&gt;;
+<span class="hljs-keyword">long</span> <span class="hljs-keyword">long</span> dist[MAXN][MAXN];
+<span class="hljs-keyword">int</span> <span class="hljs-built_in">map</span>[MAXN][MAXN];
+<span class="hljs-keyword">int</span> n, m, x, y;
+
+<span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">init</span><span class="hljs-params">(<span class="hljs-keyword">void</span>)</span> </span>{
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">9</span>; i++) {
+        <span class="hljs-keyword">if</span>(x + attack[i][<span class="hljs-number">0</span>] &lt;= n &amp;&amp; x + attack[i][<span class="hljs-number">0</span>] &gt;= <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">if</span>(y + attack[i][<span class="hljs-number">1</span>] &lt;= m &amp;&amp; y + attack[i][<span class="hljs-number">1</span>] &gt;= <span class="hljs-number">0</span>) {
+                <span class="hljs-built_in">map</span>[x + attack[i][<span class="hljs-number">0</span>]][y + attack[i][<span class="hljs-number">1</span>]] = <span class="hljs-literal">true</span>;
+            }
+        }
+    }
+}
+
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">scanf</span>(<span class="hljs-string">"%d%d%d%d"</span>, &amp;n, &amp;m, &amp;x, &amp;y);
+    
+    init();
+    
+    <span class="hljs-keyword">int</span> k = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= n; i++) {
+        dist[i][<span class="hljs-number">0</span>] = <span class="hljs-built_in">map</span>[i][<span class="hljs-number">0</span>] ? k = <span class="hljs-number">0</span> : k;
+    }
+    k = <span class="hljs-number">1</span>;
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt;= m; i++) {
+        dist[<span class="hljs-number">0</span>][i] = <span class="hljs-built_in">map</span>[<span class="hljs-number">0</span>][i] ? k = <span class="hljs-number">0</span> : k;
+    }
+    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) {
+        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> j = <span class="hljs-number">1</span>; j &lt;= m; j++) {
+            dist[i][j] = <span class="hljs-built_in">map</span>[i][j] ? <span class="hljs-number">0</span> : dist[i - <span class="hljs-number">1</span>][j] + dist[i][j - <span class="hljs-number">1</span>];
+        }
+    }
+    
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">"%lld\n"</span>, dist[n][m]);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
                     <p><strong>
@@ -984,7 +1031,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.7k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
                 
         </div>
 
@@ -1070,6 +1117,12 @@ It will not impact the appearance and can give developers a lot of support :)
 
 <!-- Import prettify js  -->
 
+    
+        
+            <script>lsloader.load("prettify_js","https://cdn.bootcss.com/prettify/r298/prettify.js", true)</script>
+        
+    
+
 
 
 <!-- Window Load -->
@@ -1080,6 +1133,13 @@ It will not impact the appearance and can give developers a lot of support :)
         $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
     });
 
+    
+        
+            $(function() {
+                $('pre').addClass('prettyprint linenums').attr('style', 'overflow:auto;');
+                prettyPrint();
+                })
+        
     
     
 </script>
