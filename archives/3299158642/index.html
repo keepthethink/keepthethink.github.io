@@ -376,7 +376,7 @@
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text"> 题目描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">2.</span> <span class="post-toc-text"> 说明</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#说明"><span class="post-toc-number">2.</span> <span class="post-toc-text">说明</span></a></li></ol>
     </ul>
     
 
@@ -434,7 +434,7 @@
 
     
     |
-    <i class="material-icons">keyboard</i><span class="post-count">本文共:311字</span>
+    <i class="material-icons">keyboard</i><span class="post-count">本文共:317字</span>
     |
     <i class="material-icons">query_builder</i><span class="post-count">阅读时间≈1分</span>
     |
@@ -569,23 +569,21 @@
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h1 id="题目描述"><a class="markdownIt-Anchor" href="#题目描述"></a> 题目描述</h1>
-<p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">洛谷P1226</a></p>
-<h1 id="说明"><a class="markdownIt-Anchor" href="#说明"></a> 说明</h1>
-<p>看到题解里貌似并没有Python的题解，我来发一个，共两行。</p>
+        <h1 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h1><p><a href="https://www.luogu.org/problemnew/show/P1226" target="_blank" rel="noopener">洛谷P1226</a></p>
+<h1 id="说明"><a href="#说明" class="headerlink" title="说明"></a>说明</h1><p>看到题解里貌似并没有Python的题解，我来发一个，共两行。</p>
 <p>众所周知，为什么有时候洛谷er们要用Python呢？因为Python里已经包装了很多算法，用在OI中基本上等于打游戏时开外挂。虽然</p>
 <p>对于这道题，Python 3中有一个数学函数pow()，它在help()函数中的说明是这样的：</p>
-<pre class="highlight"><code class="python">pow(x, y, z=<span class="hljs-literal">None</span>, /)
-    Equivalent to x**y (<span class="hljs-keyword">with</span> two arguments) <span class="hljs-keyword">or</span> x**y % z (<span class="hljs-keyword">with</span> three arguments)
+<pre><code class="python">pow(x, y, z=None, /)
+    Equivalent to x**y (with two arguments) or x**y % z (with three arguments)
 
-    Some types, such <span class="hljs-keyword">as</span> ints, are able to use a more efficient algorithm when
+    Some types, such as ints, are able to use a more efficient algorithm when
     invoked using the three argument form.
 </code></pre>
 <p><code>x**y % z</code>，这正好就是这道题所用到的算法，所以直接调用<code>pow(b, p, k)</code>就OK了。一般来说，编程语言本身的库函数都会往死里优化，基本上不用担心时间复杂度的问题。（除了某些特别坑的）</p>
 <p>最后要注意的一点就是，很多人提交Python都莫名RE，原因是Python 3的<code>input()</code>函数返回的是字符串，必须用<code>int()</code>转换为整数。如果一行有多个数字，则调用<code>split()</code>方法分割成多个字符串。</p>
 <p>上代码：</p>
-<pre class="highlight"><code class="python">a = input().split()
-print(a[<span class="hljs-number">0</span>] + <span class="hljs-string">'^'</span> + a[<span class="hljs-number">1</span>] + <span class="hljs-string">' mod '</span> + a[<span class="hljs-number">2</span>] + <span class="hljs-string">'='</span> + str(pow(int(a[<span class="hljs-number">0</span>]), int(a[<span class="hljs-number">1</span>]), int(a[<span class="hljs-number">2</span>]))))
+<pre><code class="python">a = input().split()
+print(a[0] + &#39;^&#39; + a[1] + &#39; mod &#39; + a[2] + &#39;=&#39; + str(pow(int(a[0]), int(a[1]), int(a[2]))))
 </code></pre>
 
         
@@ -987,7 +985,7 @@ It will not impact the appearance and can give developers a lot of support :)
                     </span>
                 </span>|
                 <br>
-                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">27.5k</span>
+                <i class="material-icons">keyboard</i>站点总字数<span class="post-count">26.8k</span>
                 
         </div>
 
